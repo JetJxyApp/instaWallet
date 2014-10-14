@@ -80,7 +80,7 @@
     [super viewDidLoad];
     
     //just temporary image for testing
-    self.image = [UIImage imageNamed:@"pic.jpg"];
+    //self.image = [UIImage imageNamed:@"pic.jpg"];
 }
 
 
