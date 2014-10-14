@@ -200,7 +200,7 @@
         <scene sceneID="w4s-AC-6Et">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2Lw-qQ-czV" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Cards" id="uHL-x0-I04"/>
+                    <tabBarItem key="tabBarItem" title="Cards" image="folder-50" id="uHL-x0-I04"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oYL-00-cVs">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -334,7 +334,7 @@
         <scene sceneID="2To-gC-sm6">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Yid-Tn-qyl" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" id="x1G-KM-gOp"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings-50" id="x1G-KM-gOp"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="az6-Uh-G4E">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -353,7 +353,7 @@
         <scene sceneID="RQO-HV-nKc">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KrR-AM-j7S" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Quick Scan" id="L9r-eE-nG7"/>
+                    <tabBarItem key="tabBarItem" title="Quick Scan" image="barcode_scanner-50" id="L9r-eE-nG7"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pJu-18-QcV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -369,6 +369,11 @@
             <point key="canvasLocation" x="1087" y="-29"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="barcode_scanner-50" width="26" height="26"/>
+        <image name="folder-50" width="33" height="33"/>
+        <image name="settings-50" width="26" height="26"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
