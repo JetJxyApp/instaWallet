@@ -105,12 +105,19 @@
             NSArray *data = [[NSArray alloc] initWithContentsOfFile:cardTextPath];
             cell.textLabel.text = [data objectAtIndex:0];
             cell.detailTextLabel.text = [data objectAtIndex:1];
+            UIImage *cellImage = [UIImage imageNamed:@"pic.jpe"];
+            
 
         }
     }
     return cell;
 }
 
+/*
+-(UIImage *)makeThumbnailofsize:(CGSize)size
+{
+    UIGraphicsBeginImageContextWithOptions(sizeof, <#BOOL opaque#>, <#CGFloat scale#>)
+}*/
 
 - (void)prepareCardInfoViewController:(CardInfoViewController *)civc toDisplayCardInfo:(NSMutableArray *)cardInfo
 {
