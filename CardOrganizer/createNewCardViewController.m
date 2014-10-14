@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *cardNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *cardNumberTextField;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UITextField *barcodeNumberTextField;
 @property (strong, nonatomic) UIImage *image;
 @property( nonatomic,strong) NSMutableArray * cardAllInfoArray;
 
@@ -44,6 +45,15 @@
     self.image = image;
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
+
+//function of barcode Scanner
+
+
+- (IBAction)barcodeScanner
+{
+}
+
+
 
 //deal with keyboard go away
 - (BOOL)textFieldShouldReturn:(UITextField *)textField

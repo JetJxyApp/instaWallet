@@ -112,6 +112,27 @@
                                     <action selector="takePhoto" destination="ab4-7Y-mst" eventType="touchUpInside" id="ZK7-4w-vZF"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Barcode Number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FSd-Ea-MZP">
+                                <rect key="frame" x="11" y="434" width="132" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="thc-Hb-YvK">
+                                <rect key="frame" x="274" y="463" width="30" height="30"/>
+                                <state key="normal" title="i">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="barcodeScanner" destination="ab4-7Y-mst" eventType="touchUpInside" id="bGE-Ly-RNI"/>
+                                    <action selector="barcodeScanner:" destination="ab4-7Y-mst" eventType="touchUpInside" id="5oH-LV-efg"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WcA-ev-zNa">
+                                <rect key="frame" x="11" y="463" width="255" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -129,6 +150,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="barcodeNumberTextField" destination="WcA-ev-zNa" id="evE-Sn-kAW"/>
                         <outlet property="cardNameTextField" destination="p8O-3q-Y58" id="2XY-IO-oQH"/>
                         <outlet property="cardNumberTextField" destination="I0A-Pf-UeO" id="TKl-nW-eiO"/>
                         <outlet property="imageView" destination="2qs-P2-55Z" id="AYs-IO-l92"/>
