@@ -101,11 +101,15 @@
     for (NSMutableArray *oneCardInfo in self.cardPath) {
         if (oneCardInfo) {
             
+            //Information of Card name , card number
             NSString *cardTextPath = [oneCardInfo objectAtIndex:0];
             NSArray *data = [[NSArray alloc] initWithContentsOfFile:cardTextPath];
             cell.textLabel.text = [data objectAtIndex:0];
             cell.detailTextLabel.text = [data objectAtIndex:1];
-            UIImage *cellImage = [UIImage imageNamed:@"pic.jpe"];
+            
+            //Information of saved Iamge
+            NSString *cardIamgePath = [oneCardInfo objectAtIndex:1];
+            UIImage *cellImage = [UIImage imageWithContentsOfFile:cardIamgePath];
             cell.imageView.image = cellImage;
             
 
