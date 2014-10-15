@@ -11,5 +11,7 @@
 @interface CardInfoViewController : UIViewController
 
 @property(nonatomic, strong) NSMutableArray * cardPath;
+@property (nonatomic,strong) NSMutableArray * cards;
+@property(nonatomic) NSInteger rowNumer;
 
 @end

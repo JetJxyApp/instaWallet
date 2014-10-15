@@ -9,15 +9,18 @@
 #import "CardInfoViewController.h"
 #import "createNewCardViewController.h"
 #import "EditCardViewController.h"
+#import "AllCardsTableViewController.h"
 
 @interface CardInfoViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UITextField *cardNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *cardNumberTextField;
 @property (strong,nonatomic)UIImage *image;
+
 @end
 
 @implementation CardInfoViewController
+
 
 - (void)setImage:(UIImage *)image
 {
@@ -42,16 +45,25 @@
     return _cardPath;
 }
 
+-(NSMutableArray *)cards
+{
+    if (!_cards) {
+        _cards = [[NSMutableArray alloc]init];
+    }
+    return _cards;
+}
 
-- (void)viewDidLoad
+-(void)setcards:(NSMutableArray *)cards
+{
+    _cards = cards;
+}
+
+
+- (void)viewWillAppear:(BOOL)animated
 {
     [super viewDidLoad];
     
-    for (NSString *str in self.cardPath) {
-        if(str){
-            NSLog(@"str = %@", str);
-        }
-    }
+    NSLog(@"row number in eidit = %ld", self.rowNumer);
     
     NSString *textDataPathStr = [[self.cardPath objectAtIndex:0] objectAtIndex:0];
     NSString *imageDataPathStr = [[self.cardPath  objectAtIndex:0] objectAtIndex:1];
@@ -83,6 +95,7 @@
         NSLog(@"edit done");
         EditCardViewController *ecVC = (EditCardViewController *)segue.sourceViewController;
         self.cardPath = ecVC.cardPath;
+        
         
     }
     
