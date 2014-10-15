@@ -8,6 +8,7 @@
 
 #import "CardInfoViewController.h"
 #import "createNewCardViewController.h"
+#import "EditCardViewController.h"
 
 @interface CardInfoViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
@@ -74,16 +75,34 @@
     }
 }
 
+//Done with Editing card info
+- (IBAction)editCardDone:(UIStoryboardSegue *)segue
+{
+    
+    if ([segue.sourceViewController isKindOfClass:[EditCardViewController class]]) {
+        NSLog(@"edit done");
+        EditCardViewController *ecVC = (EditCardViewController *)segue.sourceViewController;
+        self.cardPath = ecVC.cardPath;
+        
+    }
+    
+}
 
-
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    //pass the path of a specific card to EditCardViewController
+    if ([segue.destinationViewController isKindOfClass:[EditCardViewController class]]) {
+        EditCardViewController *ecVC = (EditCardViewController *)segue.destinationViewController;
+        ecVC.cardPath = self.cardPath;
+        
+
+    }
 }
-*/
+
 
 @end
