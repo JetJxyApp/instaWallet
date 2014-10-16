@@ -23,6 +23,12 @@
     [self.refreshControl endRefreshing];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+
+    [self.tableView reloadData];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -98,31 +104,35 @@
     static NSString *cellIdentifier = @"Card Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier
                                                             forIndexPath:indexPath];
-    for (NSMutableArray *oneCardInfo in self.cardPath) {
-        if (oneCardInfo) {
+    //for (NSMutableArray *oneCardInfo in self.cards) {
+        //if (oneCardInfo) {
             
             //Information of Card name , card number
-            NSString *cardTextPath = [oneCardInfo objectAtIndex:0];
+            NSString *cardTextPath = [[self.cards[indexPath.row] objectAtIndex:0] objectAtIndex:0];
             NSArray *data = [[NSArray alloc] initWithContentsOfFile:cardTextPath];
             cell.textLabel.text = [data objectAtIndex:0];
             cell.detailTextLabel.text = [data objectAtIndex:1];
             
             //Information of saved Iamge
-            NSString *cardIamgePath = [oneCardInfo objectAtIndex:1];
+            NSString *cardIamgePath = [[self.cards[indexPath.row] objectAtIndex:0] objectAtIndex:1];
             UIImage *cellImage = [UIImage imageWithContentsOfFile:cardIamgePath];
             cell.imageView.image = cellImage;
             
 
-        }
-    }
+        //}
+    //}
     return cell;
 }
 
 
-- (void)prepareCardInfoViewController:(CardInfoViewController *)civc toDisplayCardInfo:(NSMutableArray *)cardInfo
+- (void)prepareCardInfoViewController:(CardInfoViewController *)civc
+                    toDisplayCardInfo:(NSMutableArray *)cardInfo
+                         allCardsPath:(NSMutableArray *)cards
+                             rowIndex:(NSInteger)rowIndex
 {
     civc.cardPath = cardInfo;
-    
+    civc.rowNumer = rowIndex;
+    civc.cards = cards;
     for (NSString *str in cardInfo) {
         if(str){
             NSLog(@"str = %@", str);
@@ -144,7 +154,9 @@
                 // yes ... is the destination an ImageViewController?
                 if ([segue.destinationViewController isKindOfClass:[CardInfoViewController class]]) {
                     [self prepareCardInfoViewController:segue.destinationViewController
-                                      toDisplayCardInfo:self.cards[indexPath.row]];
+                                      toDisplayCardInfo:self.cards[indexPath.row]
+                                           allCardsPath:self.cards
+                                               rowIndex:indexPath.row];
                 }
             }
         }

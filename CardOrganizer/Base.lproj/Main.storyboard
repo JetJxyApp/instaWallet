@@ -203,10 +203,27 @@
                                     <outlet property="delegate" destination="ab4-7Y-mst" id="IYM-cE-i1y"/>
                                 </connections>
                             </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jfQ-9i-9xa">
+                                <rect key="frame" x="16" y="409" width="293" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Barcode Number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JgR-EG-1Wo">
+                                <rect key="frame" x="16" y="385" width="132" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Card Info" id="dza-HP-2uK"/>
+                    <navigationItem key="navigationItem" title="Card Info" id="dza-HP-2uK">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="APV-Y8-h68">
+                            <connections>
+                                <segue destination="ofd-dB-ynr" kind="modal" identifier="" id="HJm-Qx-qMA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="cardNameTextField" destination="VQk-Vn-OEW" id="ybt-Yc-trm"/>
                         <outlet property="cardNumberTextField" destination="slo-9D-bqo" id="L8a-mm-vo0"/>
@@ -239,7 +256,7 @@
         <!--Cards-->
         <scene sceneID="w4s-AC-6Et">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2Lw-qQ-czV" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2Lw-qQ-czV" customClass="tryNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Cards" image="folder-50" id="uHL-x0-I04"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oYL-00-cVs">
@@ -247,6 +264,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="2tY-kQ-CxO">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="PLD-5s-mH6" kind="relationship" relationship="rootViewController" id="UPQ-la-7lb"/>
                     </connections>
@@ -274,10 +294,10 @@
             </objects>
             <point key="canvasLocation" x="978" y="1536"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Custom Tab Bar Controller-->
         <scene sceneID="OiW-FX-8ct">
             <objects>
-                <tabBarController id="fGf-Pq-haQ" sceneMemberID="viewController">
+                <tabBarController id="fGf-Pq-haQ" customClass="CustomTabBarController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Oc8-tW-Aqj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
