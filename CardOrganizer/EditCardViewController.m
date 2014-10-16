@@ -61,6 +61,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(yourNotificationHandler:)
+                                                 name:@"ScanBarcode Dismiss" object:nil];
     
 
     //Display all card info for editing
@@ -76,6 +79,7 @@
         
         self.cardNameTextField.text = [data objectAtIndex:0];
         self.cardNumberTextField.text = [data objectAtIndex:1];
+        self.barcodeNumberTextField.text = [data objectAtIndex:2];
         
         UIImage *customImage = [UIImage imageWithContentsOfFile:imageDataPathStr];
         self.imageView.image = customImage;
@@ -84,6 +88,15 @@
     }else{
         NSLog(@"Did not found corresponding file");
     }
+}
+
+// --> Now create method in parent class as;
+// Now create yourNotificationHandler: like this in parent class
+-(void)yourNotificationHandler:(NSNotification *)notice{
+    NSString *str = [notice object];
+    NSLog(@"Inside parent view!!!!!!!!!!!!!%@", str);
+    //pass the scaned value into barcode text field
+    self.barcodeNumberTextField.text = str;
 }
 
 //modal view cancel button
@@ -120,6 +133,7 @@
             NSMutableArray *data = [[NSMutableArray alloc]init];
             [data addObject:self.cardNameTextField.text];
             [data addObject:self.cardNumberTextField.text];
+            [data addObject:self.barcodeNumberTextField.text];
             
             [data writeToFile:textDataPathStr atomically:YES];
             //[self addFilePath:textDataPathStr];

@@ -26,10 +26,10 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+    /*[super viewDidLoad];
     UINavigationBar *navbar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, 375, 80)];
     self.navigationController.title = @"Scan Barcode";
-    [self.view addSubview:navbar];
+    [self.view addSubview:navbar];*/
     
     _highlightView = [[UIView alloc] init];
     _highlightView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleBottomMargin;
@@ -74,7 +74,7 @@
     
     [self.view bringSubviewToFront:_highlightView];
     [self.view bringSubviewToFront:_label];
-    [self.view bringSubviewToFront:navbar];
+    //[self.view bringSubviewToFront:navbar];
 }
 
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection
@@ -102,6 +102,9 @@
             _label.text = detectionString;
             NSLog(@"Detected string is: ++++++++++++++");
             NSLog(detectionString);
+            
+            [self dissmissModelView:detectionString];
+
             break;
         }
         else
@@ -110,6 +113,23 @@
     
     _highlightView.frame = highlightViewRect;
 }
+
+-(void)dissmissModelView:(NSString *)barcodeString
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+
+    NSLog(@"DismissModalviewController");
+    
+    //raise notification about dismiss
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"ScanBarcode Dismiss"
+     object:barcodeString];
+}
+
+- (IBAction)cancelScanBarcode:(UIBarButtonItem *)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 
 @end

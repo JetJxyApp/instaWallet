@@ -75,8 +75,22 @@
 {
     [super viewDidLoad];
     
+    // get register to fetch notification
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(yourNotificationHandler:)
+                                                 name:@"ScanBarcode Dismiss" object:nil];
+    
     //just temporary image for testing
     //self.image = [UIImage imageNamed:@"pic.jpg"];
+}
+
+// --> Now create method in parent class as;
+// Now create yourNotificationHandler: like this in parent class
+-(void)yourNotificationHandler:(NSNotification *)notice{
+    NSString *str = [notice object];
+    NSLog(@"Inside parent view!!!!!!!!!!!!!%@", str);
+    //pass the scaned value into barcode text field
+    self.barcodeNumberTextField.text = str;
 }
 
 
@@ -105,6 +119,7 @@
             NSMutableArray *data = [[NSMutableArray alloc]init];
             [data addObject:self.cardNameTextField.text];
             [data addObject:self.cardNumberTextField.text];
+            [data addObject:self.barcodeNumberTextField.text];
 
             [data writeToFile:textDataPathStr atomically:YES];
             [self addFilePath:textDataPathStr];

@@ -171,12 +171,27 @@
                     <view key="view" contentMode="scaleToFill" id="vnF-gk-bzk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y9f-JS-rk8">
+                                <rect key="frame" x="-5" y="0.0" width="330" height="44"/>
+                                <items>
+                                    <navigationItem title="Scan Barcode" id="1TW-5R-Ema">
+                                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="x9z-q9-fX4">
+                                            <connections>
+                                                <action selector="cancelScanBarcode:" destination="Y47-br-Psn" id="dfG-E3-2SA"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="CQZ-uF-61b"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lTN-Yv-jNB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2939" y="787"/>
+            <point key="canvasLocation" x="3005" y="1247"/>
         </scene>
         <!--Card Info-->
         <scene sceneID="Rc9-lC-UNq">
@@ -243,6 +258,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="barcodeNumberTextField" destination="jfQ-9i-9xa" id="PNX-aH-Bpa"/>
                         <outlet property="cardNameTextField" destination="VQk-Vn-OEW" id="ybt-Yc-trm"/>
                         <outlet property="cardNumberTextField" destination="slo-9D-bqo" id="L8a-mm-vo0"/>
                         <outlet property="imageView" destination="93M-Aw-alx" id="ehN-fN-4C8"/>
@@ -296,7 +312,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZX6-Z8-a0r">
-                                <rect key="frame" x="16" y="409" width="239" height="30"/>
+                                <rect key="frame" x="16" y="409" width="259" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -315,37 +331,15 @@
                                     <action selector="deleteCard" destination="ofd-dB-ynr" eventType="touchUpInside" id="56B-ob-wcJ"/>
                                 </connections>
                             </button>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HqN-c6-r4U">
-                                <rect key="frame" x="0.0" y="458" width="320" height="44"/>
-                                <items>
-                                    <navigationItem title="Title" id="5ep-0W-3eQ">
-                                        <barButtonItem key="leftBarButtonItem" style="plain" id="ik1-n9-o0Z">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="pNM-aH-U8u">
-                                                <rect key="frame" x="-23" y="-15" width="71" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Cancel">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="cancel" destination="ofd-dB-ynr" eventType="touchUpInside" id="nSe-nk-1Hj"/>
-                                                </connections>
-                                            </button>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" style="plain" id="ClI-WE-9T1">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7fe-Hz-ZaZ">
-                                                <rect key="frame" x="145" y="477" width="32" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="save">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <segue destination="fNm-vV-052" kind="unwind" identifier="Do edit card" unwindAction="editCardDone:" id="Qlw-Ee-IhO"/>
-                                                </connections>
-                                            </button>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V6S-ZA-OwK">
+                                <rect key="frame" x="283" y="411" width="26" height="26"/>
+                                <state key="normal" image="barcode_scanner-50">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Y47-br-Psn" kind="modal" id="EWL-yE-n79"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -357,6 +351,9 @@
                                 <state key="normal" title="Save">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="fNm-vV-052" kind="unwind" identifier="Do edit card" unwindAction="editCardDone:" id="xsV-fY-K48"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
@@ -559,4 +556,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="EWL-yE-n79"/>
+    </inferredMetricsTieBreakers>
 </document>
