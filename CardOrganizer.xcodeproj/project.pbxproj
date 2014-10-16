@@ -15,6 +15,7 @@
 		111A178E19D0E218000EE067 /* createNewCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 111A178D19D0E218000EE067 /* createNewCardViewController.m */; };
 		11263BB319D24A4F000AF712 /* AllCardsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11263BB219D24A4F000AF712 /* AllCardsTableViewController.m */; };
 		11263BB619D26218000AF712 /* CardInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11263BB519D26218000AF712 /* CardInfoViewController.m */; };
+		80628C6219EE127400606045 /* BarcodeScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80628C6119EE127400606045 /* BarcodeScanViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,8 @@
 		11263BB219D24A4F000AF712 /* AllCardsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllCardsTableViewController.m; sourceTree = "<group>"; };
 		11263BB419D26218000AF712 /* CardInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardInfoViewController.h; sourceTree = "<group>"; };
 		11263BB519D26218000AF712 /* CardInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardInfoViewController.m; sourceTree = "<group>"; };
+		80628C6019EE127400606045 /* BarcodeScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarcodeScanViewController.h; sourceTree = "<group>"; };
+		80628C6119EE127400606045 /* BarcodeScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarcodeScanViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +95,8 @@
 				11263BB519D26218000AF712 /* CardInfoViewController.m */,
 				11263BB119D24A4F000AF712 /* AllCardsTableViewController.h */,
 				11263BB219D24A4F000AF712 /* AllCardsTableViewController.m */,
+				80628C6019EE127400606045 /* BarcodeScanViewController.h */,
+				80628C6119EE127400606045 /* BarcodeScanViewController.m */,
 				111A177019D0DB88000EE067 /* Images.xcassets */,
 				111A176319D0DB88000EE067 /* Supporting Files */,
 			);
@@ -227,6 +232,7 @@
 			files = (
 				11263BB619D26218000AF712 /* CardInfoViewController.m in Sources */,
 				11263BB319D24A4F000AF712 /* AllCardsTableViewController.m in Sources */,
+				80628C6219EE127400606045 /* BarcodeScanViewController.m in Sources */,
 				111A178E19D0E218000EE067 /* createNewCardViewController.m in Sources */,
 				111A176919D0DB88000EE067 /* AppDelegate.m in Sources */,
 				111A176619D0DB88000EE067 /* main.m in Sources */,

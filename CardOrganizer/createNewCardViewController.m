@@ -49,10 +49,6 @@
 //function of barcode Scanner
 
 
-- (IBAction)barcodeScanner
-{
-}
-
 
 
 //deal with keyboard go away
