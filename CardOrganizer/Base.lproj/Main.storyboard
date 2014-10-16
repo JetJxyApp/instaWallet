@@ -129,7 +129,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="GS7-1b-sha" kind="modal" modalTransitionStyle="coverVertical" id="9uT-Ty-1KW"/>
+                                    <segue destination="Y47-br-Psn" kind="modal" modalTransitionStyle="coverVertical" id="tR3-su-6ed"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -159,6 +159,24 @@
                 <exit id="ejj-Oq-83K" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2311" y="787"/>
+        </scene>
+        <!--Barcode Scan View Controller-->
+        <scene sceneID="rW9-ak-yZc">
+            <objects>
+                <viewController id="Y47-br-Psn" customClass="BarcodeScanViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hh5-O2-uFK"/>
+                        <viewControllerLayoutGuide type="bottom" id="nL9-pR-6mL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vnF-gk-bzk">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lTN-Yv-jNB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2939" y="787"/>
         </scene>
         <!--Card Info-->
         <scene sceneID="Rc9-lC-UNq">
@@ -220,7 +238,7 @@
                     <navigationItem key="navigationItem" title="Card Info" id="dza-HP-2uK">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="APV-Y8-h68">
                             <connections>
-                                <segue destination="ofd-dB-ynr" kind="modal" identifier="" id="HJm-Qx-qMA"/>
+                                <segue destination="ofd-dB-ynr" kind="push" identifier="" id="HJm-Qx-qMA"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -234,24 +252,126 @@
             </objects>
             <point key="canvasLocation" x="1724" y="1568"/>
         </scene>
-        <!--Title-->
-        <scene sceneID="amn-co-PZs">
+        <!--Edit-->
+        <scene sceneID="P2d-bA-uRL">
             <objects>
-                <viewController id="GS7-1b-sha" customClass="BarcodeScanViewController" sceneMemberID="viewController">
+                <viewController id="ofd-dB-ynr" customClass="EditCardViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="5MU-LB-kMV"/>
-                        <viewControllerLayoutGuide type="bottom" id="Zfc-3z-3eG"/>
+                        <viewControllerLayoutGuide type="top" id="m8p-hC-fsi"/>
+                        <viewControllerLayoutGuide type="bottom" id="VB3-u4-wOM"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="gXc-js-V4i">
+                    <view key="view" contentMode="scaleToFill" id="QBL-96-pGo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="08o-4D-WTO">
+                                <rect key="frame" x="0.0" y="64" width="320" height="189"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Card name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JhB-d9-PNV">
+                                <rect key="frame" x="16" y="261" width="85" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2cU-AV-1yD">
+                                <rect key="frame" x="16" y="285" width="293" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="ab4-7Y-mst" id="tt2-Mh-8tX"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Card number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NI6-uf-Oae">
+                                <rect key="frame" x="16" y="323" width="101" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9dF-Z2-sXn">
+                                <rect key="frame" x="16" y="347" width="293" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="ab4-7Y-mst" id="nfu-G3-hG5"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZX6-Z8-a0r">
+                                <rect key="frame" x="16" y="409" width="239" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Barcode Number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J9N-4U-MNT">
+                                <rect key="frame" x="16" y="385" width="132" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="594-ve-h6r">
+                                <rect key="frame" x="137" y="518" width="44" height="30"/>
+                                <state key="normal" title="Delete">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteCard" destination="ofd-dB-ynr" eventType="touchUpInside" id="56B-ob-wcJ"/>
+                                </connections>
+                            </button>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HqN-c6-r4U">
+                                <rect key="frame" x="0.0" y="458" width="320" height="44"/>
+                                <items>
+                                    <navigationItem title="Title" id="5ep-0W-3eQ">
+                                        <barButtonItem key="leftBarButtonItem" style="plain" id="ik1-n9-o0Z">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="pNM-aH-U8u">
+                                                <rect key="frame" x="-23" y="-15" width="71" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Cancel">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="cancel" destination="ofd-dB-ynr" eventType="touchUpInside" id="nSe-nk-1Hj"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" style="plain" id="ClI-WE-9T1">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7fe-Hz-ZaZ">
+                                                <rect key="frame" x="145" y="477" width="32" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="save">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="fNm-vV-052" kind="unwind" identifier="Do edit card" unwindAction="editCardDone:" id="Qlw-Ee-IhO"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="vQC-9Q-CzV"/>
+                    <navigationItem key="navigationItem" title="Edit" id="td5-WV-J0f">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="FZo-pP-8Yq">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="pj4-3V-t2s">
+                                <rect key="frame" x="-23" y="-15" width="71" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <value key="contentSizeForViewInPopover" type="size" width="375" height="667"/>
+                    <connections>
+                        <outlet property="barcodeNumberTextField" destination="ZX6-Z8-a0r" id="hc3-tn-Tdu"/>
+                        <outlet property="cardNameTextField" destination="2cU-AV-1yD" id="EFv-u5-fWP"/>
+                        <outlet property="cardNumberTextField" destination="9dF-Z2-sXn" id="lCH-D9-TAT"/>
+                        <outlet property="imageView" destination="08o-4D-WTO" id="T0w-KE-Jam"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ijY-T7-qRU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oyh-gb-pWO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="fNm-vV-052" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2311" y="1568"/>
+            <point key="canvasLocation" x="2297" y="1568"/>
         </scene>
         <!--Cards-->
         <scene sceneID="w4s-AC-6Et">

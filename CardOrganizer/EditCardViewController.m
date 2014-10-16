@@ -172,6 +172,7 @@
 #pragma mark - Alerts
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+    
     // Is this my Alert View?
     if (alertView.tag == 0) {
         //Yes
@@ -182,7 +183,7 @@
         if (buttonIndex == 0) {// 1st Other Button, that is cancel
             
             //[self alertView:alertView didDismissWithButtonIndex:buttonIndex];
-
+            //AllCardsTableViewController *acTVC = [[AllCardsTableViewController alloc] init];
             //[self.navigationController popToRootViewControllerAnimated:YES];
             //[self.navigationController showViewController:AllcardsViewController sender:self];
             
@@ -224,15 +225,15 @@
             }
             
             
-            [self.cards objectAtIndex:self.rowNumer];
+            [self.cards removeObjectAtIndex:self.rowNumer];
             
             //log for card path store on disk
-            for (NSString *str in self.cards) {
+            /*for (NSString *str in self.cards) {
                 if(str){
                     NSLog(@"remaining card info after delete card = %@", str);
                 }
-            }
-            //[self.navigationController popToRootViewControllerAnimated:YES];
+            }*/
+            [self.navigationController popToRootViewControllerAnimated:YES];
             
         }
 
@@ -246,11 +247,11 @@
     }
 }
 
-//user press cancel button
+/*//user press cancel button
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     [self cancel];
-}
+}*/
 
 //alert view when user want to delete card
 
