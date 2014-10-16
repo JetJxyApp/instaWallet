@@ -112,6 +112,8 @@
     if ([segue.destinationViewController isKindOfClass:[EditCardViewController class]]) {
         EditCardViewController *ecVC = (EditCardViewController *)segue.destinationViewController;
         ecVC.cardPath = self.cardPath;
+        ecVC.cards = self.cards;
+        ecVC.rowNumer = self.rowNumer;
         
 
     }

@@ -11,6 +11,8 @@
 @interface EditCardViewController : UIViewController
 
 @property(nonatomic, strong) NSMutableArray * cardPath;//for receiving file path when entering edit card veiw controller
-@property(nonatomic, strong) NSMutableArray *cardFilePathArray;//for stroing new edit card info when user press save button
+
+@property (nonatomic,strong) NSMutableArray * cards;//path of all cards
+@property(nonatomic) NSInteger rowNumer;//cell row in table view for delete
 
 @end

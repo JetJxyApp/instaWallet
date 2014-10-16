@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "AllCardsTableViewController.h"
+#import "CustomTabBarController.h"
 
 @interface AppDelegate ()
 
@@ -17,7 +19,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+
+    /*
+    AllCardsTableViewController *myViewController = [[AllCardsTableViewController alloc] init];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:myViewController];
+    self.window.rootViewController = navigationController;
+    [self.window makeKeyAndVisible];
+    */
     return YES;
+     
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
