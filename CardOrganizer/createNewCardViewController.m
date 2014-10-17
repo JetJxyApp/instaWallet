@@ -81,7 +81,7 @@
                                                  name:@"ScanBarcode Dismiss" object:nil];
     
     //just temporary image for testing
-    //self.image = [UIImage imageNamed:@"pic.jpg"];
+    self.image = [UIImage imageNamed:@"pic.jpg"];
 }
 
 // --> Now create method in parent class as;
