@@ -38,6 +38,28 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsPath = [paths objectAtIndex:0];
+    
+    NSString *path = [documentsPath stringByAppendingPathComponent:@"Alldata.plist"];
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    if (![fileManager fileExistsAtPath: path])
+    {
+        NSMutableArray *dataArray = [[NSMutableArray alloc]init];
+        [dataArray addObject:self.Alldata];
+        [dataArray writeToFile:path atomically:YES];
+        
+    }
+    else
+    {
+        NSMutableArray *dataArray = [[NSMutableArray alloc]init];
+        [dataArray addObject:self.Alldata];
+        [dataArray writeToFile:path atomically:YES];
+        NSLog(@"find path to save all info when in background APP");
+
+    }
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
@@ -50,6 +72,32 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    
+    //I want to save the NSMustable Array, which store all cards info
+    //for future use when relaunch APP
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsPath = [paths objectAtIndex:0];
+    
+    NSString *path = [documentsPath stringByAppendingPathComponent:@"Alldata.plist"];
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    if (![fileManager fileExistsAtPath: path])
+    {
+        NSMutableArray *dataArray = [[NSMutableArray alloc]init];
+        [dataArray addObject:self.Alldata];
+        [dataArray writeToFile:path atomically:YES];
+        
+
+    }
+    else
+    {
+        NSMutableArray *dataArray = [[NSMutableArray alloc]init];
+        [dataArray addObject:self.Alldata];
+        [dataArray writeToFile:path atomically:YES];
+        NSLog(@"find path to save all info when terminating APP");
+
+    }
 }
 
 @end

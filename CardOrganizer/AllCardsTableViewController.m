@@ -9,6 +9,7 @@
 #import "AllCardsTableViewController.h"
 #import "createNewCardViewController.h"
 #import "CardInfoViewController.h"
+#import "AppDelegate.h"
 
 @interface AllCardsTableViewController ()
 
@@ -26,7 +27,13 @@
 - (void)viewWillAppear:(BOOL)animated
 {
 
+    //This pass data to App delegate for storing all card info when terminate our APP
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    appDelegate.Alldata = self.cards;
+    
+    
     [self.tableView reloadData];
+    
 }
 
 - (void)viewDidLoad {
@@ -37,7 +44,41 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    //This try to load our saved all card info from disk when relaunch our APP
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsPath = [paths objectAtIndex:0];
+    
+    NSString *path = [documentsPath stringByAppendingPathComponent:@"Alldata.plist"];
+    
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    if ([fileManager fileExistsAtPath: path])
+    {
+        NSMutableArray *tempArray = [[NSMutableArray alloc]initWithContentsOfFile:path];
+        self.cards = [tempArray objectAtIndex:0];
+        
+        //replace old path with new path
+        for (NSMutableArray *array in self.cards)
+        {
+            NSString *newTextFilePath = [documentsPath stringByAppendingPathComponent:[[[array objectAtIndex:0]objectAtIndex:0] lastPathComponent]];
+            NSString *newImageFilePath = [documentsPath stringByAppendingPathComponent:[[[array objectAtIndex:0]objectAtIndex:1] lastPathComponent]];
+
+            
+            [[array objectAtIndex:0] replaceObjectAtIndex:0 withObject:newTextFilePath];
+            [[array objectAtIndex:0] replaceObjectAtIndex:1 withObject:newImageFilePath];
+         
+
+        }
+        
+
+    }
+
+
 }
+
 
 - (NSMutableArray *)cardPath
 {
@@ -79,6 +120,12 @@
             NSLog(@"success added card");
             [self.cards addObject:self.cardPath];
             NSLog(@"cards # = %ld", [self.cards count]);
+            //log for card path store on disk
+            for (NSString *str in self.cards) {
+                if(str){
+                    NSLog(@"after added new card str = %@", str);
+                }
+            }
             
         }else{
             NSLog(@"Failed to added new card");
