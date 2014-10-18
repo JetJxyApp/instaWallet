@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="fGf-Pq-haQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="fGf-Pq-haQ">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
@@ -9,7 +9,7 @@
             <objects>
                 <tableViewController id="PLD-5s-mH6" customClass="AllCardsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ITl-7v-kon">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -49,6 +49,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="4ys-aj-OKO">
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
@@ -69,11 +70,11 @@
                         <viewControllerLayoutGuide type="bottom" id="104-kY-8r6"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="cf7-Wa-Rha">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2qs-P2-55Z">
-                                <rect key="frame" x="0.0" y="65" width="320" height="189"/>
+                                <rect key="frame" x="27" y="65" width="320" height="189"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Card name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w4K-Dr-Bcz">
                                 <rect key="frame" x="11" y="310" width="85" height="21"/>
@@ -103,15 +104,6 @@
                                     <outlet property="delegate" destination="ab4-7Y-mst" id="Clu-8l-chX"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="onH-Ta-peQ">
-                                <rect key="frame" x="11" y="262" width="76" height="30"/>
-                                <state key="normal" title="Take photo">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="takePhoto" destination="ab4-7Y-mst" eventType="touchUpInside" id="ZK7-4w-vZF"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Barcode Number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FSd-Ea-MZP">
                                 <rect key="frame" x="11" y="434" width="132" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -132,6 +124,15 @@
                                     <segue destination="Y47-br-Psn" kind="modal" modalTransitionStyle="coverVertical" id="tR3-su-6ed"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="onH-Ta-peQ">
+                                <rect key="frame" x="149" y="267" width="76" height="30"/>
+                                <state key="normal" title="Take photo">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="takePhoto" destination="ab4-7Y-mst" eventType="touchUpInside" id="ZK7-4w-vZF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -148,6 +149,7 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="barcodeNumberTextField" destination="WcA-ev-zNa" id="evE-Sn-kAW"/>
                         <outlet property="cardNameTextField" destination="p8O-3q-Y58" id="2XY-IO-oQH"/>
@@ -169,11 +171,11 @@
                         <viewControllerLayoutGuide type="bottom" id="nL9-pR-6mL"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="vnF-gk-bzk">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y9f-JS-rk8">
-                                <rect key="frame" x="-5" y="0.0" width="330" height="44"/>
+                                <rect key="frame" x="-5" y="0.0" width="380" height="44"/>
                                 <items>
                                     <navigationItem title="Scan Barcode" id="1TW-5R-Ema">
                                         <barButtonItem key="rightBarButtonItem" title="Cancel" id="x9z-q9-fX4">
@@ -188,10 +190,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="CQZ-uF-61b"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lTN-Yv-jNB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3005" y="1247"/>
+            <point key="canvasLocation" x="3004.5" y="1246.5"/>
         </scene>
         <!--Card Info-->
         <scene sceneID="Rc9-lC-UNq">
@@ -202,20 +205,14 @@
                         <viewControllerLayoutGuide type="bottom" id="7SY-uc-REB"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="mPx-wG-9MA">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="93M-Aw-alx">
-                                <rect key="frame" x="0.0" y="64" width="320" height="189"/>
+                                <rect key="frame" x="67" y="72" width="240" height="164"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Card name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WqI-Ed-55H">
-                                <rect key="frame" x="16" y="261" width="85" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VQk-Vn-OEW">
-                                <rect key="frame" x="16" y="285" width="293" height="30"/>
+                                <rect key="frame" x="11" y="267" width="293" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -223,13 +220,13 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Card number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aaj-VC-Aah">
-                                <rect key="frame" x="16" y="323" width="101" height="21"/>
+                                <rect key="frame" x="11" y="305" width="101" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="slo-9D-bqo">
-                                <rect key="frame" x="16" y="347" width="293" height="30"/>
+                                <rect key="frame" x="11" y="334" width="293" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -237,12 +234,21 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jfQ-9i-9xa">
-                                <rect key="frame" x="16" y="409" width="293" height="30"/>
+                                <rect key="frame" x="11" y="401" width="293" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Barcode Number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JgR-EG-1Wo">
-                                <rect key="frame" x="16" y="385" width="132" height="21"/>
+                                <rect key="frame" x="11" y="372" width="132" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qcI-FW-oJF">
+                                <rect key="frame" x="67" y="439" width="240" height="145"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Card name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WqI-Ed-55H">
+                                <rect key="frame" x="11" y="238" width="85" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -257,7 +263,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="barcodeImageView" destination="qcI-FW-oJF" id="Vc6-j2-55r"/>
                         <outlet property="barcodeNumberTextField" destination="jfQ-9i-9xa" id="PNX-aH-Bpa"/>
                         <outlet property="cardNameTextField" destination="VQk-Vn-OEW" id="ybt-Yc-trm"/>
                         <outlet property="cardNumberTextField" destination="slo-9D-bqo" id="L8a-mm-vo0"/>
@@ -266,7 +274,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f6a-3L-vGJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1724" y="1568"/>
+            <point key="canvasLocation" x="1723.5" y="1567.5"/>
         </scene>
         <!--Edit-->
         <scene sceneID="P2d-bA-uRL">
@@ -277,12 +285,9 @@
                         <viewControllerLayoutGuide type="bottom" id="VB3-u4-wOM"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="QBL-96-pGo">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="08o-4D-WTO">
-                                <rect key="frame" x="0.0" y="64" width="320" height="189"/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Card name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JhB-d9-PNV">
                                 <rect key="frame" x="16" y="261" width="85" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -340,6 +345,9 @@
                                     <segue destination="Y47-br-Psn" kind="modal" id="EWL-yE-n79"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="08o-4D-WTO">
+                                <rect key="frame" x="27" y="64" width="320" height="189"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -358,6 +366,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <value key="contentSizeForViewInPopover" type="size" width="375" height="667"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="barcodeNumberTextField" destination="ZX6-Z8-a0r" id="hc3-tn-Tdu"/>
                         <outlet property="cardNameTextField" destination="2cU-AV-1yD" id="EFv-u5-fWP"/>
@@ -376,6 +385,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2Lw-qQ-czV" customClass="tryNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Cards" image="folder-50" id="uHL-x0-I04"/>
                     <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oYL-00-cVs">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -401,21 +411,23 @@
                         <viewControllerLayoutGuide type="bottom" id="Wfp-wW-f5G"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="QHm-oj-hc4">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="wI9-ca-nqZ"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4wP-Vl-rW1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="978" y="1536"/>
+            <point key="canvasLocation" x="1053.5" y="1657.5"/>
         </scene>
         <!--Custom Tab Bar Controller-->
         <scene sceneID="OiW-FX-8ct">
             <objects>
                 <tabBarController id="fGf-Pq-haQ" customClass="CustomTabBarController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Oc8-tW-Aqj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -431,44 +443,6 @@
             </objects>
             <point key="canvasLocation" x="446" y="787.99999999999989"/>
         </scene>
-        <!--Settings-->
-        <scene sceneID="BKE-gY-YBS">
-            <objects>
-                <viewController id="TSi-Jz-uZL" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="W7W-B3-dht"/>
-                        <viewControllerLayoutGuide type="bottom" id="VB5-al-isF"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="4nM-up-qXR">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Settings" id="rUb-4G-pse"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BAF-CJ-c6x" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="978" y="1536"/>
-        </scene>
-        <!--Settings-->
-        <scene sceneID="gQj-kL-OdM">
-            <objects>
-                <viewController id="bkw-OA-xHJ" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="P60-Rq-XEv"/>
-                        <viewControllerLayoutGuide type="bottom" id="7EI-qD-CbU"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="3Ml-4o-BqA">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Settings" id="EKo-sh-MuF"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KpW-Q2-qv9" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="978" y="1536"/>
-        </scene>
         <!--Quick Scan-->
         <scene sceneID="j3E-2Q-bHJ">
             <objects>
@@ -478,34 +452,16 @@
                         <viewControllerLayoutGuide type="bottom" id="sL5-R0-0ip"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="dgW-zj-Eum">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Quick Scan" id="HOS-nv-h1P"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yez-ZR-XyH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1669" y="-29"/>
-        </scene>
-        <!--Settings-->
-        <scene sceneID="oLI-AP-LdK">
-            <objects>
-                <viewController id="jkl-bv-L7Q" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Xry-PR-Mer"/>
-                        <viewControllerLayoutGuide type="bottom" id="t5a-v3-Iek"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Mb2-Gl-cMg">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Settings" id="ipi-eN-7bS"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Pwm-dc-9Md" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="978" y="1536"/>
         </scene>
         <!--Settings-->
         <scene sceneID="2To-gC-sm6">
@@ -524,7 +480,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1we-2j-cvI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="446" y="1536"/>
+            <point key="canvasLocation" x="445.5" y="1657.5"/>
         </scene>
         <!--Quick Scan-->
         <scene sceneID="RQO-HV-nKc">
@@ -532,6 +488,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KrR-AM-j7S" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Quick Scan" image="barcode_scanner-50" id="L9r-eE-nG7"/>
                     <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pJu-18-QcV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -557,6 +514,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="EWL-yE-n79"/>
+        <segue reference="tR3-su-6ed"/>
     </inferredMetricsTieBreakers>
 </document>

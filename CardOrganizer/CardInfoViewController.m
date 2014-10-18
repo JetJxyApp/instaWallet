@@ -10,28 +10,26 @@
 #import "createNewCardViewController.h"
 #import "EditCardViewController.h"
 #import "AllCardsTableViewController.h"
+#import "ZXBitMatrix.h"
+#import "ZXMultiFormatWriter.h"
+#import "ZXImage.h"
+#import "ZXUPCAWriter.h"
+#import "ZXBarcodeFormat.h"
+
 
 @interface CardInfoViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UITextField *cardNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *cardNumberTextField;
 @property (weak, nonatomic) IBOutlet UITextField *barcodeNumberTextField;
-@property (strong,nonatomic)UIImage *image;
+@property (weak, nonatomic) IBOutlet UIImageView *barcodeImageView;
+//@property (strong,nonatomic)UIImage *image;
 
 @end
 
 @implementation CardInfoViewController
 
 
-- (void)setImage:(UIImage *)image
-{
-    self.imageView.image = image;
-}
-
--(UIImage *)image
-{
-    return self.imageView.image;
-}
 
 - (void)setcardPath:(NSMutableArray *)cardPath
 {
@@ -82,6 +80,19 @@
         
         UIImage *customImage = [UIImage imageWithContentsOfFile:imageDataPathStr];
         self.imageView.image = customImage;
+        
+        ZXMultiFormatWriter *writer = [[ZXMultiFormatWriter alloc] init];
+        ZXBitMatrix *result = [writer encode:@"841015928480"
+                                      format:kBarcodeFormatUPCA
+                                       width:self.barcodeImageView.frame.size.width
+                                      height:self.barcodeImageView.frame.size.width
+                                       error:nil];
+        if (result) {
+            ZXImage *image = [ZXImage imageWithMatrix:result];
+            self.barcodeImageView.image = [UIImage imageWithCGImage:image.cgimage];
+        } else {
+            self.barcodeImageView.image = nil;
+        }
 
         
     }else{
