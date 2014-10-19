@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface QuickScanViewController : UIViewController
+{
+    NSTimer *myTimer;
+
+}
 
 @property (nonatomic, strong) NSMutableArray * cards;
 

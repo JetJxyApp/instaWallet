@@ -21,52 +21,70 @@
 @property (nonatomic) NSString *barcodeType;
 @property (nonatomic, strong) NSMutableArray * barcodeInfoArray;
 
+
+
 @property (weak, nonatomic) IBOutlet UIImageView *barcodeImageView;
 
 @end
 
 @implementation QuickScanViewController
+
+
+
 - (IBAction)startBarcodeScan:(id)sender {
     
-    for (NSMutableArray *barcodeInfo in self.barcodeInfoArray)
-    {
-        
+    myTimer = [NSTimer scheduledTimerWithTimeInterval:0.20 target:self selector:@selector(changeBarcode) userInfo:nil repeats:YES];
+
+}
+
+-(void)changeBarcode
+{
+    
+        static int counter = 0;
+    NSLog(@"total number: %d", (int)[self.barcodeInfoArray count]);
+    NSLog(@"current: %d", counter);
+        if([self.barcodeInfoArray count] == counter)
+        {
+            counter = 0;
+        }
+    
+        NSMutableArray *barcodeInfo = self.barcodeInfoArray[counter];
         NSString * barcodeNumber = [barcodeInfo objectAtIndex:0];
         NSString * barcodeType = [barcodeInfo objectAtIndex:1];
         
         NSLog(@"barcode number = %@\n", barcodeNumber);
         NSLog(@"barcode type = %@\n", barcodeType);
-    
-    
-
-    
-    if( [barcodeType isEqualToString:@"CODABAR"] )
-    {
-        barcodeNumber = [NSString stringWithFormat:@"%@%@%@", @"A",barcodeNumber, @"B"];
-        NSLog(@"%@",barcodeNumber);
-    }
-    
-    NSLog(@"width is %d\n", (int)self.barcodeImageView.frame.size.width);
-    NSLog(@"height is %d\n", (int)self.barcodeImageView.frame.size.height);
-    
-    ZXMultiFormatWriter *writer = [[ZXMultiFormatWriter alloc] init];
-    ZXBitMatrix *result = [writer encode:barcodeNumber
-                                  format:[self barcodeStringtoFormat:barcodeType]
-                                   width:self.barcodeImageView.frame.size.width
-                                  height:self.barcodeImageView.frame.size.height
-                                   error:nil];
-    if (result) {
-        ZXImage *image = [ZXImage imageWithMatrix:result];
-        NSLog(@"%@",image);
         
         
-        self.barcodeImageView.image = [UIImage imageWithCGImage:image.cgimage];
-        NSLog(@"%@",self.barcodeImageView.image);
-    } else {
-        self.barcodeImageView.image = nil;
-    }
-
-    }
+        
+        
+        if( [barcodeType isEqualToString:@"CODABAR"] )
+        {
+            barcodeNumber = [NSString stringWithFormat:@"%@%@%@", @"A",barcodeNumber, @"B"];
+            NSLog(@"%@",barcodeNumber);
+        }
+        
+        NSLog(@"width is %d\n", (int)self.barcodeImageView.frame.size.width);
+        NSLog(@"height is %d\n", (int)self.barcodeImageView.frame.size.height);
+        
+        ZXMultiFormatWriter *writer = [[ZXMultiFormatWriter alloc] init];
+        ZXBitMatrix *result = [writer encode:barcodeNumber
+                                      format:[self barcodeStringtoFormat:barcodeType]
+                                       width:self.barcodeImageView.frame.size.width
+                                      height:self.barcodeImageView.frame.size.height
+                                       error:nil];
+        if (result) {
+            ZXImage *image = [ZXImage imageWithMatrix:result];
+            NSLog(@"%@",image);
+            
+            
+            self.barcodeImageView.image = [UIImage imageWithCGImage:image.cgimage];
+            NSLog(@"%@",self.barcodeImageView.image);
+        } else {
+            self.barcodeImageView.image = nil;
+        }
+        
+    counter++;
 }
 
 -(void) viewDidAppear:(BOOL)animated
@@ -120,6 +138,9 @@
 -(void)viewWillDisappear:(BOOL)animated
 {
     [self.barcodeInfoArray removeAllObjects];
+    [myTimer invalidate];
+    myTimer = nil;
+    self.barcodeImageView.image = nil;
 }
 
 -(NSMutableArray *)barcodeInfoArray
