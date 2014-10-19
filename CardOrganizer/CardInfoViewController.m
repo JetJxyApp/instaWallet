@@ -83,11 +83,20 @@
         UIImage *customImage = [UIImage imageWithContentsOfFile:imageDataPathStr];
         self.imageView.image = customImage;
         
+        
+        if( [self.barcodeTypeTextField.text isEqualToString:@"CODABAR"] )
+        {
+            self.barcodeNumberTextField.text = [NSString stringWithFormat:@"%@%@%@", @"A",self.barcodeNumberTextField.text, @"B"];
+            NSLog(@"%@",self.barcodeNumberTextField.text);
+        }
+        
+        NSLog(@"width is %d\n", (int)self.barcodeImageView.frame.size.width);
+        NSLog(@"width is %d\n", (int)self.barcodeImageView.frame.size.height);
         ZXMultiFormatWriter *writer = [[ZXMultiFormatWriter alloc] init];
-        ZXBitMatrix *result = [writer encode:@"841015928480"
-                                      format:kBarcodeFormatUPCA
+        ZXBitMatrix *result = [writer encode:self.barcodeNumberTextField.text
+                                      format:[self barcodeStringtoFormat:self.barcodeTypeTextField.text]
                                        width:self.barcodeImageView.frame.size.width
-                                      height:self.barcodeImageView.frame.size.width
+                                      height:self.barcodeImageView.frame.size.height
                                        error:nil];
         if (result) {
             ZXImage *image = [ZXImage imageWithMatrix:result];
@@ -133,6 +142,80 @@
 
     }
 }
+
+
+- (ZXBarcodeFormat )barcodeStringtoFormat:(NSString *) str {
+    
+    if ([str isEqualToString:@"Aztec"])
+    {
+        return kBarcodeFormatAztec;
+    }
+    else if ([str isEqualToString:@"CODABAR"])
+    {
+        return kBarcodeFormatCodabar;
+    }
+    else if ([str isEqualToString:@"Code 39"])
+    {
+        return kBarcodeFormatCode39;
+    }
+    else if ([str isEqualToString:@"Code 93"])
+    {
+        return kBarcodeFormatCode93;
+    }
+    else if ([str isEqualToString:@"Code 128"])
+    {
+        return kBarcodeFormatCode128;
+    }
+    else if ([str isEqualToString:@"Data Matrix"])
+    {
+        return kBarcodeFormatDataMatrix;
+    }
+    else if ([str isEqualToString:@"EAN-8"])
+    {
+        return kBarcodeFormatEan8;
+    }
+    else if ([str isEqualToString:@"EAN-13"])
+    {
+        return kBarcodeFormatEan13;
+    }
+    else if ([str isEqualToString:@"ITF"])
+    {
+        return kBarcodeFormatITF;
+    }
+    else if ([str isEqualToString:@"PDF417"])
+    {
+        return kBarcodeFormatPDF417;
+    }
+    else if ([str isEqualToString:@"QR Code"])
+    {
+        return kBarcodeFormatQRCode;
+    }
+    else if ([str isEqualToString:@"RSS 14"])
+    {
+        return kBarcodeFormatRSS14;
+    }
+    else if ([str isEqualToString:@"RSS Expanded"])
+    {
+        return kBarcodeFormatRSSExpanded;
+    }
+    else if ([str isEqualToString:@"UPCA"])
+    {
+        return kBarcodeFormatUPCA;
+    }
+    else if ([str isEqualToString:@"UPCE"])
+    {
+        return kBarcodeFormatUPCE;
+    }
+    else if ([str isEqualToString:@"UPC/EAN extension"])
+    {
+        return kBarcodeFormatUPCEANExtension;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
 
 
 @end

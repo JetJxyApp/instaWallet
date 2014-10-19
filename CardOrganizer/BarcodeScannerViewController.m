@@ -137,7 +137,7 @@
 
 -(void)dissmissModelView:(NSString *)barcodeString type:(NSString *)barcodeType
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    //[self dismissViewControllerAnimated:YES completion:nil];
     NSLog(@"DismissModalviewController");
     
     NSMutableArray *array = [[NSMutableArray alloc]init];
