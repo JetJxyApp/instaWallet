@@ -9,27 +9,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "CardOrganizer/BarcodeScannerViewController.m"
-            timestampString = "435372225.275099"
+            filePath = "CardOrganizer/QuickScanViewController.m"
+            timestampString = "435446821.278608"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "220"
-            endingLineNumber = "220">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CardOrganizer/BarcodeScannerViewController.m"
-            timestampString = "435370704.12573"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
-            landmarkName = "-dissmissModelView:type:"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "-viewDidAppear:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -39,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "CardOrganizer/createNewCardViewController.m"
-            timestampString = "435372225.275099"
+            filePath = "CardOrganizer/QuickScanViewController.m"
+            timestampString = "435446821.278608"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
-            landmarkName = "-viewDidLoad"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "-startBarcodeScan:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -55,13 +41,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "CardOrganizer/createNewCardViewController.m"
-            timestampString = "435372225.275099"
+            filePath = "CardOrganizer/QuickScanViewController.m"
+            timestampString = "435446821.278608"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
-            landmarkName = "-yourNotificationHandler:"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "-startBarcodeScan:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -504,7 +504,7 @@
         <!--Quick Scan-->
         <scene sceneID="j3E-2Q-bHJ">
             <objects>
-                <viewController id="ycx-Ms-cxX" sceneMemberID="viewController">
+                <viewController id="ycx-Ms-cxX" customClass="QuickScanViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="E4B-qr-rwg"/>
                         <viewControllerLayoutGuide type="bottom" id="sL5-R0-0ip"/>
@@ -512,10 +512,27 @@
                     <view key="view" contentMode="scaleToFill" id="dgW-zj-Eum">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6fl-0A-jWN">
+                                <rect key="frame" x="0.0" y="200" width="375" height="200"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dnv-Ta-jFE">
+                                <rect key="frame" x="164" y="517" width="31" height="30"/>
+                                <state key="normal" title="start">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="startBarcodeScan:" destination="ycx-Ms-cxX" eventType="touchUpInside" id="3Gh-ee-6e5"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Quick Scan" id="HOS-nv-h1P"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="barcodeImageView" destination="6fl-0A-jWN" id="rgS-Or-duy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yez-ZR-XyH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

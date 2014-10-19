@@ -18,14 +18,10 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    delegate.delegateMutableArray = [NSMutableArray array];
     // Override point for customization after application launch.
-
-    /*
-    AllCardsTableViewController *myViewController = [[AllCardsTableViewController alloc] init];
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:myViewController];
-    self.window.rootViewController = navigationController;
-    [self.window makeKeyAndVisible];
-    */
     return YES;
      
 }

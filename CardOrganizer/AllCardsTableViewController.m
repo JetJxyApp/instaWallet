@@ -11,6 +11,7 @@
 #import "CardInfoViewController.h"
 #import "AppDelegate.h"
 
+
 @interface AllCardsTableViewController ()
 
 @end
@@ -73,6 +74,14 @@
 
         }
         
+
+    }
+    
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    for (NSMutableArray *card in self.cards)
+    {
+        [delegate.delegateMutableArray addObject:card];
 
     }
 

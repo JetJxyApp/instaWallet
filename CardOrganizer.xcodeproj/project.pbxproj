@@ -18,6 +18,7 @@
 		11CEF40719EDD1BE00EF2D76 /* EditCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CEF40619EDD1BE00EF2D76 /* EditCardViewController.m */; };
 		11CEF40A19EDF47600EF2D76 /* CustomTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CEF40919EDF47600EF2D76 /* CustomTabBarController.m */; };
 		742D3C4F5C9CFF03959AE229 /* libPods-CardOrganizer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FC42E10A51B7F1C77951B9C /* libPods-CardOrganizer.a */; };
+		808E648419F4449900D44D38 /* QuickScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 808E648319F4449900D44D38 /* QuickScanViewController.m */; };
 		80A9A84519F2F414000B93E5 /* BarcodeScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80A9A84419F2F414000B93E5 /* BarcodeScannerViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,8 @@
 		11CEF40819EDF47600EF2D76 /* CustomTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTabBarController.h; sourceTree = "<group>"; };
 		11CEF40919EDF47600EF2D76 /* CustomTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTabBarController.m; sourceTree = "<group>"; };
 		4862FFF896303315FC2DEB39 /* Pods-CardOrganizer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardOrganizer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CardOrganizer/Pods-CardOrganizer.debug.xcconfig"; sourceTree = "<group>"; };
+		808E648219F4449900D44D38 /* QuickScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuickScanViewController.h; sourceTree = "<group>"; };
+		808E648319F4449900D44D38 /* QuickScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuickScanViewController.m; sourceTree = "<group>"; };
 		80A9A84319F2F414000B93E5 /* BarcodeScannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarcodeScannerViewController.h; sourceTree = "<group>"; };
 		80A9A84419F2F414000B93E5 /* BarcodeScannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarcodeScannerViewController.m; sourceTree = "<group>"; };
 		9FC42E10A51B7F1C77951B9C /* libPods-CardOrganizer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CardOrganizer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,6 +117,8 @@
 				11263BB219D24A4F000AF712 /* AllCardsTableViewController.m */,
 				80A9A84319F2F414000B93E5 /* BarcodeScannerViewController.h */,
 				80A9A84419F2F414000B93E5 /* BarcodeScannerViewController.m */,
+				808E648219F4449900D44D38 /* QuickScanViewController.h */,
+				808E648319F4449900D44D38 /* QuickScanViewController.m */,
 				111A177019D0DB88000EE067 /* Images.xcassets */,
 				111A176319D0DB88000EE067 /* Supporting Files */,
 			);
@@ -301,6 +306,7 @@
 			files = (
 				11263BB619D26218000AF712 /* CardInfoViewController.m in Sources */,
 				11263BB319D24A4F000AF712 /* AllCardsTableViewController.m in Sources */,
+				808E648419F4449900D44D38 /* QuickScanViewController.m in Sources */,
 				80A9A84519F2F414000B93E5 /* BarcodeScannerViewController.m in Sources */,
 				11CEF40A19EDF47600EF2D76 /* CustomTabBarController.m in Sources */,
 				11CEF40719EDD1BE00EF2D76 /* EditCardViewController.m in Sources */,

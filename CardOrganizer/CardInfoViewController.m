@@ -91,7 +91,7 @@
         }
         
         NSLog(@"width is %d\n", (int)self.barcodeImageView.frame.size.width);
-        NSLog(@"width is %d\n", (int)self.barcodeImageView.frame.size.height);
+        NSLog(@"height is %d\n", (int)self.barcodeImageView.frame.size.height);
         ZXMultiFormatWriter *writer = [[ZXMultiFormatWriter alloc] init];
         ZXBitMatrix *result = [writer encode:self.barcodeNumberTextField.text
                                       format:[self barcodeStringtoFormat:self.barcodeTypeTextField.text]
