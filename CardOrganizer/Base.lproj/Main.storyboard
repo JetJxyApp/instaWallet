@@ -2,6 +2,8 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="fGf-Pq-haQ">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Card Organizer-->
@@ -121,7 +123,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Y47-br-Psn" kind="modal" modalTransitionStyle="coverVertical" id="tR3-su-6ed"/>
+                                    <segue destination="5fd-Fo-mOB" kind="push" id="XjA-sU-KWi"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="onH-Ta-peQ">
@@ -133,6 +135,20 @@
                                     <action selector="takePhoto" destination="ab4-7Y-mst" eventType="touchUpInside" id="ZK7-4w-vZF"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Barcode Type" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Uh-D8-rQd">
+                                <rect key="frame" x="11" y="501" width="106" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ipJ-kN-dRa">
+                                <rect key="frame" x="11" y="525" width="293" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="ab4-7Y-mst" id="nci-FS-8sP"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -152,6 +168,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="barcodeNumberTextField" destination="WcA-ev-zNa" id="evE-Sn-kAW"/>
+                        <outlet property="barcodeTypeTextField" destination="ipJ-kN-dRa" id="W0c-ZR-xkp"/>
                         <outlet property="cardNameTextField" destination="p8O-3q-Y58" id="2XY-IO-oQH"/>
                         <outlet property="cardNumberTextField" destination="I0A-Pf-UeO" id="TKl-nW-eiO"/>
                         <outlet property="imageView" destination="2qs-P2-55Z" id="AYs-IO-l92"/>
@@ -161,40 +178,6 @@
                 <exit id="ejj-Oq-83K" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2311" y="787"/>
-        </scene>
-        <!--Barcode Scan View Controller-->
-        <scene sceneID="rW9-ak-yZc">
-            <objects>
-                <viewController id="Y47-br-Psn" customClass="BarcodeScanViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="hh5-O2-uFK"/>
-                        <viewControllerLayoutGuide type="bottom" id="nL9-pR-6mL"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="vnF-gk-bzk">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y9f-JS-rk8">
-                                <rect key="frame" x="-5" y="0.0" width="380" height="44"/>
-                                <items>
-                                    <navigationItem title="Scan Barcode" id="1TW-5R-Ema">
-                                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="x9z-q9-fX4">
-                                            <connections>
-                                                <action selector="cancelScanBarcode:" destination="Y47-br-Psn" id="dfG-E3-2SA"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="CQZ-uF-61b"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lTN-Yv-jNB" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3004.5" y="1246.5"/>
         </scene>
         <!--Card Info-->
         <scene sceneID="Rc9-lC-UNq">
@@ -208,11 +191,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="93M-Aw-alx">
-                                <rect key="frame" x="67" y="72" width="240" height="164"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="93M-Aw-alx">
+                                <rect key="frame" x="64" y="64" width="240" height="164"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="93M-Aw-alx" secondAttribute="height" multiplier="60:41" id="RTw-PI-hvM"/>
+                                    <constraint firstAttribute="width" constant="240" id="pYu-jD-1Ac"/>
+                                </constraints>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VQk-Vn-OEW">
-                                <rect key="frame" x="11" y="267" width="293" height="30"/>
+                                <rect key="frame" x="11" y="245" width="293" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -220,13 +207,13 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Card number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aaj-VC-Aah">
-                                <rect key="frame" x="11" y="305" width="101" height="21"/>
+                                <rect key="frame" x="11" y="283" width="101" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="slo-9D-bqo">
-                                <rect key="frame" x="11" y="334" width="293" height="30"/>
+                                <rect key="frame" x="11" y="304" width="293" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -234,27 +221,43 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jfQ-9i-9xa">
-                                <rect key="frame" x="11" y="401" width="293" height="30"/>
+                                <rect key="frame" x="11" y="364" width="293" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Barcode Number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JgR-EG-1Wo">
-                                <rect key="frame" x="11" y="372" width="132" height="21"/>
+                                <rect key="frame" x="11" y="342" width="132" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hWK-5M-GRm">
+                                <rect key="frame" x="11" y="426" width="293" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Barcode Type" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tB5-cL-6Ci">
+                                <rect key="frame" x="11" y="402" width="106" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Card name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WqI-Ed-55H">
+                                <rect key="frame" x="11" y="225" width="85" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qcI-FW-oJF">
-                                <rect key="frame" x="67" y="439" width="240" height="145"/>
+                                <rect key="frame" x="64" y="464" width="240" height="135"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Card name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WqI-Ed-55H">
-                                <rect key="frame" x="11" y="238" width="85" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="93M-Aw-alx" firstAttribute="leading" secondItem="mPx-wG-9MA" secondAttribute="leadingMargin" constant="51" id="2VW-9Q-uF8"/>
+                            <constraint firstAttribute="centerX" secondItem="93M-Aw-alx" secondAttribute="centerX" constant="0.5" id="Xkc-zH-Wyp"/>
+                            <constraint firstItem="93M-Aw-alx" firstAttribute="top" secondItem="dtp-2U-mdI" secondAttribute="bottom" constant="8" id="c6Y-1N-rfo"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Card Info" id="dza-HP-2uK">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="APV-Y8-h68">
@@ -267,6 +270,7 @@
                     <connections>
                         <outlet property="barcodeImageView" destination="qcI-FW-oJF" id="Vc6-j2-55r"/>
                         <outlet property="barcodeNumberTextField" destination="jfQ-9i-9xa" id="PNX-aH-Bpa"/>
+                        <outlet property="barcodeTypeTextField" destination="hWK-5M-GRm" id="PGe-jq-ZmM"/>
                         <outlet property="cardNameTextField" destination="VQk-Vn-OEW" id="ybt-Yc-trm"/>
                         <outlet property="cardNumberTextField" destination="slo-9D-bqo" id="L8a-mm-vo0"/>
                         <outlet property="imageView" destination="93M-Aw-alx" id="ehN-fN-4C8"/>
@@ -342,12 +346,26 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Y47-br-Psn" kind="modal" id="EWL-yE-n79"/>
+                                    <segue destination="5fd-Fo-mOB" kind="push" id="8bd-MZ-NjF"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="08o-4D-WTO">
                                 <rect key="frame" x="27" y="64" width="320" height="189"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Barcode Type" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ljy-Yc-KTB">
+                                <rect key="frame" x="16" y="447" width="106" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2yX-PP-VxU">
+                                <rect key="frame" x="16" y="471" width="293" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="ab4-7Y-mst" id="DnT-vi-awl"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -369,6 +387,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="barcodeNumberTextField" destination="ZX6-Z8-a0r" id="hc3-tn-Tdu"/>
+                        <outlet property="barcodeTypeTextField" destination="2yX-PP-VxU" id="2bp-WJ-esF"/>
                         <outlet property="cardNameTextField" destination="2cU-AV-1yD" id="EFv-u5-fWP"/>
                         <outlet property="cardNumberTextField" destination="9dF-Z2-sXn" id="lCH-D9-TAT"/>
                         <outlet property="imageView" destination="08o-4D-WTO" id="T0w-KE-Jam"/>
@@ -378,6 +397,45 @@
                 <exit id="fNm-vV-052" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2297" y="1568"/>
+        </scene>
+        <!--Barcode Scanner View Controller-->
+        <scene sceneID="lTy-xb-77U">
+            <objects>
+                <viewController id="5fd-Fo-mOB" customClass="BarcodeScannerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qZT-Xy-oRm"/>
+                        <viewControllerLayoutGuide type="bottom" id="uGv-Xe-378"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pk4-4T-kMw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k2b-5j-uNh">
+                                <rect key="frame" x="0.0" y="121" width="375" height="325"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="scan barcode" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="1" translatesAutoresizingMaskIntoConstraints="NO" id="hkx-f9-0EW">
+                                        <rect key="frame" x="52" y="47" width="286" height="225"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="RNh-Gu-Rnx"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="414" height="736"/>
+                    <connections>
+                        <outlet property="decodedLabel" destination="hkx-f9-0EW" id="h3J-Bk-u6b"/>
+                        <outlet property="scanRectView" destination="k2b-5j-uNh" id="TPd-jP-czZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ET9-Xg-b3N" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3049.5" y="1218.5"/>
         </scene>
         <!--Cards-->
         <scene sceneID="w4s-AC-6Et">
@@ -514,6 +572,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="tR3-su-6ed"/>
+        <segue reference="8bd-MZ-NjF"/>
     </inferredMetricsTieBreakers>
 </document>

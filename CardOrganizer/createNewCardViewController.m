@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *cardNumberTextField;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UITextField *barcodeNumberTextField;
+@property (weak, nonatomic) IBOutlet UITextField *barcodeTypeTextField;
 @property (strong, nonatomic) UIImage *image;
 @property( nonatomic,strong) NSMutableArray * cardAllInfoArray;
 
@@ -23,6 +24,7 @@
 @implementation createNewCardViewController
 
 #pragma mark - take photo
+
 - (IBAction)takePhoto
 {
     UIImagePickerController *uiipc = [[UIImagePickerController alloc] init];
@@ -82,15 +84,22 @@
     
     //just temporary image for testing
     self.image = [UIImage imageNamed:@"pic.jpg"];
+    
+
 }
 
 // --> Now create method in parent class as;
 // Now create yourNotificationHandler: like this in parent class
--(void)yourNotificationHandler:(NSNotification *)notice{
-    NSString *str = [notice object];
-    NSLog(@"Inside parent view!!!!!!!!!!!!!%@", str);
+-(void)yourNotificationHandler:(NSNotification *)notice
+{
+    
+    NSString *barcodeNumber = [[notice object] objectAtIndex:0];
+    NSString *barcodeType = [[notice object] objectAtIndex:1];
+    
+    NSLog(@"Inside parent view!!!!!!!!!!!!!\n%@ \n %@", barcodeNumber, barcodeType);
     //pass the scaned value into barcode text field
-    self.barcodeNumberTextField.text = str;
+    self.barcodeNumberTextField.text = barcodeNumber;
+    self.barcodeTypeTextField.text = barcodeType;
 }
 
 
@@ -120,6 +129,7 @@
             [data addObject:self.cardNameTextField.text];
             [data addObject:self.cardNumberTextField.text];
             [data addObject:self.barcodeNumberTextField.text];
+            [data addObject:self.barcodeTypeTextField.text];
 
             [data writeToFile:textDataPathStr atomically:YES];
             [self addFilePath:textDataPathStr];
@@ -239,6 +249,7 @@
                      cancelButtonTitle:Nil
                      otherButtonTitles:@"OK", nil] show];
 }
+
 
 
 

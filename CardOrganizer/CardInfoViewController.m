@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *cardNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *cardNumberTextField;
 @property (weak, nonatomic) IBOutlet UITextField *barcodeNumberTextField;
+@property (weak, nonatomic) IBOutlet UITextField *barcodeTypeTextField;
 @property (weak, nonatomic) IBOutlet UIImageView *barcodeImageView;
 //@property (strong,nonatomic)UIImage *image;
 
@@ -77,6 +78,7 @@
         self.cardNameTextField.text = [data objectAtIndex:0];
         self.cardNumberTextField.text = [data objectAtIndex:1];
         self.barcodeNumberTextField.text = [data objectAtIndex:2];
+        self.barcodeTypeTextField.text = [data objectAtIndex:3];
         
         UIImage *customImage = [UIImage imageWithContentsOfFile:imageDataPathStr];
         self.imageView.image = customImage;
