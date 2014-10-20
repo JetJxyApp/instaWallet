@@ -161,7 +161,7 @@
         //log for card path store on disk
         for (NSString *str in self.cardFilePathArray) {
             if(str){
-                NSLog(@"str = %@", str);
+                NSLog(@"log for store path on disk = %@", str);
             }
         }
        

@@ -84,27 +84,31 @@
         self.imageView.image = customImage;
         
         
-        if( [self.barcodeTypeTextField.text isEqualToString:@"CODABAR"] )
+        if ([self.barcodeNumberTextField.text length]!=0  && [self.barcodeTypeTextField.text length]!=0)
         {
-            self.barcodeNumberTextField.text = [NSString stringWithFormat:@"%@%@%@", @"A",self.barcodeNumberTextField.text, @"B"];
-            NSLog(@"%@",self.barcodeNumberTextField.text);
+            //start barcode generating
+            if( [self.barcodeTypeTextField.text isEqualToString:@"CODABAR"] )
+            {
+                self.barcodeNumberTextField.text = [NSString stringWithFormat:@"%@%@%@", @"A",self.barcodeNumberTextField.text, @"B"];
+                NSLog(@"%@",self.barcodeNumberTextField.text);
+            }
+            
+            NSLog(@"width is %d\n", (int)self.barcodeImageView.frame.size.width);
+            NSLog(@"height is %d\n", (int)self.barcodeImageView.frame.size.height);
+            ZXMultiFormatWriter *writer = [[ZXMultiFormatWriter alloc] init];
+            ZXBitMatrix *result = [writer encode:self.barcodeNumberTextField.text
+                                          format:[self barcodeStringtoFormat:self.barcodeTypeTextField.text]
+                                           width:self.barcodeImageView.frame.size.width
+                                          height:self.barcodeImageView.frame.size.height
+                                           error:nil];
+            if (result) {
+                ZXImage *image = [ZXImage imageWithMatrix:result];
+                self.barcodeImageView.image = [UIImage imageWithCGImage:image.cgimage];
+            } else {
+                self.barcodeImageView.image = nil;
+            }
+    
         }
-        
-        NSLog(@"width is %d\n", (int)self.barcodeImageView.frame.size.width);
-        NSLog(@"height is %d\n", (int)self.barcodeImageView.frame.size.height);
-        ZXMultiFormatWriter *writer = [[ZXMultiFormatWriter alloc] init];
-        ZXBitMatrix *result = [writer encode:self.barcodeNumberTextField.text
-                                      format:[self barcodeStringtoFormat:self.barcodeTypeTextField.text]
-                                       width:self.barcodeImageView.frame.size.width
-                                      height:self.barcodeImageView.frame.size.height
-                                       error:nil];
-        if (result) {
-            ZXImage *image = [ZXImage imageWithMatrix:result];
-            self.barcodeImageView.image = [UIImage imageWithCGImage:image.cgimage];
-        } else {
-            self.barcodeImageView.image = nil;
-        }
-
         
     }else{
         NSLog(@"Did not found corresponding file");

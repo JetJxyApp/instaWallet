@@ -20,9 +20,6 @@
 @property (nonatomic) NSString *barcodeNumber;
 @property (nonatomic) NSString *barcodeType;
 @property (nonatomic, strong) NSMutableArray * barcodeInfoArray;
-
-
-
 @property (weak, nonatomic) IBOutlet UIImageView *barcodeImageView;
 
 @end
@@ -31,42 +28,44 @@
 
 
 
-- (IBAction)startBarcodeScan:(id)sender {
-    
-    myTimer = [NSTimer scheduledTimerWithTimeInterval:0.20 target:self selector:@selector(changeBarcode) userInfo:nil repeats:YES];
-
-}
 
 -(void)changeBarcode
 {
     
-        static int counter = 0;
+    static int counter = 0;
     NSLog(@"total number: %d", (int)[self.barcodeInfoArray count]);
     NSLog(@"current: %d", counter);
-        if([self.barcodeInfoArray count] == counter)
-        {
-            counter = 0;
-        }
     
-        NSMutableArray *barcodeInfo = self.barcodeInfoArray[counter];
-        NSString * barcodeNumber = [barcodeInfo objectAtIndex:0];
-        NSString * barcodeType = [barcodeInfo objectAtIndex:1];
-        
-        NSLog(@"barcode number = %@\n", barcodeNumber);
-        NSLog(@"barcode type = %@\n", barcodeType);
-        
-        
-        
-        
-        if( [barcodeType isEqualToString:@"CODABAR"] )
-        {
-            barcodeNumber = [NSString stringWithFormat:@"%@%@%@", @"A",barcodeNumber, @"B"];
-            NSLog(@"%@",barcodeNumber);
-        }
-        
-        NSLog(@"width is %d\n", (int)self.barcodeImageView.frame.size.width);
-        NSLog(@"height is %d\n", (int)self.barcodeImageView.frame.size.height);
-        
+    if(counter > [self.barcodeInfoArray count])
+    {
+        counter = 0;
+    }
+    if([self.barcodeInfoArray count] == counter)
+    {
+        counter = 0;
+    }
+    
+    NSMutableArray *barcodeInfo = self.barcodeInfoArray[counter];
+    NSString * barcodeNumber = [barcodeInfo objectAtIndex:0];
+    NSString * barcodeType = [barcodeInfo objectAtIndex:1];
+    
+    NSLog(@"barcode number = %@\n", barcodeNumber);
+    NSLog(@"barcode type = %@\n", barcodeType);
+    
+    
+    
+    
+    if( [barcodeType isEqualToString:@"CODABAR"] )
+    {
+        barcodeNumber = [NSString stringWithFormat:@"%@%@%@", @"A",barcodeNumber, @"B"];
+        NSLog(@"%@",barcodeNumber);
+    }
+    
+    NSLog(@"width is %d\n", (int)self.barcodeImageView.frame.size.width);
+    NSLog(@"height is %d\n", (int)self.barcodeImageView.frame.size.height);
+    
+    if([barcodeNumber length]!=0 && [barcodeType length]!=0)
+    {
         ZXMultiFormatWriter *writer = [[ZXMultiFormatWriter alloc] init];
         ZXBitMatrix *result = [writer encode:barcodeNumber
                                       format:[self barcodeStringtoFormat:barcodeType]
@@ -83,7 +82,8 @@
         } else {
             self.barcodeImageView.image = nil;
         }
-        
+    }
+    
     counter++;
 }
 
@@ -94,12 +94,19 @@
     //[self.cards copy: delegate.delegateMutableArray];
     // for example
     
-    NSLog(@"self card = %@\n", self.cards);
-    
+    if ([self.cards count]!=0)
+    {
+        NSLog(@"count number = %d", (int)[self.cards count]);
+        NSLog(@"self car %@", self.cards);
+    }
+    else
+    {
+        NSLog(@"card empty!!!!!!!!!!!!");
+    }
     
     for (NSMutableArray * card in self.cards)
     {
-        
+
         NSString *textDataPathStr = [[card objectAtIndex:0] objectAtIndex:0];
         //NSString *imageDataPathStr = [[card  objectAtIndex:0] objectAtIndex:1];
         
@@ -131,6 +138,13 @@
         {
             NSLog(@"Did not found corresponding file");
         }
+    }
+    
+    if ([self.cards count]!=0)
+    {
+    
+        myTimer = [NSTimer scheduledTimerWithTimeInterval:0.50 target:self selector:@selector(changeBarcode) userInfo:nil repeats:YES];
+
     }
     
 }

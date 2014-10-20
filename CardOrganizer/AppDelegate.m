@@ -20,7 +20,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    delegate.delegateMutableArray = [NSMutableArray array];
+    /////////////////////FIX ME///////////////////////////////
+    delegate.delegateMutableArray = [[NSMutableArray alloc]init];
     // Override point for customization after application launch.
     return YES;
      

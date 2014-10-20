@@ -33,6 +33,22 @@
     appDelegate.Alldata = self.cards;
     
     
+    
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    
+    [delegate.delegateMutableArray removeAllObjects];
+
+    for (NSMutableArray *card in self.cards)
+    {
+        [delegate.delegateMutableArray addObject:card];
+        NSLog(@"card before path = %@", self.cards);
+        NSLog(@"delegate before pass = %@", delegate.delegateMutableArray);
+        
+    }
+    
+    
+    
     [self.tableView reloadData];
     
 }
@@ -77,13 +93,7 @@
 
     }
     
-    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
-    for (NSMutableArray *card in self.cards)
-    {
-        [delegate.delegateMutableArray addObject:card];
 
-    }
 
 
 }
@@ -189,11 +199,7 @@
     civc.cardPath = cardInfo;
     civc.rowNumer = rowIndex;
     civc.cards = cards;
-    for (NSString *str in cardInfo) {
-        if(str){
-            NSLog(@"str = %@", str);
-        }
-    }
+
 }
 
 #pragma mark - Navigation
