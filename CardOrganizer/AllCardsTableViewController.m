@@ -10,9 +10,10 @@
 #import "createNewCardViewController.h"
 #import "CardInfoViewController.h"
 #import "AppDelegate.h"
+#import "UIImage_Thumbnail.h"
+#import <QuartzCore/QuartzCore.h>
 
-
-@interface AllCardsTableViewController ()
+@interface AllCardsTableViewController () <UITableViewDelegate>
 
 @end
 
@@ -93,11 +94,13 @@
 
     }
     
+    //set initial row height in tableview, that 7 row in screen
+    [self.tableView setRowHeight:80];
+    
 
 
 
 }
-
 
 - (NSMutableArray *)cardPath
 {
@@ -164,14 +167,18 @@
     return [self.cards count];
 }
 
-
+/*
+//set the row height of cell
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return  80;
+}
+*/
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIdentifier = @"Card Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier
                                                             forIndexPath:indexPath];
-    //for (NSMutableArray *oneCardInfo in self.cards) {
-        //if (oneCardInfo) {
             
             //Information of Card name , card number
             NSString *cardTextPath = [[self.cards[indexPath.row] objectAtIndex:0] objectAtIndex:0];
@@ -182,11 +189,15 @@
             //Information of saved Iamge
             NSString *cardIamgePath = [[self.cards[indexPath.row] objectAtIndex:0] objectAtIndex:1];
             UIImage *cellImage = [UIImage imageWithContentsOfFile:cardIamgePath];
-            cell.imageView.image = cellImage;
-            
+    
+            //create thumbnail for card image and make rounded corner
+            UIImage *thumbnail = [cellImage imageByScalingToSize:CGSizeMake(90, 60)];
+            cell.imageView.layer.cornerRadius = 5;
+            cell.imageView.clipsToBounds = YES;
 
-        //}
-    //}
+            cell.imageView.image = thumbnail;
+
+
     return cell;
 }
 
