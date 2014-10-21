@@ -8,14 +8,15 @@
 
 #import "createNewCardViewController.h"
 #import <MobileCoreServices/MobileCoreServices.h>
+#import <QuartzCore/QuartzCore.h>
 
 
 @interface createNewCardViewController () <UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
-@property (weak, nonatomic) IBOutlet UITextField *cardNameTextField;
-@property (weak, nonatomic) IBOutlet UITextField *cardNumberTextField;
+@property (weak, nonatomic) IBOutlet GCPlaceholderTextView *cardNameTextField;
+@property (weak, nonatomic) IBOutlet GCPlaceholderTextView *cardNumberTextField;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (weak, nonatomic) IBOutlet UITextField *barcodeNumberTextField;
-@property (weak, nonatomic) IBOutlet UITextField *barcodeTypeTextField;
+@property (weak, nonatomic) IBOutlet GCPlaceholderTextView *barcodeNumberTextField;
+@property (weak, nonatomic) IBOutlet GCPlaceholderTextView *barcodeTypeTextField;
 @property (strong, nonatomic) UIImage *image;
 @property( nonatomic,strong) NSMutableArray * cardAllInfoArray;
 
@@ -63,6 +64,8 @@
 
 - (void)setImage:(UIImage *)image
 {
+    self.imageView.layer.cornerRadius = 5;
+    self.imageView.clipsToBounds = YES;
     self.imageView.image = image;
 }
 
@@ -83,9 +86,18 @@
                                                  name:@"ScanBarcode Dismiss" object:nil];
     
     //just temporary image for testing
-    self.image = [UIImage imageNamed:@"pic.jpg"];
+    self.image = [UIImage imageNamed:@"your_card.png"];
     
 
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    self.cardNameTextField.placeholder = NSLocalizedString(@"Required",);
+    self.cardNumberTextField.placeholder = NSLocalizedString(@"Optional",);
+    self.barcodeNumberTextField.placeholder = NSLocalizedString(@"Required - Please Scan ->",);
+    self.barcodeTypeTextField.placeholder = NSLocalizedString(@"Required - Please Scan",);
+    
 }
 
 // --> Now create method in parent class as;

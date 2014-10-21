@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Card Organizer-->
+        <!--InstaWallet-->
         <scene sceneID="vue-CO-7w2">
             <objects>
                 <tableViewController id="PLD-5s-mH6" customClass="AllCardsTableViewController" sceneMemberID="viewController">
@@ -44,7 +44,7 @@
                             <outlet property="delegate" destination="PLD-5s-mH6" id="NJb-V1-fsJ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Card Organizer" id="Nh1-bn-1X1">
+                    <navigationItem key="navigationItem" title="InstaWallet" id="Nh1-bn-1X1">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="aLn-Q0-GOf">
                             <connections>
                                 <segue destination="ab4-7Y-mst" kind="push" identifier="createNewCard" id="VCS-6v-70S"/>
@@ -76,16 +76,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2qs-P2-55Z">
-                                <rect key="frame" x="27" y="65" width="320" height="189"/>
+                                <rect key="frame" x="88" y="103" width="189" height="127"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Card name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w4K-Dr-Bcz">
-                                <rect key="frame" x="11" y="310" width="85" height="21"/>
+                                <rect key="frame" x="16" y="263" width="85" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p8O-3q-Y58">
-                                <rect key="frame" x="11" y="334" width="293" height="30"/>
+                                <rect key="frame" x="16" y="287" width="343" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -93,13 +93,13 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Card number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tu9-AR-rpa">
-                                <rect key="frame" x="11" y="372" width="101" height="21"/>
+                                <rect key="frame" x="16" y="325" width="101" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I0A-Pf-UeO">
-                                <rect key="frame" x="11" y="396" width="293" height="30"/>
+                                <rect key="frame" x="16" y="349" width="343" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -107,28 +107,19 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Barcode Number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FSd-Ea-MZP">
-                                <rect key="frame" x="11" y="434" width="132" height="21"/>
+                                <rect key="frame" x="16" y="387" width="132" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WcA-ev-zNa">
-                                <rect key="frame" x="11" y="463" width="255" height="30"/>
+                                <rect key="frame" x="16" y="416" width="302" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lOT-a7-iU5">
-                                <rect key="frame" x="274" y="462" width="26" height="26"/>
-                                <state key="normal" image="barcode_scanner-50">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="5fd-Fo-mOB" kind="push" id="XjA-sU-KWi"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="onH-Ta-peQ">
-                                <rect key="frame" x="149" y="267" width="76" height="30"/>
-                                <state key="normal" title="Take photo">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="onH-Ta-peQ">
+                                <rect key="frame" x="260" y="213" width="30" height="30"/>
+                                <state key="normal" image="slr_camera2_filled-50">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -136,19 +127,26 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Barcode Type" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Uh-D8-rQd">
-                                <rect key="frame" x="11" y="501" width="106" height="21"/>
+                                <rect key="frame" x="16" y="454" width="106" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ipJ-kN-dRa">
-                                <rect key="frame" x="11" y="525" width="293" height="30"/>
+                                <rect key="frame" x="16" y="478" width="343" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="ab4-7Y-mst" id="nci-FS-8sP"/>
                                 </connections>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lOT-a7-iU5">
+                                <rect key="frame" x="329" y="416" width="30" height="30"/>
+                                <state key="normal" image="scan_barcode"/>
+                                <connections>
+                                    <segue destination="5fd-Fo-mOB" kind="push" id="XjA-sU-KWi"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -177,7 +175,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G1M-5t-NQo" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="ejj-Oq-83K" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2311" y="787"/>
+            <point key="canvasLocation" x="2310.5" y="786.5"/>
         </scene>
         <!--Card Info-->
         <scene sceneID="Rc9-lC-UNq">
@@ -260,7 +258,8 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Card Info" id="dza-HP-2uK">
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="APV-Y8-h68">
+                        <barButtonItem key="rightBarButtonItem" image="edit_property-50" id="APV-Y8-h68">
+                            <inset key="imageInsets" minX="0.0" minY="0.0" maxX="3" maxY="0.0"/>
                             <connections>
                                 <segue destination="ofd-dB-ynr" kind="push" identifier="" id="HJm-Qx-qMA"/>
                             </connections>
@@ -440,8 +439,10 @@
         <!--Cards-->
         <scene sceneID="w4s-AC-6Et">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2Lw-qQ-czV" customClass="tryNavigationController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Cards" image="folder-50" id="uHL-x0-I04"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2Lw-qQ-czV" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Cards" image="folder-50" id="uHL-x0-I04">
+                        <inset key="imageInsets" minX="1" minY="1" maxX="1" maxY="1"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oYL-00-cVs">
@@ -533,7 +534,9 @@
         <scene sceneID="2To-gC-sm6">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Yid-Tn-qyl" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" image="settings-50" id="x1G-KM-gOp"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings-50" id="x1G-KM-gOp">
+                        <inset key="imageInsets" minX="1" minY="1" maxX="1" maxY="1"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="az6-Uh-G4E">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -552,7 +555,9 @@
         <scene sceneID="RQO-HV-nKc">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KrR-AM-j7S" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Quick Scan" image="barcode_scanner-50" id="L9r-eE-nG7"/>
+                    <tabBarItem key="tabBarItem" title="Quick Scan" image="barcode_scanner-50" id="L9r-eE-nG7">
+                        <inset key="imageInsets" minX="1" minY="1" maxX="1" maxY="1"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pJu-18-QcV">
@@ -571,8 +576,11 @@
     </scenes>
     <resources>
         <image name="barcode_scanner-50" width="26" height="26"/>
+        <image name="edit_property-50" width="26" height="26"/>
         <image name="folder-50" width="33" height="33"/>
+        <image name="scan_barcode" width="1024" height="1024"/>
         <image name="settings-50" width="26" height="26"/>
+        <image name="slr_camera2_filled-50" width="33" height="33"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -580,6 +588,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="8bd-MZ-NjF"/>
+        <segue reference="XjA-sU-KWi"/>
     </inferredMetricsTieBreakers>
 </document>

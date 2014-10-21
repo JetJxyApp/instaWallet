@@ -143,7 +143,7 @@
     if ([self.cards count]!=0)
     {
     
-        myTimer = [NSTimer scheduledTimerWithTimeInterval:0.50 target:self selector:@selector(changeBarcode) userInfo:nil repeats:YES];
+        myTimer = [NSTimer scheduledTimerWithTimeInterval:0.20 target:self selector:@selector(changeBarcode) userInfo:nil repeats:YES];
 
     }
     

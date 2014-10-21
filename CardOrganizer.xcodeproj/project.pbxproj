@@ -20,6 +20,7 @@
 		742D3C4F5C9CFF03959AE229 /* libPods-CardOrganizer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FC42E10A51B7F1C77951B9C /* libPods-CardOrganizer.a */; };
 		808E648419F4449900D44D38 /* QuickScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 808E648319F4449900D44D38 /* QuickScanViewController.m */; };
 		80A9A84519F2F414000B93E5 /* BarcodeScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80A9A84419F2F414000B93E5 /* BarcodeScannerViewController.m */; };
+		80F705AC19F5E56E00312279 /* GCPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F705AB19F5E56E00312279 /* GCPlaceholderTextView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		808E648319F4449900D44D38 /* QuickScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuickScanViewController.m; sourceTree = "<group>"; };
 		80A9A84319F2F414000B93E5 /* BarcodeScannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarcodeScannerViewController.h; sourceTree = "<group>"; };
 		80A9A84419F2F414000B93E5 /* BarcodeScannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarcodeScannerViewController.m; sourceTree = "<group>"; };
+		80F705AA19F5E56E00312279 /* GCPlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCPlaceholderTextView.h; sourceTree = "<group>"; };
+		80F705AB19F5E56E00312279 /* GCPlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCPlaceholderTextView.m; sourceTree = "<group>"; };
 		9FC42E10A51B7F1C77951B9C /* libPods-CardOrganizer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CardOrganizer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F44E380047A31F2A214076C9 /* Pods-CardOrganizer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardOrganizer.release.xcconfig"; path = "Pods/Target Support Files/Pods-CardOrganizer/Pods-CardOrganizer.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -128,6 +131,8 @@
 		111A176319D0DB88000EE067 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				80F705AA19F5E56E00312279 /* GCPlaceholderTextView.h */,
+				80F705AB19F5E56E00312279 /* GCPlaceholderTextView.m */,
 				111A176719D0DB88000EE067 /* AppDelegate.h */,
 				111A176819D0DB88000EE067 /* AppDelegate.m */,
 				111A176419D0DB88000EE067 /* Info.plist */,
@@ -311,6 +316,7 @@
 				11CEF40A19EDF47600EF2D76 /* CustomTabBarController.m in Sources */,
 				11CEF40719EDD1BE00EF2D76 /* EditCardViewController.m in Sources */,
 				111A178E19D0E218000EE067 /* createNewCardViewController.m in Sources */,
+				80F705AC19F5E56E00312279 /* GCPlaceholderTextView.m in Sources */,
 				111A176919D0DB88000EE067 /* AppDelegate.m in Sources */,
 				111A176619D0DB88000EE067 /* main.m in Sources */,
 			);
