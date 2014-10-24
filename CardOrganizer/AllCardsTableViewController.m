@@ -13,8 +13,9 @@
 #import "UIImage_Thumbnail.h"
 #import <QuartzCore/QuartzCore.h>
 
-@interface AllCardsTableViewController () <UITableViewDelegate>
-
+@interface AllCardsTableViewController () <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate>
+@property NSInteger rowSwipeToDelete;
+@property NSIndexPath *indexPathToDelete;
 @end
 
 @implementation AllCardsTableViewController
@@ -201,6 +202,37 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Delete"
+                                                        message:@"Do you really want to delete this card?"
+                                                       delegate:self
+                                              cancelButtonTitle:@"Cancel"
+                                              otherButtonTitles:@"Delete card", nil];
+        alert.tag = 0;
+        [alert show];
+        
+        //remove the deleted object from your data source.
+        //If your data source is an NSMutableArray, do this
+        self.rowSwipeToDelete = indexPath.row;
+        self.indexPathToDelete = indexPath;
+        
+    }
+}
+
+-(NSString * )tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return @"Delete";
+}
+
+
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
 
 - (void)prepareCardInfoViewController:(CardInfoViewController *)civc
                     toDisplayCardInfo:(NSMutableArray *)cardInfo
@@ -237,5 +269,84 @@
     
 }
 
+
+//tableview swipe to delete
+#pragma mark - Alerts
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    
+    // Is this my Alert View?
+    if (alertView.tag == 0) {
+        //Yes
+        
+        
+        // You need to compare 'buttonIndex' & 0 to other value(1,2,3) if u have more buttons.
+        // Then u can check which button was pressed.
+        if (buttonIndex == 0) {// 1st Other Button, that is cancel
+            
+            //[self alertView:alertView didDismissWithButtonIndex:buttonIndex];
+            //AllCardsTableViewController *acTVC = [[AllCardsTableViewController alloc] init];
+            //[self.navigationController popToRootViewControllerAnimated:YES];
+            //[self.navigationController showViewController:AllcardsViewController sender:self];
+            [self.tableView reloadData];
+            
+            
+        }
+        else if (buttonIndex == 1){// 2nd other button, that is delete card
+            NSLog(@"ready to delete");
+            // NSLog(@"delete card at row number = %ld", self.rowNumer);
+            NSMutableArray * path = [self.cards objectAtIndex:self.rowSwipeToDelete];
+            
+            /*
+             * delete text file and image file
+             */
+            NSString *textDataPathStr = [[path objectAtIndex:0] objectAtIndex:0];
+            NSString *imageDataPathStr = [[path  objectAtIndex:0] objectAtIndex:1];
+            
+            NSError *error;
+            NSFileManager *fileManager = [NSFileManager defaultManager];
+            if ([fileManager isDeletableFileAtPath:textDataPathStr]) {
+                BOOL fileDeleteSuccess = [[NSFileManager defaultManager] removeItemAtPath:textDataPathStr error:&error];
+                if (!fileDeleteSuccess ) {
+                    NSLog(@"Error removing text file at path: %@", error.localizedDescription);
+                }
+            }
+            
+            if ([fileManager isDeletableFileAtPath:imageDataPathStr]) {
+                BOOL imageDeleteSuccess = [[NSFileManager defaultManager] removeItemAtPath:imageDataPathStr error:&error];
+                if (!imageDeleteSuccess) {
+                    NSLog(@"Error removing image file at path: %@", error.localizedDescription);
+                }
+            }
+            
+            
+            //remove text file and image file pointer in NSMutableArray
+            NSLog(@"Card to be delete file count in deletion = %ld", [[path objectAtIndex:0] count]);
+            for (int i=0;i <[[path objectAtIndex:0] count]; i++)
+            {
+                [[path objectAtIndex:0] removeObjectAtIndex:i];
+                i--;//here is for NSmutableArray because array shrink at every removeObjectAtIndex
+                
+            }
+            
+            
+            [self.cards removeObjectAtIndex:self.rowSwipeToDelete];
+            
+            [self.tableView deleteRowsAtIndexPaths:@[self.indexPathToDelete] withRowAnimation:UITableViewRowAnimationAutomatic];
+
+            
+            //[self.tableView reloadData];
+            
+        }
+        
+        
+    }
+    else {
+        //No
+        // Other Alert View
+        NSLog(@"did not properly enter alert view");
+        
+    }
+}
 
 @end
