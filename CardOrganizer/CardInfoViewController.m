@@ -20,11 +20,9 @@
 @interface CardInfoViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UITextField *cardNameTextField;
-@property (weak, nonatomic) IBOutlet UITextField *cardNumberTextField;
 @property (weak, nonatomic) IBOutlet UITextField *barcodeNumberTextField;
-@property (weak, nonatomic) IBOutlet UITextField *barcodeTypeTextField;
+@property (nonatomic) NSString *barcodeTypeTextField;
 @property (weak, nonatomic) IBOutlet UIImageView *barcodeImageView;
-//@property (strong,nonatomic)UIImage *image;
 
 @end
 
@@ -76,18 +74,17 @@
         NSArray *data = [[NSArray alloc] initWithContentsOfFile:textDataPathStr];
         
         self.cardNameTextField.text = [data objectAtIndex:0];
-        self.cardNumberTextField.text = [data objectAtIndex:1];
         self.barcodeNumberTextField.text = [data objectAtIndex:2];
-        self.barcodeTypeTextField.text = [data objectAtIndex:3];
+        self.barcodeTypeTextField = [data objectAtIndex:3];
         
         UIImage *customImage = [UIImage imageWithContentsOfFile:imageDataPathStr];
         self.imageView.image = customImage;
         
         
-        if ([self.barcodeNumberTextField.text length]!=0  && [self.barcodeTypeTextField.text length]!=0)
+        if ([self.barcodeNumberTextField.text length]!=0  && [self.barcodeTypeTextField length]!=0)
         {
             //start barcode generating
-            if( [self.barcodeTypeTextField.text isEqualToString:@"CODABAR"] )
+            if( [self.barcodeTypeTextField isEqualToString:@"CODABAR"] )
             {
                 self.barcodeNumberTextField.text = [NSString stringWithFormat:@"%@%@%@", @"A",self.barcodeNumberTextField.text, @"B"];
                 NSLog(@"%@",self.barcodeNumberTextField.text);
@@ -97,7 +94,7 @@
             NSLog(@"height is %d\n", (int)self.barcodeImageView.frame.size.height);
             ZXMultiFormatWriter *writer = [[ZXMultiFormatWriter alloc] init];
             ZXBitMatrix *result = [writer encode:self.barcodeNumberTextField.text
-                                          format:[self barcodeStringtoFormat:self.barcodeTypeTextField.text]
+                                          format:[self barcodeStringtoFormat:self.barcodeTypeTextField]
                                            width:self.barcodeImageView.frame.size.width
                                           height:self.barcodeImageView.frame.size.height
                                            error:nil];
