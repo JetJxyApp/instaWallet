@@ -78,6 +78,8 @@
         self.barcodeTypeTextField = [data objectAtIndex:3];
         
         UIImage *customImage = [UIImage imageWithContentsOfFile:imageDataPathStr];
+        self.imageView.layer.cornerRadius = 5;
+        self.imageView.clipsToBounds = YES;
         self.imageView.image = customImage;
         
         
