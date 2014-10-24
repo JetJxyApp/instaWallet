@@ -9,6 +9,7 @@
 #import "createNewCardViewController.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <QuartzCore/QuartzCore.h>
+#import "UIImage_Thumbnail.h"
 
 
 @interface createNewCardViewController () <UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
@@ -45,6 +46,7 @@
 {
     UIImage *image = info[UIImagePickerControllerEditedImage];
     if (!image) image = info[UIImagePickerControllerOriginalImage];
+        
     self.image = image;
     [self dismissViewControllerAnimated:YES completion:NULL];
 }

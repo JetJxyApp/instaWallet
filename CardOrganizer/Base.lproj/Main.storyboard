@@ -12,6 +12,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableFooterView" opaque="NO" contentMode="scaleToFill" id="jKK-h9-mCA">
+                            <rect key="frame" x="0.0" y="130" width="375" height="119"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcom! Add your first Card by + on the top" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xam-hs-shT">
+                                    <rect key="frame" x="8" y="25" width="350" height="69"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" red="0.40000000596046448" green="0.80000001192092896" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Card Cell" textLabel="eUg-XN-6UB" detailTextLabel="2ED-J2-Vpt" style="IBUITableViewCellStyleSubtitle" id="R0a-uD-wFU">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -56,10 +69,14 @@
                             <action selector="refresh" destination="PLD-5s-mH6" eventType="valueChanged" id="7Az-0T-9Js"/>
                         </connections>
                     </refreshControl>
+                    <connections>
+                        <outlet property="hintLabel" destination="xam-hs-shT" id="kdn-XP-SIa"/>
+                        <outlet property="hintToUser" destination="jKK-h9-mCA" id="biD-0r-R28"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gUp-J2-ngs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1724" y="787"/>
+            <point key="canvasLocation" x="1723.5" y="786.5"/>
         </scene>
         <!--Create-->
         <scene sceneID="6wB-do-0gS">
@@ -548,6 +565,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="8bd-MZ-NjF"/>
+        <segue reference="XjA-sU-KWi"/>
     </inferredMetricsTieBreakers>
 </document>

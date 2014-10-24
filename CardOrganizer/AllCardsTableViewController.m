@@ -14,6 +14,8 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface AllCardsTableViewController () <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate>
+@property (strong, nonatomic) IBOutlet UIView *hintToUser;
+@property (strong, nonatomic) IBOutlet UILabel *hintLabel;
 @property NSInteger rowSwipeToDelete;
 @property NSIndexPath *indexPathToDelete;
 @end
@@ -29,6 +31,19 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    if ([self.cards count] != 0) {
+        
+        [self.hintToUser setHidden:YES];
+
+    }
+    else if ([self.cards count] == 0)
+    {
+        [self.hintToUser setHidden:NO];
+
+    }
+    self.hintLabel.text = @"Welcom!\nAdd your first Card by + on the top   \u2191";
+
+    
 
     //This pass data to App delegate for storing all card info when terminate our APP
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
@@ -197,7 +212,20 @@
             cell.imageView.clipsToBounds = YES;
 
             cell.imageView.image = thumbnail;
-
+    
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    /*
+     * Deal with cell separator line
+     */
+    // We have to use the borderColor/Width as opposed to just setting the
+    // backgroundColor else the view becomes transparent and disappears during
+    // the cell's selected/highlighted animation
+    UIView *separatorView = [[UIView alloc] initWithFrame:CGRectMake(120, cell.contentView.frame.size.height - 1.0, cell.contentView.frame.size.width - 100, 1)];
+    //separatorView.layer.borderColor = [UIColor blackColor].CGColor;
+    separatorView.layer.borderWidth = 0.1;
+    separatorView.backgroundColor = [UIColor lightGrayColor];
+    [cell.contentView addSubview:separatorView];
 
     return cell;
 }
@@ -335,8 +363,7 @@
             [self.tableView deleteRowsAtIndexPaths:@[self.indexPathToDelete] withRowAnimation:UITableViewRowAnimationAutomatic];
 
             
-            //[self.tableView reloadData];
-            
+            [self viewWillAppear:YES];
         }
         
         
