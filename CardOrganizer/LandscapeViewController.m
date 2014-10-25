@@ -47,7 +47,7 @@
         if (result) {
             
             ZXImage *image = [ZXImage imageWithMatrix:result];
-            CGImageRef imageRef = [self CGImageRotatedByAngle:image.cgimage angle:90];
+            CGImageRef imageRef = [self CGImageRotatedByAngle:image.cgimage angle:270];
 
             self.barcodeImageView.image = [UIImage imageWithCGImage:imageRef];
 

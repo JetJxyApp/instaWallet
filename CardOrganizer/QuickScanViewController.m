@@ -49,8 +49,8 @@
     NSString * barcodeNumber = [barcodeInfo objectAtIndex:0];
     NSString * barcodeType = [barcodeInfo objectAtIndex:1];
     
-    NSLog(@"barcode number = %@\n", barcodeNumber);
-    NSLog(@"barcode type = %@\n", barcodeType);
+    NSLog(@"barcode number in quick scan = %@\n", barcodeNumber);
+    NSLog(@"barcode type in quick scan = %@\n", barcodeType);
     
     
     
@@ -58,6 +58,8 @@
     if( [barcodeType isEqualToString:@"CODABAR"] )
     {
         barcodeNumber = [NSString stringWithFormat:@"%@%@%@", @"A",barcodeNumber, @"B"];
+        self.barcodeImageView.frame = CGRectMake(12, 100, 350, 600);
+
         NSLog(@"%@",barcodeNumber);
     }
     
@@ -74,10 +76,9 @@
                                        error:nil];
         if (result) {
             ZXImage *image = [ZXImage imageWithMatrix:result];
-            NSLog(@"%@",image);
+            CGImageRef imageRef = [self CGImageRotatedByAngle:image.cgimage angle:270];
             
-            
-            self.barcodeImageView.image = [UIImage imageWithCGImage:image.cgimage];
+            self.barcodeImageView.image = [UIImage imageWithCGImage:imageRef];
             NSLog(@"%@",self.barcodeImageView.image);
         } else {
             self.barcodeImageView.image = nil;
@@ -164,6 +165,53 @@
     }
     return _barcodeInfoArray;
 }
+
+
+- (CGImageRef)CGImageRotatedByAngle:(CGImageRef)imgRef angle:(CGFloat)angle
+{
+    
+    CGFloat angleInRadians = angle * (M_PI / 180);
+    CGFloat width = CGImageGetWidth(imgRef);
+    CGFloat height = CGImageGetHeight(imgRef);
+    
+    CGRect imgRect = CGRectMake(0, 0, width, height);
+    CGAffineTransform transform = CGAffineTransformMakeRotation(angleInRadians);
+    CGRect rotatedRect = CGRectApplyAffineTransform(imgRect, transform);
+    
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    
+    CGContextRef bmContext = CGBitmapContextCreate(NULL,
+                                                   rotatedRect.size.width,
+                                                   rotatedRect.size.height,
+                                                   8,
+                                                   0,
+                                                   colorSpace,
+                                                   kCGImageAlphaPremultipliedFirst);
+    CGContextSetAllowsAntialiasing(bmContext, YES);
+    CGContextSetShouldAntialias(bmContext, YES);
+    CGContextSetInterpolationQuality(bmContext, kCGInterpolationHigh);
+    CGColorSpaceRelease(colorSpace);
+    CGContextTranslateCTM(bmContext,
+                          +(rotatedRect.size.width/2),
+                          +(rotatedRect.size.height/2));
+    CGContextRotateCTM(bmContext, angleInRadians);
+    CGContextTranslateCTM(bmContext,
+                          -(rotatedRect.size.width/2),
+                          -(rotatedRect.size.height/2));
+    CGContextDrawImage(bmContext, CGRectMake(0, 0,
+                                             rotatedRect.size.width,
+                                             rotatedRect.size.height),
+                       imgRef);
+    
+    
+    
+    CGImageRef rotatedImage = CGBitmapContextCreateImage(bmContext);
+    CFRelease(bmContext);
+    //[(id)rotatedImage autorelease];
+    
+    return rotatedImage;
+}
+
 
 - (ZXBarcodeFormat )barcodeStringtoFormat:(NSString *) str {
     
