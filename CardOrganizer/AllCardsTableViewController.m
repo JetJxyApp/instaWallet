@@ -41,7 +41,7 @@
         [self.hintToUser setHidden:NO];
 
     }
-    self.hintLabel.text = @"Welcom!\n Tap + on the top to add new card   \u2191";
+    self.hintLabel.text = @"Welcome!\n Tap + to create a new card \u2191";
 
     
 

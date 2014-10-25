@@ -10,6 +10,7 @@
 #import "createNewCardViewController.h"
 #import "EditCardViewController.h"
 #import "AllCardsTableViewController.h"
+#import "LandscapeViewController.h"
 #import "ZXBitMatrix.h"
 #import "ZXMultiFormatWriter.h"
 #import "ZXImage.h"
@@ -89,6 +90,8 @@
             if( [self.barcodeTypeTextField isEqualToString:@"CODABAR"] )
             {
                 self.barcodeNumberTextField.text = [NSString stringWithFormat:@"%@%@%@", @"A",self.barcodeNumberTextField.text, @"B"];
+                self.barcodeImageView.frame = CGRectMake(-10, 288
+                                                         , 450, 111);
                 NSLog(@"%@",self.barcodeNumberTextField.text);
             }
             
@@ -143,6 +146,13 @@
         ecVC.rowNumer = self.rowNumer;
         
 
+    }
+    else if ([segue.destinationViewController isKindOfClass:[LandscapeViewController class]])
+    {
+        LandscapeViewController *ecVC = (LandscapeViewController *)segue.destinationViewController;
+        ecVC.barcodeNumberTextField = self.barcodeNumberTextField.text;
+        ecVC.barcodeTypeTextField = self.barcodeTypeTextField;
+        
     }
 }
 

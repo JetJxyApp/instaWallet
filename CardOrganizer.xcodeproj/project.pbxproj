@@ -19,6 +19,7 @@
 		11CEF40719EDD1BE00EF2D76 /* EditCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CEF40619EDD1BE00EF2D76 /* EditCardViewController.m */; };
 		11CEF40A19EDF47600EF2D76 /* CustomTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CEF40919EDF47600EF2D76 /* CustomTabBarController.m */; };
 		742D3C4F5C9CFF03959AE229 /* libPods-CardOrganizer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FC42E10A51B7F1C77951B9C /* libPods-CardOrganizer.a */; };
+		807B655319FC03BD00EFA770 /* LandscapeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 807B655219FC03BD00EFA770 /* LandscapeViewController.m */; };
 		808E648419F4449900D44D38 /* QuickScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 808E648319F4449900D44D38 /* QuickScanViewController.m */; };
 		80A9A84519F2F414000B93E5 /* BarcodeScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80A9A84419F2F414000B93E5 /* BarcodeScannerViewController.m */; };
 		80F705AC19F5E56E00312279 /* GCPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F705AB19F5E56E00312279 /* GCPlaceholderTextView.m */; };
@@ -58,6 +59,8 @@
 		11CEF40819EDF47600EF2D76 /* CustomTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTabBarController.h; sourceTree = "<group>"; };
 		11CEF40919EDF47600EF2D76 /* CustomTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTabBarController.m; sourceTree = "<group>"; };
 		4862FFF896303315FC2DEB39 /* Pods-CardOrganizer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardOrganizer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CardOrganizer/Pods-CardOrganizer.debug.xcconfig"; sourceTree = "<group>"; };
+		807B655119FC03BD00EFA770 /* LandscapeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandscapeViewController.h; sourceTree = "<group>"; };
+		807B655219FC03BD00EFA770 /* LandscapeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandscapeViewController.m; sourceTree = "<group>"; };
 		808E648219F4449900D44D38 /* QuickScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuickScanViewController.h; sourceTree = "<group>"; };
 		808E648319F4449900D44D38 /* QuickScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuickScanViewController.m; sourceTree = "<group>"; };
 		80A9A84319F2F414000B93E5 /* BarcodeScannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarcodeScannerViewController.h; sourceTree = "<group>"; };
@@ -112,6 +115,8 @@
 			children = (
 				1191459C19F5DBD80094A4D3 /* UIImage_Thumbnail.h */,
 				1191459D19F5DC170094A4D3 /* UIImage_Thumbnail.m */,
+				807B655119FC03BD00EFA770 /* LandscapeViewController.h */,
+				807B655219FC03BD00EFA770 /* LandscapeViewController.m */,
 				11CEF40819EDF47600EF2D76 /* CustomTabBarController.h */,
 				11CEF40919EDF47600EF2D76 /* CustomTabBarController.m */,
 				111A178C19D0E218000EE067 /* createNewCardViewController.h */,
@@ -324,6 +329,7 @@
 				111A178E19D0E218000EE067 /* createNewCardViewController.m in Sources */,
 				80F705AC19F5E56E00312279 /* GCPlaceholderTextView.m in Sources */,
 				111A176919D0DB88000EE067 /* AppDelegate.m in Sources */,
+				807B655319FC03BD00EFA770 /* LandscapeViewController.m in Sources */,
 				111A176619D0DB88000EE067 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -440,9 +446,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = CardOrganizer/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -452,9 +459,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = CardOrganizer/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
