@@ -20,6 +20,10 @@
 @end
 
 @implementation LandscapeViewController
+- (IBAction)cancel
+{
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
 
 - (void)viewWillAppear:(BOOL)animated
 {
