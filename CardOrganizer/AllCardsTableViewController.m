@@ -41,7 +41,7 @@
         [self.hintToUser setHidden:NO];
 
     }
-    self.hintLabel.text = @"Welcom!\nAdd your first Card by + on the top   \u2191";
+    self.hintLabel.text = @"Welcom!\n Tap + on the top to add new card   \u2191";
 
     
 
@@ -66,7 +66,7 @@
     
     
     
-    [self.tableView reloadData];
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
     
 }
 
