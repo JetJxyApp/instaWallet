@@ -77,7 +77,6 @@
 }
 
 
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -95,6 +94,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+
     self.cardNameTextField.placeholder = NSLocalizedString(@"Required",);
     self.cardNumberTextField.placeholder = NSLocalizedString(@"Optional",);
     self.barcodeNumberTextField.placeholder = NSLocalizedString(@"Required - Please Scan ->",);
@@ -233,6 +233,8 @@
 /*
  * Below deal with issue of keyboard cover textfield
  */
+
+/*
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
     [self animateTextField: textField up: YES];
@@ -257,7 +259,7 @@
     self.view.frame = CGRectOffset(self.view.frame, 0, movement);
     [UIView commitAnimations];
 }
-
+*/
 
 //alert view to alert any missing field
 -(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
@@ -280,6 +282,21 @@
     }else{
         return [super shouldPerformSegueWithIdentifier:identifier sender:sender];
     }*/
+    
+    if([identifier isEqualToString:UNWIND_SEGUE_IDENTIFIER]){
+        
+        if(![self.cardNameTextField.text length]){
+            [self alert:@"Please enter Card Name!"];
+            return NO;
+        }else if (![self.cardNumberTextField.text length]){
+            [self alert:@"Please enter Card Number!"];
+            return NO;
+        }else{
+            return YES;
+        }
+    }else{
+        return [super shouldPerformSegueWithIdentifier:identifier sender:sender];
+    }
     return [super shouldPerformSegueWithIdentifier:identifier sender:sender];
 }
 

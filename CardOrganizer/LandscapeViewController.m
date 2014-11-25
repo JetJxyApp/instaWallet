@@ -16,6 +16,8 @@
 @interface LandscapeViewController()
 
 @property (weak, nonatomic) IBOutlet UIImageView *barcodeImageView;
+@property (nonatomic) float previousBrightness;
+
 
 @end
 
@@ -23,6 +25,12 @@
 - (IBAction)cancel
 {
     [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+-(void) viewWillDisappear:(BOOL)animated
+{
+    UIScreen *mainScreen = [UIScreen mainScreen];
+    mainScreen.brightness = self.previousBrightness;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -61,6 +69,10 @@
         
     }
     
+    //increase the background brightness to maxinum
+    self.previousBrightness = [UIScreen mainScreen].brightness;
+    UIScreen *mainScreen = [UIScreen mainScreen];
+    mainScreen.brightness = 1.0;
     
 
 }

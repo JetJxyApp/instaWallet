@@ -21,12 +21,20 @@
 @property (nonatomic) NSString *barcodeType;
 @property (nonatomic, strong) NSMutableArray * barcodeInfoArray;
 @property (weak, nonatomic) IBOutlet UIImageView *barcodeImageView;
+@property (nonatomic) float previousBrightness;
+
 
 @end
 
 @implementation QuickScanViewController
 
-
+-(void)viewWillAppear:(BOOL)animated
+{
+    //increase the background brightness to maxinum
+    self.previousBrightness = [UIScreen mainScreen].brightness;
+    UIScreen *mainScreen = [UIScreen mainScreen];
+    mainScreen.brightness = 1.0;
+}
 
 
 -(void)changeBarcode
@@ -156,7 +164,14 @@
     [myTimer invalidate];
     myTimer = nil;
     self.barcodeImageView.image = nil;
+    
+    
+    //restore back to previous brightness
+    UIScreen *mainScreen = [UIScreen mainScreen];
+    mainScreen.brightness = self.previousBrightness;
 }
+
+
 
 -(NSMutableArray *)barcodeInfoArray
 {

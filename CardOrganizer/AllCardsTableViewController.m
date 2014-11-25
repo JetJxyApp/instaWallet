@@ -41,7 +41,7 @@
         [self.hintToUser setHidden:NO];
 
     }
-    self.hintLabel.text = @"Welcome!\n Tap + to create a new card \u2191";
+    self.hintLabel.text = @"Welcome!\n          Tap + to create a new card      \u2191";
 
     
 
@@ -68,7 +68,26 @@
     
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
     
+    
+    //change tableview background image
+    /*
+    UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"b1.png"]];
+    [tempImageView setFrame:self.tableView.frame];
+    
+    self.tableView.backgroundView = tempImageView;
+     */
+    
 }
+
+//This short methos is for the backgound color of cellview to be transparent
+/*
+- (void)tableView:(UITableView *)tableView
+  willDisplayCell:(UITableViewCell *)cell
+forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [cell setBackgroundColor:[UIColor clearColor]];
+}
+ */
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -215,13 +234,16 @@
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
+    //set the font of cell
+    cell.textLabel.font = [UIFont boldSystemFontOfSize:17.0];
+    
     /*
      * Deal with cell separator line
      */
     // We have to use the borderColor/Width as opposed to just setting the
     // backgroundColor else the view becomes transparent and disappears during
     // the cell's selected/highlighted animation
-    UIView *separatorView = [[UIView alloc] initWithFrame:CGRectMake(120, cell.contentView.frame.size.height - 1.0, cell.contentView.frame.size.width - 100, 1)];
+    UIView *separatorView = [[UIView alloc] initWithFrame:CGRectMake(120, cell.contentView.frame.size.height - 1.0, cell.contentView.frame.size.width - 100, 0.5)];
     //separatorView.layer.borderColor = [UIColor blackColor].CGColor;
     separatorView.layer.borderWidth = 0.1;
     separatorView.backgroundColor = [UIColor lightGrayColor];

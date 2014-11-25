@@ -8,8 +8,11 @@
 
 #import "EditCardViewController.h"
 #import "AllCardsTableViewController.h"
+#import <MobileCoreServices/MobileCoreServices.h>
+#import <QuartzCore/QuartzCore.h>
+#import "UIImage_Thumbnail.h"
 
-@interface EditCardViewController () <UIAlertViewDelegate>
+@interface EditCardViewController () <UITextFieldDelegate,UIAlertViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *cardNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *cardNumberTextField;
 @property (weak, nonatomic) IBOutlet UITextField *barcodeNumberTextField;
@@ -58,6 +61,32 @@
 {
     _cards = cards;
 }
+
+//take new poto for card
+- (IBAction)takePhoto
+{
+    UIImagePickerController *uiipc = [[UIImagePickerController alloc] init];
+    uiipc.delegate = self;
+    uiipc.mediaTypes = @[(NSString *)kUTTypeImage];
+    uiipc.sourceType = UIImagePickerControllerSourceTypeCamera;
+    uiipc.allowsEditing = YES;
+    [self presentViewController:uiipc animated:YES completion:NULL];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *image = info[UIImagePickerControllerEditedImage];
+    if (!image) image = info[UIImagePickerControllerOriginalImage];
+    
+    self.image = image;
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
 
 
 - (void)viewDidLoad
@@ -290,9 +319,17 @@
 }
 
 
+//deal with keyboard go away
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
 /*
  * Below deal with issue of keyboard cover textfield
  */
+/*
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
     [self animateTextField: textField up: YES];
@@ -317,5 +354,5 @@
     self.view.frame = CGRectOffset(self.view.frame, 0, movement);
     [UIView commitAnimations];
 }
-
+*/
 @end
