@@ -68,6 +68,16 @@
     
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
     
+
+    /*
+     *  below deal with the color of back button of navigation contorller
+     */
+    //set back button color
+   // [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName,nil] forState:UIControlStateNormal];
+    //set back button arrow color
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    
+    
     
     //change tableview background image
     /*
@@ -130,12 +140,21 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     }
     
     //set initial row height in tableview, that 7 row in screen
-    [self.tableView setRowHeight:80];
+    [self.tableView setRowHeight:75];
     
-
-
-
+    //change background color
+    self.tableView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.93];
+    
+    //chage navigation controller color
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.29 green:0.65 blue:0.96 alpha:1.0];
+    
 }
+
+
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
+
 
 - (NSMutableArray *)cardPath
 {
@@ -226,16 +245,25 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
             UIImage *cellImage = [UIImage imageWithContentsOfFile:cardIamgePath];
     
             //create thumbnail for card image and make rounded corner
-            UIImage *thumbnail = [cellImage imageByScalingToSize:CGSizeMake(90, 60)];
+            UIImage *thumbnail = [cellImage imageByScalingToSize:CGSizeMake(85, 57)];
             cell.imageView.layer.cornerRadius = 5;
             cell.imageView.clipsToBounds = YES;
+    /*
+            UIImage *thumbnail = cellImage;
+            cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
+    
+    CGRect photoFrame = cell.imageView.frame;
+    photoFrame.size = CGSizeMake(100, 100);
+    cell.imageView.frame = photoFrame;*/
 
             cell.imageView.image = thumbnail;
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     //set the font of cell
-    cell.textLabel.font = [UIFont boldSystemFontOfSize:17.0];
+    cell.textLabel.font = [UIFont fontWithName:@"Helvetica-Light" size:18.0];
+    cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica-Light" size:13.0];
+
     
     /*
      * Deal with cell separator line
@@ -243,10 +271,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     // We have to use the borderColor/Width as opposed to just setting the
     // backgroundColor else the view becomes transparent and disappears during
     // the cell's selected/highlighted animation
-    UIView *separatorView = [[UIView alloc] initWithFrame:CGRectMake(120, cell.contentView.frame.size.height - 1.0, cell.contentView.frame.size.width - 100, 0.5)];
+    UIView *separatorView = [[UIView alloc] initWithFrame:CGRectMake(120, cell.contentView.frame.size.height - 1.0, cell.contentView.frame.size.width - 85, 0.6)];
     //separatorView.layer.borderColor = [UIColor blackColor].CGColor;
     separatorView.layer.borderWidth = 0.1;
-    separatorView.backgroundColor = [UIColor lightGrayColor];
+    separatorView.backgroundColor = [UIColor colorWithRed:0.80 green:0.80 blue:0.80 alpha:1.0];
     [cell.contentView addSubview:separatorView];
 
     return cell;

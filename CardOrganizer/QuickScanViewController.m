@@ -96,6 +96,12 @@
     counter++;
 }
 
+-(void)viewDidLoad
+{
+    //chage navigation controller color
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.29 green:0.65 blue:0.96 alpha:1.0];
+}
+
 -(void) viewDidAppear:(BOOL)animated
 {
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];

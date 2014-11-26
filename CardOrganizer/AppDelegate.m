@@ -23,6 +23,12 @@
     /////////////////////FIX ME///////////////////////////////
     delegate.delegateMutableArray = [[NSMutableArray alloc]init];
     // Override point for customization after application launch.
+    
+    
+    //set carrier, clock, battary to white
+    [application setStatusBarHidden:NO];
+    [application setStatusBarStyle:UIStatusBarStyleLightContent];
+    
     return YES;
      
 }

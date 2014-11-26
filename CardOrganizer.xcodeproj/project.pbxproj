@@ -23,6 +23,7 @@
 		808E648419F4449900D44D38 /* QuickScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 808E648319F4449900D44D38 /* QuickScanViewController.m */; };
 		80A9A84519F2F414000B93E5 /* BarcodeScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80A9A84419F2F414000B93E5 /* BarcodeScannerViewController.m */; };
 		80F705AC19F5E56E00312279 /* GCPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F705AB19F5E56E00312279 /* GCPlaceholderTextView.m */; };
+		F7C2C1B91A2544F300BFAE5C /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C2C1B81A2544F300BFAE5C /* SettingsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,8 @@
 		80F705AB19F5E56E00312279 /* GCPlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCPlaceholderTextView.m; sourceTree = "<group>"; };
 		9FC42E10A51B7F1C77951B9C /* libPods-CardOrganizer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CardOrganizer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F44E380047A31F2A214076C9 /* Pods-CardOrganizer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardOrganizer.release.xcconfig"; path = "Pods/Target Support Files/Pods-CardOrganizer/Pods-CardOrganizer.release.xcconfig"; sourceTree = "<group>"; };
+		F7C2C1B71A2544F300BFAE5C /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		F7C2C1B81A2544F300BFAE5C /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +125,8 @@
 				111A178C19D0E218000EE067 /* createNewCardViewController.h */,
 				111A178D19D0E218000EE067 /* createNewCardViewController.m */,
 				111A176D19D0DB88000EE067 /* Main.storyboard */,
+				F7C2C1B71A2544F300BFAE5C /* SettingsViewController.h */,
+				F7C2C1B81A2544F300BFAE5C /* SettingsViewController.m */,
 				11CEF40519EDD1BE00EF2D76 /* EditCardViewController.h */,
 				11CEF40619EDD1BE00EF2D76 /* EditCardViewController.m */,
 				11263BB419D26218000AF712 /* CardInfoViewController.h */,
@@ -331,6 +336,7 @@
 				111A176919D0DB88000EE067 /* AppDelegate.m in Sources */,
 				807B655319FC03BD00EFA770 /* LandscapeViewController.m in Sources */,
 				111A176619D0DB88000EE067 /* main.m in Sources */,
+				F7C2C1B91A2544F300BFAE5C /* SettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

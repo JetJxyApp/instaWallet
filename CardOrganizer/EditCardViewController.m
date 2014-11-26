@@ -63,6 +63,7 @@
 }
 
 //take new poto for card
+
 - (IBAction)takePhoto
 {
     UIImagePickerController *uiipc = [[UIImagePickerController alloc] init];
