@@ -234,29 +234,43 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier
                                                             forIndexPath:indexPath];
             
-            //Information of Card name , card number
-            NSString *cardTextPath = [[self.cards[indexPath.row] objectAtIndex:0] objectAtIndex:0];
-            NSArray *data = [[NSArray alloc] initWithContentsOfFile:cardTextPath];
-            cell.textLabel.text = [data objectAtIndex:0];
-            cell.detailTextLabel.text = [data objectAtIndex:1];
-            
-            //Information of saved Iamge
-            NSString *cardIamgePath = [[self.cards[indexPath.row] objectAtIndex:0] objectAtIndex:1];
-            UIImage *cellImage = [UIImage imageWithContentsOfFile:cardIamgePath];
+    //Information of Card name , card number
+    NSString *cardTextPath = [[self.cards[indexPath.row] objectAtIndex:0] objectAtIndex:0];
+    NSArray *data = [[NSArray alloc] initWithContentsOfFile:cardTextPath];
+    cell.textLabel.text = [data objectAtIndex:0];
+    cell.detailTextLabel.text = [data objectAtIndex:1];
     
-            //create thumbnail for card image and make rounded corner
-            UIImage *thumbnail = [cellImage imageByScalingToSize:CGSizeMake(85, 57)];
-            cell.imageView.layer.cornerRadius = 5;
-            cell.imageView.clipsToBounds = YES;
-    /*
-            UIImage *thumbnail = cellImage;
-            cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
+    //Information of saved Iamge
+    NSString *cardIamgePath = [[self.cards[indexPath.row] objectAtIndex:0] objectAtIndex:1];
+    UIImage *cellImage = [UIImage imageWithContentsOfFile:cardIamgePath];
     
-    CGRect photoFrame = cell.imageView.frame;
-    photoFrame.size = CGSizeMake(100, 100);
-    cell.imageView.frame = photoFrame;*/
+    //move text lable of cell to right
+    cell.indentationWidth = 55;
+    cell.indentationLevel = 2;
+    
+    //make rounded corner
+    cell.imageView.layer.cornerRadius = 5;
+    cell.imageView.clipsToBounds = YES;
+    
+    //create thumbnail for card image and make rounded corner
+    //UIImage *thumbnail = [cellImage imageByScalingToSize:CGSizeMake(81, 54)];
+    //cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
 
-            cell.imageView.image = thumbnail;
+
+   //UIImageView *recipeImageView = (UIImageView *)[cell viewWithTag:100];
+    
+    UIImageView *thumbnail = [[UIImageView alloc] initWithFrame:CGRectMake(20, 10, 85.6, 54)];
+    thumbnail.backgroundColor = [UIColor blackColor];
+    thumbnail.contentMode = UIViewContentModeScaleAspectFill;
+    [cell.contentView addSubview:thumbnail];
+    
+    //cell.imageView.frame = CGRectMake(100, 200, 80, 54);
+    thumbnail.clipsToBounds = YES;
+    thumbnail.layer.cornerRadius = 5;
+    thumbnail.image = cellImage;
+
+    
+    
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
@@ -271,7 +285,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     // We have to use the borderColor/Width as opposed to just setting the
     // backgroundColor else the view becomes transparent and disappears during
     // the cell's selected/highlighted animation
-    UIView *separatorView = [[UIView alloc] initWithFrame:CGRectMake(120, cell.contentView.frame.size.height - 1.0, cell.contentView.frame.size.width - 85, 0.6)];
+    UIView *separatorView = [[UIView alloc] initWithFrame:CGRectMake(20, cell.contentView.frame.size.height - 1.0, cell.contentView.frame.size.width+20, 0.6)];
     //separatorView.layer.borderColor = [UIColor blackColor].CGColor;
     separatorView.layer.borderWidth = 0.1;
     separatorView.backgroundColor = [UIColor colorWithRed:0.80 green:0.80 blue:0.80 alpha:1.0];
