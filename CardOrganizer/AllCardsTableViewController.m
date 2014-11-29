@@ -254,11 +254,17 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     
     //create thumbnail for card image and make rounded corner
     //UIImage *thumbnail = [cellImage imageByScalingToSize:CGSizeMake(81, 54)];
+    //cell.imageView.image = cellImage;
     //cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
 
 
-   //UIImageView *recipeImageView = (UIImageView *)[cell viewWithTag:100];
+    UIImageView *recipeImageView = (UIImageView *)[cell viewWithTag:100];
+    recipeImageView.contentMode = UIViewContentModeScaleAspectFill;
+    recipeImageView.clipsToBounds = YES;
+    recipeImageView.layer.cornerRadius = 5;
+    recipeImageView.image = cellImage;
     
+    /*
     UIImageView *thumbnail = [[UIImageView alloc] initWithFrame:CGRectMake(20, 10, 85.6, 54)];
     thumbnail.backgroundColor = [UIColor blackColor];
     thumbnail.contentMode = UIViewContentModeScaleAspectFill;
@@ -268,11 +274,13 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     thumbnail.clipsToBounds = YES;
     thumbnail.layer.cornerRadius = 5;
     thumbnail.image = cellImage;
+    */
 
     
     
     
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    //self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.separatorColor =[UIColor colorWithRed:0.80 green:0.80 blue:0.80 alpha:1.0];
     
     //set the font of cell
     cell.textLabel.font = [UIFont fontWithName:@"Helvetica-Light" size:18.0];
@@ -285,12 +293,15 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     // We have to use the borderColor/Width as opposed to just setting the
     // backgroundColor else the view becomes transparent and disappears during
     // the cell's selected/highlighted animation
+    
+    /*
     UIView *separatorView = [[UIView alloc] initWithFrame:CGRectMake(20, cell.contentView.frame.size.height - 1.0, cell.contentView.frame.size.width+20, 0.6)];
     //separatorView.layer.borderColor = [UIColor blackColor].CGColor;
     separatorView.layer.borderWidth = 0.1;
     separatorView.backgroundColor = [UIColor colorWithRed:0.80 green:0.80 blue:0.80 alpha:1.0];
     [cell.contentView addSubview:separatorView];
-
+     */
+    
     return cell;
 }
 

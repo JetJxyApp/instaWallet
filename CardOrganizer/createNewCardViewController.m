@@ -92,6 +92,13 @@
 
 }
 
+-(void)viewWillDisappear:(BOOL)animated
+{
+    //resign or remove keyboard when user press scan barcode button
+    //fix the bug of textfield move up/down
+    [self.view endEditing:YES];
+}
+
 -(void)viewWillAppear:(BOOL)animated
 {
 
@@ -234,7 +241,7 @@
  * Below deal with issue of keyboard cover textfield
  */
 
-/*
+
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
     [self animateTextField: textField up: YES];
@@ -248,7 +255,7 @@
 
 - (void) animateTextField: (UITextField*) textField up: (BOOL) up
 {
-    const int movementDistance = 100; // tweak as needed
+    const int movementDistance = 110; // tweak as needed
     const float movementDuration = 0.3f; // tweak as needed
     
     int movement = (up ? -movementDistance : movementDistance);
@@ -259,7 +266,7 @@
     self.view.frame = CGRectOffset(self.view.frame, 0, movement);
     [UIView commitAnimations];
 }
-*/
+
 
 //alert view to alert any missing field
 -(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
@@ -288,10 +295,8 @@
         if(![self.cardNameTextField.text length]){
             [self alert:@"Please enter Card Name!"];
             return NO;
-        }else if (![self.cardNumberTextField.text length]){
-            [self alert:@"Please enter Card Number!"];
-            return NO;
-        }else{
+        }
+        else{
             return YES;
         }
     }else{
