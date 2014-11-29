@@ -30,7 +30,13 @@
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="R0a-uD-wFU" id="WVq-AQ-6Uh">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BQY-7i-2Cb">
+                                            <rect key="frame" x="14" y="10" width="86" height="54"/>
+                                        </imageView>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
                                     <segue destination="9rf-vN-KUc" kind="push" identifier="Display Card" id="VtE-Kf-Reo"/>
                                 </connections>
@@ -220,7 +226,7 @@
                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="cF6-HV-NtR" kind="modal" modalTransitionStyle="coverVertical" id="fx4-Ub-ccc"/>
+                                    <segue destination="cF6-HV-NtR" kind="modal" id="fx4-Ub-ccc"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -762,6 +768,6 @@ BBsHGwwbFBsXGykbLBsxAAAAAAAAAgEAAAAAAAAAQgAAAAAAAAAAAAAAAAAAGzM
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="XjA-sU-KWi"/>
+        <segue reference="8bd-MZ-NjF"/>
     </inferredMetricsTieBreakers>
 </document>
