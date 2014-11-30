@@ -202,22 +202,9 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YNj-gZ-lp2">
                                 <rect key="frame" x="67" y="121" width="240" height="151"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VQk-Vn-OEW">
-                                <rect key="frame" x="41" y="83" width="293" height="30"/>
-                                <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="24"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="ab4-7Y-mst" id="lIf-bK-S7T"/>
-                                </connections>
-                            </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qcI-FW-oJF">
                                 <rect key="frame" x="0.0" y="288" width="375" height="111"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jfQ-9i-9xa">
-                                <rect key="frame" x="41" y="407" width="293" height="30"/>
-                                <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="26"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1f8-M6-O56">
                                 <rect key="frame" x="0.0" y="288" width="375" height="111"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -229,6 +216,18 @@
                                     <segue destination="cF6-HV-NtR" kind="modal" id="fx4-Ub-ccc"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BPZ-dm-JZG">
+                                <rect key="frame" x="41" y="83" width="293" height="30"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="24"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4mG-Wt-xYv">
+                                <rect key="frame" x="41" y="407" width="293" height="30"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="26"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -243,8 +242,8 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="barcodeImageView" destination="qcI-FW-oJF" id="Vc6-j2-55r"/>
-                        <outlet property="barcodeNumberTextField" destination="jfQ-9i-9xa" id="PNX-aH-Bpa"/>
-                        <outlet property="cardNameTextField" destination="VQk-Vn-OEW" id="ybt-Yc-trm"/>
+                        <outlet property="barcodeNumberLable" destination="4mG-Wt-xYv" id="4Fi-5l-14k"/>
+                        <outlet property="cardNameLable" destination="BPZ-dm-JZG" id="pOF-TG-asY"/>
                         <outlet property="imageView" destination="YNj-gZ-lp2" id="CJY-W9-4RS"/>
                     </connections>
                 </viewController>
@@ -484,9 +483,7 @@
         <scene sceneID="w4s-AC-6Et">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2Lw-qQ-czV" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Cards" image="folder-50" id="uHL-x0-I04">
-                        <inset key="imageInsets" minX="2" minY="2" maxX="2" maxY="2"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="Cards" image="folder-50" id="uHL-x0-I04"/>
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oYL-00-cVs">
@@ -583,9 +580,7 @@
         <scene sceneID="2To-gC-sm6">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Yid-Tn-qyl" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" image="settings-50" id="x1G-KM-gOp">
-                        <inset key="imageInsets" minX="1" minY="1" maxX="1" maxY="1"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings-50" id="x1G-KM-gOp"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="az6-Uh-G4E">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -608,9 +603,7 @@
         <scene sceneID="RQO-HV-nKc">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KrR-AM-j7S" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Quick Scan" image="barcode_scanner-50" id="L9r-eE-nG7">
-                        <inset key="imageInsets" minX="1" minY="1" maxX="1" maxY="1"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="Quick Scan" image="barcode_scanner-50" id="L9r-eE-nG7"/>
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pJu-18-QcV">
