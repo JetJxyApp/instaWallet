@@ -62,7 +62,7 @@
 {
     [super viewDidLoad];
     
-    NSLog(@"row number in eidit = %ld", self.rowNumer);
+    //NSLog(@"row number in eidit = %ld", self.rowNumer);
     
     NSString *textDataPathStr = [[self.cardPath objectAtIndex:0] objectAtIndex:0];
     NSString *imageDataPathStr = [[self.cardPath  objectAtIndex:0] objectAtIndex:1];
@@ -92,7 +92,7 @@
                 self.barcodeNumberLable.text = [NSString stringWithFormat:@"%@%@%@", @"A",self.barcodeNumberLable.text, @"C"];
                 self.barcodeImageView.frame = CGRectMake(-10, 288
                                                          , 450, 111);
-                NSLog(@"%@",self.barcodeNumberLable.text);
+                //NSLog(@"%@",self.barcodeNumberLable.text);
             }
             
             NSLog(@"width is %d\n", (int)self.barcodeImageView.frame.size.width);
@@ -122,7 +122,7 @@
 {
     
     if ([segue.sourceViewController isKindOfClass:[EditCardViewController class]]) {
-        NSLog(@"edit done");
+        //NSLog(@"edit done");
         EditCardViewController *ecVC = (EditCardViewController *)segue.sourceViewController;
         self.cardPath = ecVC.cardPath;
         

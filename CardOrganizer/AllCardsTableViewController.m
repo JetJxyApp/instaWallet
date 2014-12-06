@@ -59,8 +59,8 @@
     for (NSMutableArray *card in self.cards)
     {
         [delegate.delegateMutableArray addObject:card];
-        NSLog(@"card before path = %@", self.cards);
-        NSLog(@"delegate before pass = %@", delegate.delegateMutableArray);
+        //NSLog(@"card before path = %@", self.cards);
+        //NSLog(@"delegate before pass = %@", delegate.delegateMutableArray);
         
     }
     
@@ -202,11 +202,11 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
             [self.cards addObject:self.cardPath];
             NSLog(@"cards # = %ld", [self.cards count]);
             //log for card path store on disk
-            for (NSString *str in self.cards) {
+            /*for (NSString *str in self.cards) {
                 if(str){
                     NSLog(@"after added new card str = %@", str);
                 }
-            }
+            }*/
             
         }else{
             NSLog(@"Failed to added new card");

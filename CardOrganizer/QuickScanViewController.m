@@ -82,15 +82,30 @@
                                        width:self.barcodeImageView.frame.size.width
                                       height:self.barcodeImageView.frame.size.height
                                        error:nil];
-        if (result) {
+       
+        
+        if (result && (![barcodeType isEqualToString:@"PDF417"])) {
+            
             ZXImage *image = [ZXImage imageWithMatrix:result];
-            CGImageRef imageRef = [self CGImageRotatedByAngle:image.cgimage angle:270];
+            CGImageRef imageRef = [self CGImageRotatedByAngle:image.cgimage angle: -90];
+            NSLog(@"image has been rotated -90 degrees!!");
             
             self.barcodeImageView.image = [UIImage imageWithCGImage:imageRef];
-            NSLog(@"%@",self.barcodeImageView.image);
-        } else {
+            
+        }
+        else if (result && [barcodeType isEqualToString:@"PDF417"])
+        {
+            ZXImage *image = [ZXImage imageWithMatrix:result];
+            CGImageRef imageRef = [self CGImageRotatedByAngle:image.cgimage angle: 180];
+            NSLog(@"image has been rotated 180 degrees!!");
+            
+            self.barcodeImageView.image = [UIImage imageWithCGImage:imageRef];
+            
+        }
+        else {
             self.barcodeImageView.image = nil;
         }
+
     }
     
     counter++;
@@ -141,7 +156,6 @@
             
             [barcodeInfo addObject:self.barcodeNumber];
             [barcodeInfo addObject:self.barcodeType];
-            NSLog(@"inside=====================================");
 
             [self.barcodeInfoArray addObject:barcodeInfo];
             
