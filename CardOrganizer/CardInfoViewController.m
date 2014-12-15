@@ -89,7 +89,7 @@
             //start barcode generating
             if( [self.barcodeTypeTextField isEqualToString:@"CODABAR"] )
             {
-                self.barcodeNumberLable.text = [NSString stringWithFormat:@"%@%@%@", @"A",self.barcodeNumberLable.text, @"C"];
+                self.barcodeNumberLable.text = [NSString stringWithFormat:@"%@%@%@", @"A",self.barcodeNumberLable.text, @"A"];
                 self.barcodeImageView.frame = CGRectMake(-10, 288
                                                          , 450, 111);
                 NSLog(@"%@",self.barcodeNumberLable.text);
