@@ -31,11 +31,34 @@
 {
     UIScreen *mainScreen = [UIScreen mainScreen];
     mainScreen.brightness = self.previousBrightness;
+    [UIApplication sharedApplication].statusBarHidden = NO;
+
+}
+- (void)viewDidLoad {
+    
+    [super viewDidLoad];
+    self.title = @"Barcode";
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewDidLoad];
+
+    /*fill color for status bar */
+    UIView *addStatusBar = [[UIView alloc] init];
+    addStatusBar.frame = CGRectMake(0, 0, self.view.bounds.size.width, 20);
+    addStatusBar.backgroundColor = [UIColor colorWithRed:0.29 green:0.65 blue:0.96 alpha:1.0];
+    [self.view addSubview:addStatusBar];
+    
+    //self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.29 green:0.65 blue:0.96 alpha:1.0];
+    UINavigationBar *nb = (UINavigationBar *)[self.view viewWithTag:100];
+    nb.barTintColor = [UIColor colorWithRed:0.29 green:0.65 blue:0.96 alpha:1.0];
+    
+    
+
+
+
     
     NSLog(@"the barcode number is: %@\n", self.barcodeNumberTextField);
     NSLog(@"the barcode type is %@\n", self.barcodeTypeTextField);
