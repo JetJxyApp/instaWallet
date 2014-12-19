@@ -209,8 +209,17 @@
         /*
          *store card text field
          */
+        
+        //Below snippet used for differentiate duplicated/same card name
+        //I use specific date/time to distinguish card with same name
+        //the same method applied for card image file path
+        NSDateFormatter *format = [[NSDateFormatter alloc] init];
+        [format setDateFormat:@"MMMM dd, yyyy (EEEE) HH:mm:ss z Z"];
+        NSDate *now = [NSDate date];
+        NSString *nsstr = [format stringFromDate:now];
+
         NSString *textDataPathStr = [[self class] cardInfoFilePath:self.cardNameTextField.text
-                                                        cardNumber:self.cardNumberTextField.text
+                                                        cardNumber:nsstr
                                                         imageOrNot:NO];
         if (textDataPathStr == nil)
         {
@@ -234,7 +243,7 @@
          *store image
          */
         NSString *imageDataPathStr = [[self class] cardInfoFilePath:self.cardNameTextField.text
-                                                         cardNumber:self.cardNumberTextField.text
+                                                         cardNumber:nsstr
                                                          imageOrNot:YES];
         if (imageDataPathStr == nil) {
             NSLog(@"no imageDataPrthStr");
