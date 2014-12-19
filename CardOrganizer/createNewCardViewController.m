@@ -10,9 +10,10 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <QuartzCore/QuartzCore.h>
 #import "UIImage_Thumbnail.h"
+#import "GKImagePicker.h"
 
 
-@interface createNewCardViewController () <UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface createNewCardViewController () <UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate,GKImagePickerDelegate>
 @property (weak, nonatomic) IBOutlet GCPlaceholderTextView *cardNameTextField;
 @property (weak, nonatomic) IBOutlet GCPlaceholderTextView *cardNumberTextField;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
@@ -21,22 +22,48 @@
 @property (strong, nonatomic) UIImage *image;
 @property( nonatomic,strong) NSMutableArray * cardAllInfoArray;
 
+@property (nonatomic, strong) GKImagePicker *imagePicker;
+@property (nonatomic, strong) UIPopoverController *popoverController;
+
+
+
 @end
 
 @implementation createNewCardViewController
+
+@synthesize popoverController;
+@synthesize imagePicker;
+
+
 
 #pragma mark - take photo
 
 - (IBAction)takePhoto
 {
+    /*
     UIImagePickerController *uiipc = [[UIImagePickerController alloc] init];
     uiipc.delegate = self;
     uiipc.mediaTypes = @[(NSString *)kUTTypeImage];
     uiipc.sourceType = UIImagePickerControllerSourceTypeCamera;
     uiipc.allowsEditing = YES;
     [self presentViewController:uiipc animated:YES completion:NULL];
+    */
+    
+    self.imagePicker = [[GKImagePicker alloc] init];
+    self.imagePicker.cropSize = CGSizeMake(250, 150);
+    self.imagePicker.delegate = self;
+    self.imagePicker.resizeableCropArea = YES;
+    
+
+        
+   // [self presentModalViewController:self.imagePicker.imagePickerController animated:YES];
+    [self presentViewController:self.imagePicker.imagePickerController animated:YES completion:NULL];
+
+    
+    
 }
 
+/*
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
     [self dismissViewControllerAnimated:YES completion:NULL];
@@ -50,6 +77,46 @@
     self.image = image;
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
+*/
+
+
+# pragma mark -
+# pragma mark GKImagePicker Delegate Methods
+
+- (void)imagePicker:(GKImagePicker *)imagePicker pickedImage:(UIImage *)image{
+    self.imageView.image = image;
+    [self hideImagePicker];
+}
+
+- (void)hideImagePicker{
+
+        
+    [self.imagePicker.imagePickerController dismissViewControllerAnimated:YES completion:nil];
+        
+    
+}
+
+# pragma mark -
+# pragma mark UIImagePickerDelegate Methods
+/*
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo{
+    self.imageView.image = image;
+ 
+    [picker dismissViewControllerAnimated:YES completion:nil];
+ 
+}
+
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+}
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+}*/
 
 //function of barcode Scanner
 
@@ -106,6 +173,11 @@
     self.cardNumberTextField.placeholder = NSLocalizedString(@"Optional",);
     self.barcodeNumberTextField.placeholder = NSLocalizedString(@"Required - Please Scan ->",);
     self.barcodeTypeTextField.placeholder = NSLocalizedString(@"Required - Please Scan",);
+    
+    //deal with the issue that statu bar disappear when user finish taking/editing image and pop back
+    //to previous view controller
+    [UIApplication sharedApplication].statusBarHidden = NO;
+
     
 }
 

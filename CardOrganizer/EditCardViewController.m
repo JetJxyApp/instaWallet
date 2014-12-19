@@ -11,8 +11,9 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <QuartzCore/QuartzCore.h>
 #import "UIImage_Thumbnail.h"
+#import "GKImagePicker.h"
 
-@interface EditCardViewController () <UITextFieldDelegate,UIAlertViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface EditCardViewController () <UITextFieldDelegate,UIAlertViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate,GKImagePickerDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *cardNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *cardNumberTextField;
 @property (weak, nonatomic) IBOutlet UITextField *barcodeNumberTextField;
@@ -21,9 +22,15 @@
 @property (strong, nonatomic) UIImage *image;
 @property( nonatomic,strong) NSMutableArray * cardAllInfoArray;
 
+@property (nonatomic, strong) GKImagePicker *imagePicker;
+@property (nonatomic, strong) UIPopoverController *popoverController;
+
 @end
 
 @implementation EditCardViewController
+
+@synthesize popoverController;
+@synthesize imagePicker;
 
 - (void)setImage:(UIImage *)image
 {
@@ -66,14 +73,28 @@
 
 - (IBAction)takePhoto
 {
-    UIImagePickerController *uiipc = [[UIImagePickerController alloc] init];
-    uiipc.delegate = self;
-    uiipc.mediaTypes = @[(NSString *)kUTTypeImage];
-    uiipc.sourceType = UIImagePickerControllerSourceTypeCamera;
-    uiipc.allowsEditing = YES;
-    [self presentViewController:uiipc animated:YES completion:NULL];
+        
+    /*
+     UIImagePickerController *uiipc = [[UIImagePickerController alloc] init];
+     uiipc.delegate = self;
+     uiipc.mediaTypes = @[(NSString *)kUTTypeImage];
+     uiipc.sourceType = UIImagePickerControllerSourceTypeCamera;
+     uiipc.allowsEditing = YES;
+     [self presentViewController:uiipc animated:YES completion:NULL];
+     */
+    
+    self.imagePicker = [[GKImagePicker alloc] init];
+    self.imagePicker.cropSize = CGSizeMake(250, 150);
+    self.imagePicker.delegate = self;
+    self.imagePicker.resizeableCropArea = YES;
+    
+    
+    
+    // [self presentModalViewController:self.imagePicker.imagePickerController animated:YES];
+    [self presentViewController:self.imagePicker.imagePickerController animated:YES completion:NULL];
 }
 
+/*
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
     [self dismissViewControllerAnimated:YES completion:NULL];
@@ -87,6 +108,37 @@
     self.image = image;
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
+ */
+
+# pragma mark -
+# pragma mark GKImagePicker Delegate Methods
+
+- (void)imagePicker:(GKImagePicker *)imagePicker pickedImage:(UIImage *)image{
+    self.imageView.image = image;
+    [self hideImagePicker];
+}
+
+- (void)hideImagePicker{
+    
+    
+    [self.imagePicker.imagePickerController dismissViewControllerAnimated:YES completion:nil];
+    
+    
+}
+
+
+
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    
+    //deal with the issue that statu bar disappear when user finish taking/editing image and pop back
+    //to previous view controller
+    [UIApplication sharedApplication].statusBarHidden = NO;
+    
+    
+}
+
 
 -(void)viewWillDisappear:(BOOL)animated
 {

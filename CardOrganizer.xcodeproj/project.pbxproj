@@ -23,6 +23,12 @@
 		808E648419F4449900D44D38 /* QuickScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 808E648319F4449900D44D38 /* QuickScanViewController.m */; };
 		80A9A84519F2F414000B93E5 /* BarcodeScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80A9A84419F2F414000B93E5 /* BarcodeScannerViewController.m */; };
 		80F705AC19F5E56E00312279 /* GCPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 80F705AB19F5E56E00312279 /* GCPlaceholderTextView.m */; };
+		F72CCA6D1A43690C00F9F2A4 /* GKCropBorderView.m in Sources */ = {isa = PBXBuildFile; fileRef = F72CCA621A43690C00F9F2A4 /* GKCropBorderView.m */; };
+		F72CCA6E1A43690C00F9F2A4 /* GKImageCropOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = F72CCA641A43690C00F9F2A4 /* GKImageCropOverlayView.m */; };
+		F72CCA6F1A43690C00F9F2A4 /* GKImageCropView.m in Sources */ = {isa = PBXBuildFile; fileRef = F72CCA661A43690C00F9F2A4 /* GKImageCropView.m */; };
+		F72CCA701A43690C00F9F2A4 /* GKImageCropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F72CCA681A43690C00F9F2A4 /* GKImageCropViewController.m */; };
+		F72CCA711A43690C00F9F2A4 /* GKImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = F72CCA6A1A43690C00F9F2A4 /* GKImagePicker.m */; };
+		F72CCA721A43690C00F9F2A4 /* GKResizeableCropOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = F72CCA6C1A43690C00F9F2A4 /* GKResizeableCropOverlayView.m */; };
 		F7C2C1B91A2544F300BFAE5C /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C2C1B81A2544F300BFAE5C /* SettingsViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +76,18 @@
 		80F705AB19F5E56E00312279 /* GCPlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCPlaceholderTextView.m; sourceTree = "<group>"; };
 		9FC42E10A51B7F1C77951B9C /* libPods-CardOrganizer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CardOrganizer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F44E380047A31F2A214076C9 /* Pods-CardOrganizer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardOrganizer.release.xcconfig"; path = "Pods/Target Support Files/Pods-CardOrganizer/Pods-CardOrganizer.release.xcconfig"; sourceTree = "<group>"; };
+		F72CCA611A43690C00F9F2A4 /* GKCropBorderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKCropBorderView.h; sourceTree = "<group>"; };
+		F72CCA621A43690C00F9F2A4 /* GKCropBorderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKCropBorderView.m; sourceTree = "<group>"; };
+		F72CCA631A43690C00F9F2A4 /* GKImageCropOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKImageCropOverlayView.h; sourceTree = "<group>"; };
+		F72CCA641A43690C00F9F2A4 /* GKImageCropOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKImageCropOverlayView.m; sourceTree = "<group>"; };
+		F72CCA651A43690C00F9F2A4 /* GKImageCropView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKImageCropView.h; sourceTree = "<group>"; };
+		F72CCA661A43690C00F9F2A4 /* GKImageCropView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKImageCropView.m; sourceTree = "<group>"; };
+		F72CCA671A43690C00F9F2A4 /* GKImageCropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKImageCropViewController.h; sourceTree = "<group>"; };
+		F72CCA681A43690C00F9F2A4 /* GKImageCropViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKImageCropViewController.m; sourceTree = "<group>"; };
+		F72CCA691A43690C00F9F2A4 /* GKImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKImagePicker.h; sourceTree = "<group>"; };
+		F72CCA6A1A43690C00F9F2A4 /* GKImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKImagePicker.m; sourceTree = "<group>"; };
+		F72CCA6B1A43690C00F9F2A4 /* GKResizeableCropOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKResizeableCropOverlayView.h; sourceTree = "<group>"; };
+		F72CCA6C1A43690C00F9F2A4 /* GKResizeableCropOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKResizeableCropOverlayView.m; sourceTree = "<group>"; };
 		F7C2C1B71A2544F300BFAE5C /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		F7C2C1B81A2544F300BFAE5C /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -116,6 +134,7 @@
 		111A176219D0DB88000EE067 /* CardOrganizer */ = {
 			isa = PBXGroup;
 			children = (
+				F72CCA601A43690C00F9F2A4 /* GKClasses */,
 				1191459C19F5DBD80094A4D3 /* UIImage_Thumbnail.h */,
 				1191459D19F5DC170094A4D3 /* UIImage_Thumbnail.m */,
 				807B655119FC03BD00EFA770 /* LandscapeViewController.h */,
@@ -188,6 +207,25 @@
 				9FC42E10A51B7F1C77951B9C /* libPods-CardOrganizer.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F72CCA601A43690C00F9F2A4 /* GKClasses */ = {
+			isa = PBXGroup;
+			children = (
+				F72CCA611A43690C00F9F2A4 /* GKCropBorderView.h */,
+				F72CCA621A43690C00F9F2A4 /* GKCropBorderView.m */,
+				F72CCA631A43690C00F9F2A4 /* GKImageCropOverlayView.h */,
+				F72CCA641A43690C00F9F2A4 /* GKImageCropOverlayView.m */,
+				F72CCA651A43690C00F9F2A4 /* GKImageCropView.h */,
+				F72CCA661A43690C00F9F2A4 /* GKImageCropView.m */,
+				F72CCA671A43690C00F9F2A4 /* GKImageCropViewController.h */,
+				F72CCA681A43690C00F9F2A4 /* GKImageCropViewController.m */,
+				F72CCA6B1A43690C00F9F2A4 /* GKResizeableCropOverlayView.h */,
+				F72CCA6C1A43690C00F9F2A4 /* GKResizeableCropOverlayView.m */,
+				F72CCA691A43690C00F9F2A4 /* GKImagePicker.h */,
+				F72CCA6A1A43690C00F9F2A4 /* GKImagePicker.m */,
+			);
+			path = GKClasses;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -324,19 +362,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F72CCA6F1A43690C00F9F2A4 /* GKImageCropView.m in Sources */,
+				F72CCA711A43690C00F9F2A4 /* GKImagePicker.m in Sources */,
 				11263BB619D26218000AF712 /* CardInfoViewController.m in Sources */,
 				11263BB319D24A4F000AF712 /* AllCardsTableViewController.m in Sources */,
+				F72CCA6D1A43690C00F9F2A4 /* GKCropBorderView.m in Sources */,
 				808E648419F4449900D44D38 /* QuickScanViewController.m in Sources */,
 				80A9A84519F2F414000B93E5 /* BarcodeScannerViewController.m in Sources */,
 				11CEF40A19EDF47600EF2D76 /* CustomTabBarController.m in Sources */,
 				1191459E19F5DC170094A4D3 /* UIImage_Thumbnail.m in Sources */,
 				11CEF40719EDD1BE00EF2D76 /* EditCardViewController.m in Sources */,
 				111A178E19D0E218000EE067 /* createNewCardViewController.m in Sources */,
+				F72CCA721A43690C00F9F2A4 /* GKResizeableCropOverlayView.m in Sources */,
 				80F705AC19F5E56E00312279 /* GCPlaceholderTextView.m in Sources */,
 				111A176919D0DB88000EE067 /* AppDelegate.m in Sources */,
 				807B655319FC03BD00EFA770 /* LandscapeViewController.m in Sources */,
 				111A176619D0DB88000EE067 /* main.m in Sources */,
+				F72CCA701A43690C00F9F2A4 /* GKImageCropViewController.m in Sources */,
 				F7C2C1B91A2544F300BFAE5C /* SettingsViewController.m in Sources */,
+				F72CCA6E1A43690C00F9F2A4 /* GKImageCropOverlayView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
