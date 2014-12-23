@@ -69,6 +69,14 @@
     _cards = cards;
 }
 
+-(NSMutableArray *)searchResults
+{
+    if (!_searchResults) {
+        _searchResults = [[NSMutableArray alloc]init];
+    }
+    return _searchResults;
+}
+
 //take new poto for card
 
 - (IBAction)takePhoto
@@ -303,13 +311,39 @@
         else if (buttonIndex == 1){// 2nd other button, that is delete card
             NSLog(@"ready to delete");
             NSLog(@"delete card at row number = %ld", self.rowNumer);
+            NSInteger indexDeleteInSearchResult = self.rowNumer;
+            
+            NSString *textDataPathStr = [[self.cardPath objectAtIndex:0] objectAtIndex:0];
+            NSString *imageDataPathStr = [[self.cardPath  objectAtIndex:0] objectAtIndex:1];
+            
+
+            /*
+             * determine the index in the cards to delete
+             */
+            NSString *searchText =  [[textDataPathStr lastPathComponent]stringByDeletingPathExtension];
+            NSLog(@"searchText = %@", searchText);
+            
+            NSInteger counter = 0;
+            for (NSArray *ary1 in self.cards) {
+                //extract one card from all cards
+                for (NSArray *ary2 in ary1) {
+                    //extract file and image path from this specific card
+                    //NSLog(@"last component %@", [[[ary2 objectAtIndex:0] lastPathComponent]stringByDeletingPathExtension]);
+                    NSString * fileName =[[[ary2 objectAtIndex:0] lastPathComponent]stringByDeletingPathExtension];//enough only search file name, b/c image name the same
+                    NSLog(@"looping file name = %@", fileName);
+                    if ([fileName isEqualToString:searchText]) {
+                        //this means found a matched filename
+                        NSLog(@"Find matched file!!!");
+                        self.rowNumer = counter;
+                    }
+                    
+                }
+                counter ++;
+            }
             
             /*
              * delete text file and image file
              */
-            NSString *textDataPathStr = [[self.cardPath objectAtIndex:0] objectAtIndex:0];
-            NSString *imageDataPathStr = [[self.cardPath  objectAtIndex:0] objectAtIndex:1];
-            
             NSError *error;
             NSFileManager *fileManager = [NSFileManager defaultManager];
             if ([fileManager isDeletableFileAtPath:textDataPathStr]) {
@@ -338,6 +372,9 @@
             
             
             [self.cards removeObjectAtIndex:self.rowNumer];
+            if ([self.searchResults count] != 0) {
+                [self.searchResults removeObjectAtIndex:indexDeleteInSearchResult];
+            }
             
             //log for card path store on disk
             /*for (NSString *str in self.cards) {
@@ -345,6 +382,8 @@
                     NSLog(@"remaining card info after delete card = %@", str);
                 }
             }*/
+            
+
             [self.navigationController popToRootViewControllerAnimated:YES];
             
         }

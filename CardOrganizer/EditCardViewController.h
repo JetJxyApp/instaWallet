@@ -15,5 +15,7 @@
 
 @property (nonatomic,strong) NSMutableArray * cards;//path of all cards
 @property(nonatomic) NSInteger rowNumer;//cell row in table view for delete
+@property (nonatomic,strong) NSMutableArray * searchResults; //delete cards in search results table view
+
 
 @end

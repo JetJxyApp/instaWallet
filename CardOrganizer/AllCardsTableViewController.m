@@ -12,15 +12,19 @@
 #import "AppDelegate.h"
 #import "UIImage_Thumbnail.h"
 #import <QuartzCore/QuartzCore.h>
+#import "CardTableViewCell.h"
 
-@interface AllCardsTableViewController () <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate>
+@interface AllCardsTableViewController () <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate,UISearchBarDelegate,UISearchDisplayDelegate>
 @property (strong, nonatomic) IBOutlet UIView *hintToUser;
 @property (strong, nonatomic) IBOutlet UILabel *hintLabel;
 @property NSInteger rowSwipeToDelete;
 @property NSIndexPath *indexPathToDelete;
+@property NSInteger searchToDelete;
+@property NSInteger cancelPressedSearchBar; //determine is cancel button of search bar pressed for showing of hint bar
 @end
 
 @implementation AllCardsTableViewController
+
 
 //refresh table view
 - (IBAction)refresh
@@ -34,11 +38,23 @@
     if ([self.cards count] != 0) {
         
         [self.hintToUser setHidden:YES];
+        //[self.searchDisplayController.searchBar setHidden:NO];
+        //[self.searchDisplayController.searchBar setFrame:CGRectMake(0, 0, 320, 44)];
+        
 
     }
-    else if ([self.cards count] == 0)
+    else if ([self.cards count] == 0 && self.cancelPressedSearchBar == 1)
     {
         [self.hintToUser setHidden:NO];
+        //[self.searchDisplayController.searchBar setHidden:YES];
+        //[self.searchDisplayController.searchBar setFrame:CGRectMake(0, 0, 320, 0)];
+        
+        [UIView beginAnimations: @"anim" context: nil];
+        [UIView setAnimationBeginsFromCurrentState: YES];
+        [UIView setAnimationDuration: 0.5f];
+        self.hintToUser.frame = CGRectOffset(self.hintToUser.frame, 0, -50);
+        [UIView commitAnimations];
+        
 
     }
     self.hintLabel.text = @"Welcome!\n          Tap + to create a new card      \u2191";
@@ -52,8 +68,6 @@
     
     
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
-    
     [delegate.delegateMutableArray removeAllObjects];
 
     for (NSMutableArray *card in self.cards)
@@ -64,9 +78,16 @@
         
     }
     
-    
+    //print out all cards info
+    for (NSString *str in self.cards) {
+        if(str){
+            NSLog(@"In all cards table view, display all cards path= %@", str);
+        }
+    }
     
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+    [self.searchDisplayController.searchResultsTableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+
     
 
     /*
@@ -87,7 +108,12 @@
     self.tableView.backgroundView = tempImageView;
      */
     
+    //dismiss search bar result
+    //[self.searchDisplayController setActive:NO animated:NO];
+    
 }
+
+
 
 //This short methos is for the backgound color of cellview to be transparent
 /*
@@ -101,7 +127,6 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -140,7 +165,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     }
     
     //set initial row height in tableview, that 7 row in screen
-    [self.tableView setRowHeight:75];
+    //[self.tableView setRowHeight:75];
     
     //change background color
     self.tableView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.93];
@@ -153,7 +178,15 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
                                                initWithTarget:self action:@selector(longPressGestureRecognized:)];
     [self.tableView addGestureRecognizer:longPress];
     
+    //init search results
+    self.searchResults = [NSMutableArray arrayWithCapacity:[self.cards count]];
+    
+
+
+    
+    
 }
+
 
 
 -(UIStatusBarStyle)preferredStatusBarStyle{
@@ -222,52 +255,93 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
-    return [self.cards count];
+    
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        //return the number of search result in tableview
+        return [self.searchResults count];
+    }
+    else{
+        // Return the number of rows in the section.
+        return [self.cards count];
+    }
+
 }
 
-/*
+
 //set the row height of cell
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return  80;
+    return  75;
 }
-*/
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+
     static NSString *cellIdentifier = @"Card Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier
-                                                            forIndexPath:indexPath];
-            
-    //Information of Card name , card number
-    NSString *cardTextPath = [[self.cards[indexPath.row] objectAtIndex:0] objectAtIndex:0];
-    NSArray *data = [[NSArray alloc] initWithContentsOfFile:cardTextPath];
-    cell.textLabel.text = [data objectAtIndex:0];
-    cell.detailTextLabel.text = [data objectAtIndex:1];
     
-    //Information of saved Iamge
-    NSString *cardIamgePath = [[self.cards[indexPath.row] objectAtIndex:0] objectAtIndex:1];
-    UIImage *cellImage = [UIImage imageWithContentsOfFile:cardIamgePath];
+    //change this due to search function
+    //UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier
+    //                                                        forIndexPath:indexPath];
+    
+    //UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    CardTableViewCell *cell =(CardTableViewCell *) [self.tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    
+    if (cell == nil)
+    {
+        cell = [[CardTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    }
+    
+    UIImage *cellImage = nil;
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        //Information of Card name , card number
+        NSString *cardTextPath = [[[self.searchResults objectAtIndex:indexPath.row] objectAtIndex:0] objectAtIndex:0];
+        NSArray *data = [[NSArray alloc] initWithContentsOfFile:cardTextPath];
+        cell.cardNameLable.text = [data objectAtIndex:0];
+        //cell.detailTextLabel.text = [data objectAtIndex:1];
+        
+        //Information of saved Iamge
+        NSString *cardIamgePath = [[[self.searchResults objectAtIndex:indexPath.row] objectAtIndex:0] objectAtIndex:1];
+        cellImage = [UIImage imageWithContentsOfFile:cardIamgePath];
+        
+        self.cancelPressedSearchBar = 0;
+    }
+    else{
+        //Information of Card name , card number
+        NSString *cardTextPath = [[self.cards[indexPath.row] objectAtIndex:0] objectAtIndex:0];
+        NSArray *data = [[NSArray alloc] initWithContentsOfFile:cardTextPath];
+        cell.cardNameLable.text = [data objectAtIndex:0];
+        //cell.detailTextLabel.text = [data objectAtIndex:1];
+        
+        //Information of saved Iamge
+        NSString *cardIamgePath = [[self.cards[indexPath.row] objectAtIndex:0] objectAtIndex:1];
+        cellImage = [UIImage imageWithContentsOfFile:cardIamgePath];
+        
+        self.cancelPressedSearchBar = 1;
+
+    }
+
     
     //move text lable of cell to right
-    cell.indentationWidth = 55;
-    cell.indentationLevel = 2;
+    //cell.indentationWidth = 55;
+    //cell.indentationLevel = 2;
     
     //make rounded corner
-    cell.imageView.layer.cornerRadius = 5;
-    cell.imageView.clipsToBounds = YES;
+    cell.thumbnailImageView.layer.cornerRadius = 5;
+    cell.thumbnailImageView.clipsToBounds = YES;
     
     //create thumbnail for card image and make rounded corner
     //UIImage *thumbnail = [cellImage imageByScalingToSize:CGSizeMake(81, 54)];
     //cell.imageView.image = cellImage;
     //cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
 
-
+    /*
     UIImageView *recipeImageView = (UIImageView *)[cell viewWithTag:100];
     recipeImageView.contentMode = UIViewContentModeScaleAspectFill;
     recipeImageView.clipsToBounds = YES;
     recipeImageView.layer.cornerRadius = 5;
     recipeImageView.image = cellImage;
+     */
+    cell.thumbnailImageView.image = cellImage;
     
     /*
     UIImageView *thumbnail = [[UIImageView alloc] initWithFrame:CGRectMake(20, 10, 85.6, 54)];
@@ -288,8 +362,8 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     self.tableView.separatorColor =[UIColor colorWithRed:0.80 green:0.80 blue:0.80 alpha:1.0];
     
     //set the font of cell
-    cell.textLabel.font = [UIFont fontWithName:@"Helvetica-Light" size:18.0];
-    cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica-Light" size:13.0];
+    cell.cardNameLable.font = [UIFont fontWithName:@"Helvetica-Light" size:18.0];
+    //cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica-Light" size:13.0];
 
     
     /*
@@ -312,8 +386,47 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        
+    if (editingStyle == UITableViewCellEditingStyleDelete)
+    {
+        if (tableView == self.searchDisplayController.searchResultsTableView) {
+            /*
+             * determine the index in the cards to delete
+             */
+            NSString *textDataPathStr = [[self.searchResults[indexPath.row] objectAtIndex:0]objectAtIndex:0];
+            NSString *searchText =  [[textDataPathStr lastPathComponent]stringByDeletingPathExtension];
+            NSLog(@"searchText = %@", searchText);
+            
+            NSInteger counter = 0;
+            for (NSArray *ary1 in self.cards) {
+                //extract one card from all cards
+                for (NSArray *ary2 in ary1) {
+                    //extract file and image path from this specific card
+                    //NSLog(@"last component %@", [[[ary2 objectAtIndex:0] lastPathComponent]stringByDeletingPathExtension]);
+                    NSString * fileName =[[[ary2 objectAtIndex:0] lastPathComponent]stringByDeletingPathExtension];//enough only search file name, b/c image name the same
+                    NSLog(@"looping file name = %@", fileName);
+                    if ([fileName isEqualToString:searchText]) {
+                        //this means found a matched filename
+                        NSLog(@"Find matched file!!!");
+                        self.rowSwipeToDelete = counter;
+                        
+                    }
+                    
+                }
+                counter ++;
+            }
+            self.searchToDelete = indexPath.row;//delete the cell just deleted in search table view
+
+        }
+        else
+        {
+            //remove the deleted object from your data source.
+            //If your data source is an NSMutableArray, do this
+            self.rowSwipeToDelete = indexPath.row;
+            self.indexPathToDelete = indexPath;
+
+            
+        }
+
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Delete"
                                                         message:@"Do you really want to delete this card?"
                                                        delegate:self
@@ -321,11 +434,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
                                               otherButtonTitles:@"Delete card", nil];
         alert.tag = 0;
         [alert show];
-        
-        //remove the deleted object from your data source.
-        //If your data source is an NSMutableArray, do this
-        self.rowSwipeToDelete = indexPath.row;
-        self.indexPathToDelete = indexPath;
+
         
     }
 }
@@ -345,19 +454,76 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 - (void)prepareCardInfoViewController:(CardInfoViewController *)civc
                     toDisplayCardInfo:(NSMutableArray *)cardInfo
                          allCardsPath:(NSMutableArray *)cards
+                        searchResults:(NSMutableArray *)searchResults
                              rowIndex:(NSInteger)rowIndex
 {
     civc.cardPath = cardInfo;
     civc.rowNumer = rowIndex;
     civc.cards = cards;
+    civc.searchResults = searchResults;
 
 }
 
+#pragma Search Methods
+
+-(void)filterContentForSearchText:(NSString *)searchText scope:(NSString *)scope
+{
+    [self.searchResults removeAllObjects];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF beginswith[c] %@", searchText];
+    
+    for (NSArray *ary1 in self.cards) {
+        //extract one card from all cards
+        for (NSArray *ary2 in ary1) {
+            //extract file and image path from this specific card
+            NSLog(@"last component %@", [[[ary2 objectAtIndex:0] lastPathComponent]stringByDeletingPathExtension]);
+            NSString * fileName =[[[ary2 objectAtIndex:0] lastPathComponent]stringByDeletingPathExtension];//enough only search file name, b/c image name the same
+            NSArray *arryForSearch = [[NSArray alloc] initWithObjects:fileName, nil];//must construct array for filter
+            NSLog(@"arryForSearch %@", arryForSearch);
+            
+            NSArray *match = [arryForSearch filteredArrayUsingPredicate:predicate];
+            NSLog(@" match result = %@", match);
+            if ([match count] != 0) {
+                //this means found a matched filename
+                [self.searchResults addObject:ary1];
+                NSLog(@"search result array = %@", self.searchResults);
+            }
+
+        }
+    }
+}
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+{
+    if (searchString.length > 0) {
+        [self filterContentForSearchText:searchString scope:[[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
+    }
+
+    return YES;
+}
+
+//clear all search results in seart table view when user press cancel button of search bar
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    [self.searchResults removeAllObjects];
+    self.cancelPressedSearchBar = 1;
+    [self viewWillAppear:YES];
+}
+
+
 #pragma mark - Navigation
+/*
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Perform segue to candy detail
+    if (tableView == self.searchDisplayController.searchResultsTableView)
+    {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        [self performSegueWithIdentifier:@"Display Card" sender:tableView];
+    }
+}*/
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
+    /*
     if ([sender isKindOfClass:[UITableViewCell class]]) {
         // find out which row in which section we're seguing from
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
@@ -374,6 +540,44 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
             }
         }
     }
+    */
+    
+    if ([segue.identifier isEqualToString:@"Display Card"]) {
+
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+        if (indexPath)
+        {
+            
+            if ([segue.destinationViewController isKindOfClass:[CardInfoViewController class]]) {
+                NSLog(@"index path %ld", (long)indexPath.row);
+                [self prepareCardInfoViewController:segue.destinationViewController
+                                  toDisplayCardInfo:self.cards[indexPath.row]
+                                       allCardsPath:self.cards
+                                      searchResults:nil
+                                           rowIndex:indexPath.row];
+            }
+            
+        }
+        else//search table view
+        {
+            NSIndexPath *indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
+            if (indexPath)
+            {
+                if ([segue.destinationViewController isKindOfClass:[CardInfoViewController class]]) {
+                    NSLog(@"index path %ld", indexPath.row);
+                    NSLog(@"search result %@", self.searchResults);
+
+                    [self prepareCardInfoViewController:segue.destinationViewController
+                                      toDisplayCardInfo:self.searchResults[indexPath.row]
+                                           allCardsPath:self.cards
+                                          searchResults:self.searchResults
+                                               rowIndex:indexPath.row];
+                }
+            }
+        }
+
+    }
+    
     
 }
 
@@ -439,9 +643,11 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
             
             
             [self.cards removeObjectAtIndex:self.rowSwipeToDelete];
+            //[self.tableView deleteRowsAtIndexPaths:@[self.indexPathToDelete] withRowAnimation:UITableViewRowAnimationAutomatic];
+            if ([self.searchResults count] != 0) {
+                [self.searchResults removeObjectAtIndex:self.searchToDelete];
+            }
             
-            [self.tableView deleteRowsAtIndexPaths:@[self.indexPathToDelete] withRowAnimation:UITableViewRowAnimationAutomatic];
-
             
             [self viewWillAppear:YES];
         }

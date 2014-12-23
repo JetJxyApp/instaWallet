@@ -10,7 +10,9 @@
 
 @interface AllCardsTableViewController : UITableViewController
 
+
 @property (nonatomic,strong) NSMutableArray * cardPath;
 @property (nonatomic,strong) NSMutableArray * cards;
+@property (nonatomic,strong) NSMutableArray * searchResults; //delete card in search results table view
 
 @end

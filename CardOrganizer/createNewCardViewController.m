@@ -214,7 +214,7 @@
         //I use specific date/time to distinguish card with same name
         //the same method applied for card image file path
         NSDateFormatter *format = [[NSDateFormatter alloc] init];
-        [format setDateFormat:@"MMMM dd, yyyy (EEEE) HH:mm:ss z Z"];
+        [format setDateFormat:@"MM,dd,yyyy HH:mm:ss"];
         NSDate *now = [NSDate date];
         NSString *nsstr = [format stringFromDate:now];
 

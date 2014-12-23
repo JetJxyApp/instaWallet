@@ -52,6 +52,14 @@
     return _cards;
 }
 
+-(NSMutableArray *)searchResults
+{
+    if (!_searchResults) {
+        _searchResults = [[NSMutableArray alloc]init];
+    }
+    return _searchResults;
+}
+
 -(void)setcards:(NSMutableArray *)cards
 {
     _cards = cards;
@@ -144,6 +152,7 @@
         ecVC.cardPath = self.cardPath;
         ecVC.cards = self.cards;
         ecVC.rowNumer = self.rowNumer;
+        ecVC.searchResults = self.searchResults;
         
 
     }

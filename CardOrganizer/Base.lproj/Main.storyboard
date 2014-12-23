@@ -8,10 +8,18 @@
         <scene sceneID="vue-CO-7w2">
             <objects>
                 <tableViewController id="PLD-5s-mH6" customClass="AllCardsTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ITl-7v-kon">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="74" sectionHeaderHeight="22" sectionFooterHeight="22" id="ITl-7v-kon">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="zMA-yM-86N">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="PLD-5s-mH6" id="fIE-0a-ei6"/>
+                            </connections>
+                        </searchBar>
                         <view key="tableFooterView" opaque="NO" contentMode="scaleToFill" id="jKK-h9-mCA">
                             <rect key="frame" x="0.0" y="130" width="375" height="119"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -26,7 +34,7 @@
                             <color key="backgroundColor" red="1" green="0.61036499760162544" blue="0.28055886083281112" alpha="1" colorSpace="calibratedRGB"/>
                         </view>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Card Cell" id="R0a-uD-wFU">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Card Cell" rowHeight="74" id="R0a-uD-wFU" customClass="CardTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="R0a-uD-wFU" id="WVq-AQ-6Uh">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -34,10 +42,18 @@
                                         <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BQY-7i-2Cb">
                                             <rect key="frame" x="14" y="10" width="86" height="54"/>
                                         </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vgF-Yp-fbA">
+                                            <rect key="frame" x="118" y="26" width="234" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
+                                    <outlet property="cardNameLable" destination="vgF-Yp-fbA" id="WrE-8c-ZUw"/>
+                                    <outlet property="thumbnailImageView" destination="BQY-7i-2Cb" id="Ulg-xs-UZ2"/>
                                     <segue destination="9rf-vN-KUc" kind="push" identifier="Display Card" id="VtE-Kf-Reo"/>
                                 </connections>
                             </tableViewCell>
@@ -64,11 +80,22 @@
                     <connections>
                         <outlet property="hintLabel" destination="xam-hs-shT" id="kdn-XP-SIa"/>
                         <outlet property="hintToUser" destination="jKK-h9-mCA" id="biD-0r-R28"/>
+                        <outlet property="searchDisplayController" destination="b0u-f3-qlD" id="Cg9-jE-LN9"/>
+                        <outlet property="tableView" destination="ITl-7v-kon" id="YaZ-J3-nMD"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gUp-J2-ngs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="b0u-f3-qlD">
+                    <connections>
+                        <outlet property="delegate" destination="PLD-5s-mH6" id="9PV-MH-Sxp"/>
+                        <outlet property="searchBar" destination="zMA-yM-86N" id="SKC-sG-18J"/>
+                        <outlet property="searchContentsController" destination="PLD-5s-mH6" id="oVH-1O-WlC"/>
+                        <outlet property="searchResultsDataSource" destination="PLD-5s-mH6" id="A5r-J3-qLS"/>
+                        <outlet property="searchResultsDelegate" destination="PLD-5s-mH6" id="KEg-zK-Mo6"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1723.5" y="784.5"/>
+            <point key="canvasLocation" x="1723.5" y="783.5"/>
         </scene>
         <!--Create-->
         <scene sceneID="6wB-do-0gS">

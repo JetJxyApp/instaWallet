@@ -12,6 +12,7 @@
 
 @property(nonatomic, strong) NSMutableArray * cardPath;
 @property (nonatomic,strong) NSMutableArray * cards;
-@property(nonatomic) NSInteger rowNumer;
+@property (nonatomic,strong) NSMutableArray * searchResults;
+@property(nonatomic) NSInteger rowNumer; //delete card in search results table view
 
 @end
