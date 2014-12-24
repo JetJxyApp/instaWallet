@@ -65,8 +65,6 @@
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     appDelegate.Alldata = self.cards;
     
-    
-    
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [delegate.delegateMutableArray removeAllObjects];
 
@@ -111,6 +109,33 @@
     //dismiss search bar result
     //[self.searchDisplayController setActive:NO animated:NO];
     
+    /*
+     *  save the path to all cards, in the case of the app did not enter background or terminated
+     */
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsPath = [paths objectAtIndex:0];
+    
+    NSString *path = [documentsPath stringByAppendingPathComponent:@"Alldata.plist"];
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    if (![fileManager fileExistsAtPath: path])
+    {
+        NSMutableArray *dataArray = [[NSMutableArray alloc]init];
+        [dataArray addObject:self.cards];
+        [dataArray writeToFile:path atomically:YES];
+        
+        
+    }
+    else
+    {
+        NSMutableArray *dataArray = [[NSMutableArray alloc]init];
+        [dataArray addObject:self.cards];
+        [dataArray writeToFile:path atomically:YES];
+        NSLog(@"find path to save all info in viewWillAppear of AllcardTableViewController");
+        
+    }
+    
 }
 
 
@@ -148,7 +173,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         NSMutableArray *tempArray = [[NSMutableArray alloc]initWithContentsOfFile:path];
         self.cards = [tempArray objectAtIndex:0];
         
-        //replace old path with new path
+        /*
+         * Replace old path with new path, bacause the file path change each time when app reopen
+         * So need to replace the old path to the new path
+         */
         for (NSMutableArray *array in self.cards)
         {
             NSString *newTextFilePath = [documentsPath stringByAppendingPathComponent:[[[array objectAtIndex:0]objectAtIndex:0] lastPathComponent]];
