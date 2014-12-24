@@ -230,7 +230,31 @@
         
         NSFileManager *fileManager = [NSFileManager defaultManager];
         
-        if ([fileManager fileExistsAtPath:textDataPathStr] || [fileManager fileExistsAtPath:imageDataPathStr])
+        /*
+         * change the old path name with new path name
+         */
+        NSLog(@"in edite card, textDataPathStr = %@", textDataPathStr);
+
+        
+        //append new date
+        NSDateFormatter *format = [[NSDateFormatter alloc] init];
+        [format setDateFormat:@"MM,dd,yyyy HH:mm:ss"];
+        NSDate *now = [NSDate date];
+        NSString *nsstr = [format stringFromDate:now];
+        
+        //last component of  new file path
+        NSString *lastComponentNewTextPath = [[self.cardNameTextField.text stringByAppendingString:nsstr] stringByAppendingString:@".plist"];
+        NSString *lastComponentNewImagePath = [[self.cardNameTextField.text stringByAppendingString:nsstr] stringByAppendingString:@".jpeg"];
+        
+        NSString *newTextPath = [[textDataPathStr stringByDeletingLastPathComponent] stringByAppendingPathComponent:lastComponentNewTextPath];
+        NSString *newImagePath = [[imageDataPathStr stringByDeletingLastPathComponent] stringByAppendingPathComponent:lastComponentNewImagePath];
+
+        NSError *error = nil;
+        [[NSFileManager defaultManager] moveItemAtPath:textDataPathStr toPath:newTextPath error:&error];
+        [[NSFileManager defaultManager] moveItemAtPath:imageDataPathStr toPath:newImagePath error:&error];
+
+        
+        if ([fileManager fileExistsAtPath:newTextPath] || [fileManager fileExistsAtPath:newImagePath])
         {
             /*
              *store card text field
@@ -241,20 +265,24 @@
             [data addObject:self.barcodeNumberTextField.text];
             [data addObject:self.barcodeTypeTextField.text];
             
-            [data writeToFile:textDataPathStr atomically:YES];
+            [data writeToFile:newTextPath atomically:YES];
             //[self addFilePath:textDataPathStr];
-            NSLog(@"successful edit card text info path = %@", textDataPathStr);
+            NSLog(@"successful edit card text info path = %@", newTextPath);
 
             /*
              *store image
              */
             NSData *imageData = UIImageJPEGRepresentation(self.imageView.image, 1.0);
-            [imageData writeToFile:imageDataPathStr atomically:YES];
+            [imageData writeToFile:newImagePath atomically:YES];
             //[self addFilePath:imageDataPathStr];
-            NSLog(@"successful edit image data path = %@", imageDataPathStr);
+            NSLog(@"successful edit image data path = %@", newImagePath);
             
-            //collect card all info and put in one array
-            //[self.cardFilePathArray addObject:self.cardAllInfoArray];
+            /*
+             *  code below is for replacing old file path to the new file path
+             */
+            [[self.cardPath objectAtIndex:0] removeAllObjects];
+            [[self.cardPath objectAtIndex:0] addObject:newTextPath];
+            [[self.cardPath objectAtIndex:0] addObject:newImagePath];
             
         }else
         {
@@ -265,6 +293,7 @@
         NSLog(@"Does not entery prepare segue in Edit card");
     }
 }
+
 
 /*
 //add card all related info to an array

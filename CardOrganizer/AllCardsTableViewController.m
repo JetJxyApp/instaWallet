@@ -601,6 +601,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
             //[self.navigationController popToRootViewControllerAnimated:YES];
             //[self.navigationController showViewController:AllcardsViewController sender:self];
             [self.tableView reloadData];
+            [self.searchDisplayController.searchResultsTableView reloadData];
             
             
         }
