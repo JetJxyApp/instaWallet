@@ -6,6 +6,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 target 'CardOrganizer' do
 
 pod 'ZXingObjC'
+pod 'PEPhotoCropEditor'
 
 end
 

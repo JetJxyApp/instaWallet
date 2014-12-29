@@ -4,25 +4,35 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Pods-CardOrganizer-PEPhotoCropEditor.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-CardOrganizer-ZXingObjC.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>2</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-CardOrganizer.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>364E7DF8222DFD3681F2467F</key>
+		<key>3B28E9A9B46196105E342D2B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DEC46ED8DA45BD68ECBA8B3D</key>
+		<key>709FF51E8E9CD63702DA14AD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>846CAAD212AEA9470BDBA6BF</key>
 		<dict>
 			<key>primary</key>
 			<true/>

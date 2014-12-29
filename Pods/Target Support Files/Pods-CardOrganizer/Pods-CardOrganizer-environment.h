@@ -6,6 +6,12 @@
 // project.
 
 
+// PEPhotoCropEditor
+#define COCOAPODS_POD_AVAILABLE_PEPhotoCropEditor
+#define COCOAPODS_VERSION_MAJOR_PEPhotoCropEditor 1
+#define COCOAPODS_VERSION_MINOR_PEPhotoCropEditor 3
+#define COCOAPODS_VERSION_PATCH_PEPhotoCropEditor 1
+
 // ZXingObjC
 #define COCOAPODS_POD_AVAILABLE_ZXingObjC
 #define COCOAPODS_VERSION_MAJOR_ZXingObjC 3

@@ -93,8 +93,8 @@
      */
     //set back button color
    // [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName,nil] forState:UIControlStateNormal];
-    //set back button arrow color
-    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    
+
     
     
     
@@ -200,6 +200,9 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     
     //chage navigation controller color
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.29 green:0.65 blue:0.96 alpha:1.0];
+    
+    //set navigation bar back button arrow color
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     
     //tableview cell long press gesture
     UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc]
@@ -718,7 +721,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
                 snapshot.center = center;
                 snapshot.alpha = 0.0;
                 [self.tableView addSubview:snapshot];
-                [UIView animateWithDuration:0.25 animations:^{
+                [UIView animateWithDuration:0.0 animations:^{
                     
                     // Offset for gesture location.
                     center.y = location.y;
@@ -762,7 +765,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
             cell.hidden = NO;
             cell.alpha = 0.0;
             
-            [UIView animateWithDuration:0.25 animations:^{
+            [UIView animateWithDuration:0.0 animations:^{
                 
                 snapshot.center = cell.center;
                 snapshot.transform = CGAffineTransformIdentity;

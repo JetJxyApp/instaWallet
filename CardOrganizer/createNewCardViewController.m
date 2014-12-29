@@ -11,9 +11,11 @@
 #import <QuartzCore/QuartzCore.h>
 #import "UIImage_Thumbnail.h"
 #import "GKImagePicker.h"
+#import "PECropViewController.h"
 
 
-@interface createNewCardViewController () <UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate,GKImagePickerDelegate>
+
+@interface createNewCardViewController () <UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate,GKImagePickerDelegate,UIActionSheetDelegate, PECropViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet GCPlaceholderTextView *cardNameTextField;
 @property (weak, nonatomic) IBOutlet GCPlaceholderTextView *cardNumberTextField;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
@@ -41,6 +43,8 @@
 - (IBAction)takePhoto
 {
     /*
+     This is apple build-in image picker
+     
     UIImagePickerController *uiipc = [[UIImagePickerController alloc] init];
     uiipc.delegate = self;
     uiipc.mediaTypes = @[(NSString *)kUTTypeImage];
@@ -49,20 +53,135 @@
     [self presentViewController:uiipc animated:YES completion:NULL];
     */
     
+    /*
+     This is old card image editor
+     
     self.imagePicker = [[GKImagePicker alloc] init];
     self.imagePicker.cropSize = CGSizeMake(250, 150);
     self.imagePicker.delegate = self;
     self.imagePicker.resizeableCropArea = YES;
     
-
-        
    // [self presentModalViewController:self.imagePicker.imagePickerController animated:YES];
     [self presentViewController:self.imagePicker.imagePickerController animated:YES completion:NULL];
-
+    */
     
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                             delegate:self
+                                                    cancelButtonTitle:nil
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:NSLocalizedString(@"Photo Album", nil), nil];
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        [actionSheet addButtonWithTitle:NSLocalizedString(@"Camera", nil)];
+    }
+    
+    [actionSheet addButtonWithTitle:NSLocalizedString(@"Cancel", nil)];
+    actionSheet.cancelButtonIndex = actionSheet.numberOfButtons - 1;
+    
+
+    [actionSheet showFromToolbar:self.navigationController.toolbar];
+
     
 }
 
+#pragma mark - PECropViewControllerDelegate methods
+
+
+- (void)cropViewController:(PECropViewController *)controller didFinishCroppingImage:(UIImage *)croppedImage
+{
+    [controller dismissViewControllerAnimated:YES completion:NULL];
+    self.imageView.image = croppedImage;
+}
+
+- (void)cropViewControllerDidCancel:(PECropViewController *)controller
+{
+
+    [controller dismissViewControllerAnimated:YES completion:NULL];
+}
+
+#pragma mark - UIActionSheetDelegate methods
+
+/*
+ Open camera or photo album.
+ */
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSString *buttonTitle = [actionSheet buttonTitleAtIndex:buttonIndex];
+    if ([buttonTitle isEqualToString:NSLocalizedString(@"Photo Album", nil)]) {
+        [self openPhotoAlbum];
+    } else if ([buttonTitle isEqualToString:NSLocalizedString(@"Camera", nil)]) {
+        [self showCamera];
+   
+    
+    }
+}
+
+#pragma mark - Private methods
+
+- (void)showCamera
+{
+    UIImagePickerController *controller = [[UIImagePickerController alloc] init];
+    controller.delegate = self;
+    controller.sourceType = UIImagePickerControllerSourceTypeCamera;
+    
+
+    [self presentViewController:controller animated:YES completion:NULL];
+    
+}
+
+- (void)openPhotoAlbum
+{
+    UIImagePickerController *controller = [[UIImagePickerController alloc] init];
+    controller.delegate = self;
+    controller.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+
+    [self presentViewController:controller animated:YES completion:NULL];
+    
+}
+
+#pragma mark - UIImagePickerControllerDelegate methods
+
+/*
+ Open PECropViewController automattically when image selected.
+ */
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *image = info[UIImagePickerControllerOriginalImage];
+    self.imageView.image = image;
+    
+    [picker dismissViewControllerAnimated:YES completion:^{[self openEditor];}];
+    
+}
+
+#pragma mark - Action methods
+
+- (void)openEditor
+{
+    PECropViewController *controller = [[PECropViewController alloc] init];
+    controller.delegate = self;
+    controller.image = self.imageView.image;
+    
+    UIImage *image = self.imageView.image;
+    CGFloat width = image.size.width;
+    CGFloat height = image.size.height;
+    CGFloat length = MIN(width, height);
+    controller.imageCropRect = CGRectMake((width - length) / 2,
+                                          (height - length) / 2,
+                                          length,
+                                          length);
+    
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:controller];
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        navigationController.modalPresentationStyle = UIModalPresentationFormSheet;
+    }
+    
+    [self presentViewController:navigationController animated:YES completion:NULL];
+}
+
+/*
+ * below is the old card image editor
+ */
 /*
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
@@ -83,19 +202,19 @@
 # pragma mark -
 # pragma mark GKImagePicker Delegate Methods
 
+/*
 - (void)imagePicker:(GKImagePicker *)imagePicker pickedImage:(UIImage *)image{
     self.imageView.image = image;
     [self hideImagePicker];
 }
 
-- (void)hideImagePicker{
+- (void)hideImagePicker
+{
 
-        
     [self.imagePicker.imagePickerController dismissViewControllerAnimated:YES completion:nil];
-        
-    
+ 
 }
-
+*/
 # pragma mark -
 # pragma mark UIImagePickerDelegate Methods
 /*
@@ -106,19 +225,8 @@
  
 }
 
+*/
 
-- (void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-}*/
-
-//function of barcode Scanner
 
 
 
