@@ -17,6 +17,8 @@
 @interface AllCardsTableViewController () <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate,UISearchBarDelegate,UISearchDisplayDelegate>
 @property (strong, nonatomic) IBOutlet UIView *hintToUser;
 @property (strong, nonatomic) IBOutlet UILabel *hintLabel;
+@property UIView *hintView;
+@property UILabel *label;
 @property NSInteger rowSwipeToDelete;
 @property NSIndexPath *indexPathToDelete;
 @property NSInteger searchToDelete;
@@ -35,25 +37,41 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    
     if ([self.cards count] != 0) {
         
-        [self.hintToUser setHidden:YES];
+       // [self.hintToUser setHidden:YES];
         //[self.searchDisplayController.searchBar setHidden:NO];
         //[self.searchDisplayController.searchBar setFrame:CGRectMake(0, 0, 320, 44)];
+        
+        [self.searchDisplayController.searchBar setHidden:NO];
+        [self.hintView setHidden:YES];
         
 
     }
     else if ([self.cards count] == 0 && self.cancelPressedSearchBar == 1)
     {
-        [self.hintToUser setHidden:NO];
+        //[self.hintToUser setHidden:NO];
         //[self.searchDisplayController.searchBar setHidden:YES];
         //[self.searchDisplayController.searchBar setFrame:CGRectMake(0, 0, 320, 0)];
         
+
+        
+        //hide the search bar
+        [self.searchDisplayController.searchBar setHidden:YES];
+        [self.hintView setHidden:NO];
+        
+
+        
+        
+        /*
+         * below snipped is the animation of hint bar
+         */
         [UIView beginAnimations: @"anim" context: nil];
         [UIView setAnimationBeginsFromCurrentState: YES];
         [UIView setAnimationDuration: 0.5f];
-        self.hintToUser.frame = CGRectOffset(self.hintToUser.frame, 0, -50);
-        [UIView commitAnimations];
+        //self.hintView.frame = CGRectOffset(self.hintView.frame, 0, -50);
+        //[UIView commitAnimations];
         
 
     }
@@ -196,7 +214,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     //[self.tableView setRowHeight:75];
     
     //change background color
-    self.tableView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.93];
+    //self.tableView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.93];
     
     //chage navigation controller color
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.29 green:0.65 blue:0.96 alpha:1.0];
@@ -212,11 +230,67 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     //init search results
     self.searchResults = [NSMutableArray arrayWithCapacity:[self.cards count]];
     
+    
+    /*
+     *  code below deal with the welcom/hint uiview to user
+     */
+    CGRect bounds = CGRectMake( 0, 0, self.view.frame.size.width, 115 );
+    self.hintView = [[UIView alloc] initWithFrame: bounds];
+    [self.hintView setBackgroundColor:  [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:0.2]];
+    [self.view addSubview: self.hintView];
+    
+    self.label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
+    [self.label setText: @"Welcome!\n Tap + to create a new card \u2191"];
+    [self.label setTextColor: [UIColor colorWithRed:0.29 green:0.53 blue:0.91 alpha:1.0]];
+    [self.label setFont:[UIFont fontWithName:@"Chalkduster" size:18.0]];
+    self.label.center = CGPointMake(self.view.frame.size.width/2.0, self.hintView.bounds.size.height/2.0);
+    self.label.textAlignment = NSTextAlignmentCenter;
+    self.label.numberOfLines = 0;
+    [self.hintView addSubview: self.label];
+    
+    //hidder the search bar when first load the app
+    [self.searchDisplayController.searchBar setHidden:YES];
 
-
+    
+    
+    /*
+     * code below deal with the button color of create new card
+     * The new change is that creating custem button, ctrl + drag from instaWallet of storyboard to create, and perform segue
+     * I overide the old Add button that ctrl + drag, selet push
+     */
+    /*
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc]
+                                  initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                  target:self action:@selector(createCard:)];
+    
+    
+    [addButton setTintColor:[UIColor whiteColor]];
+    self.navigationItem.rightBarButtonItem = addButton;
+     */
+    
+    /*
+     *  Make the hint bar tappable when user first time open our app to create new card
+     */
+    
+    UITapGestureRecognizer *singleFingerTap =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(handleSingleTap:)];
+    [self.hintView addGestureRecognizer:singleFingerTap];
     
     
 }
+//user tap the hint view to create new card
+- (void)handleSingleTap:(UITapGestureRecognizer *)recognizer {
+    //CGPoint location = [recognizer locationInView:[recognizer.view superview]];
+    
+    [self performSegueWithIdentifier:@"create" sender:self];
+}
+//custom create new card button, and perfrom push
+- (void)createCard:(id)sender
+{
+    [self performSegueWithIdentifier:@"create" sender:self];
+}
+
 
 
 
