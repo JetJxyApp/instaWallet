@@ -19,6 +19,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *hintLabel;
 @property UIView *hintView;
 @property UILabel *label;
+@property UILabel *arrow;
 @property NSInteger rowSwipeToDelete;
 @property NSIndexPath *indexPathToDelete;
 @property NSInteger searchToDelete;
@@ -243,16 +244,24 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     self.label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
     [self.label setText: @"Welcome!\n Tap + to create a new card"];
     [self.label setTextColor: [UIColor colorWithRed:0.29 green:0.53 blue:0.91 alpha:1.0]];
-    [self.label setFont:[UIFont fontWithName:@"Chalkduster" size:18.0]];
+    [self.label setFont:[UIFont fontWithName:@"Chalkduster" size:16.0]];
     self.label.center = CGPointMake(self.view.frame.size.width/2.0, self.hintView.bounds.size.height/2.0);
     self.label.textAlignment = NSTextAlignmentCenter;
     self.label.numberOfLines = 0;
     [self.hintView addSubview: self.label];
     
-    //hidder the search bar when first load the app
-    [self.searchDisplayController.searchBar setHidden:YES];
+    
+    self.arrow = [[UILabel alloc]initWithFrame:CGRectMake( self.view.frame.size.width - 50,0, self.view.frame.size.width, 100)];
+    [self.arrow setText: @"\u2191"];
+    [self.arrow setTextColor: [UIColor colorWithRed:0.29 green:0.53 blue:0.91 alpha:1.0]];
+    [self.arrow setFont:[UIFont fontWithName:@"Chalkduster" size:50.0]];
+    //self.label.numberOfLines = 0;
+
+    [self.hintView addSubview: self.arrow];
 
     
+    //hidder the search bar when first load the app
+    [self.searchDisplayController.searchBar setHidden:YES];
     
     /*
      * code below deal with the button color of create new card

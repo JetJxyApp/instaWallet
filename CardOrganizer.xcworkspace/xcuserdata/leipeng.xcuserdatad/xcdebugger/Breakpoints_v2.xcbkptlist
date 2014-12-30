@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CardOrganizer/AllCardsTableViewController.m"
-            timestampString = "441581740.73123"
+            timestampString = "441593712.891695"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
             landmarkName = "-viewWillAppear:"
             landmarkType = "5">
          </BreakpointContent>
