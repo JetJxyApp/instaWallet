@@ -81,7 +81,7 @@
 
 //take new poto for card
 
-- (IBAction)takePhoto
+- (void)takePhoto:(UITapGestureRecognizer *)recognizer
 {
         
     /*
@@ -307,6 +307,12 @@
     }else{
         NSLog(@"Did not found corresponding file");
     }
+    
+    UITapGestureRecognizer *singleFingerTap =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(takePhoto:)];
+    [self.imageView setUserInteractionEnabled:YES];
+    [self.imageView addGestureRecognizer:singleFingerTap];
 }
 
 // --> Now create method in parent class as;

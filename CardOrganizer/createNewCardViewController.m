@@ -40,7 +40,7 @@
 
 #pragma mark - take photo
 
-- (IBAction)takePhoto
+- (void)takePhoto:(UITapGestureRecognizer *)recognizer
 {
     /*
      This is apple build-in image picker
@@ -264,6 +264,23 @@
     //just temporary image for testing
     self.image = [UIImage imageNamed:@"your_card.png"];
     
+    
+    /*
+     *  Make the card image view tappable when user create new card
+     */
+    UITapGestureRecognizer *singleFingerTap =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(takePhoto:)];
+    [self.imageView setUserInteractionEnabled:YES];
+    [self.imageView addGestureRecognizer:singleFingerTap];
+    
+
+    
+    //self.cardNameTextField.layer.borderColor=[[UIColor clearColor] CGColor];
+    //self.cardNameTextField.layer.backgroundColor = [[UIColor whiteColor] CGColor];
+    //[self.cardNameTextField setBorderStyle:UITextBorderStyleNone];
+    //[self.cardNumberTextField setBorderStyle:UITextBorderStyleNone];
+    
 
 }
 
@@ -280,12 +297,13 @@
     self.cardNameTextField.placeholder = NSLocalizedString(@"Required",);
     self.cardNumberTextField.placeholder = NSLocalizedString(@"Optional",);
     self.barcodeNumberTextField.placeholder = NSLocalizedString(@"Required - Please Scan ->",);
-    self.barcodeTypeTextField.placeholder = NSLocalizedString(@"Required - Please Scan",);
+    //self.barcodeTypeTextField.placeholder = NSLocalizedString(@"Required - Please Scan",);
+    
+    [self.barcodeTypeTextField setHidden:YES];
     
     //deal with the issue that statu bar disappear when user finish taking/editing image and pop back
     //to previous view controller
     [UIApplication sharedApplication].statusBarHidden = NO;
-
     
 }
 

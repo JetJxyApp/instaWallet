@@ -13,8 +13,9 @@
 @interface BarcodeScannerViewController ()
 
 @property (nonatomic, strong) ZXCapture *capture;
-@property (nonatomic, weak) IBOutlet UIView *scanRectView;
-@property (nonatomic, weak) IBOutlet UILabel *decodedLabel;
+@property UIView *scanRectView;
+@property UILabel *decodedLabel;
+@property UILabel *label;
 
 @end
 
@@ -35,7 +36,27 @@
     
     [self.view bringSubviewToFront:self.scanRectView];
     [self.view bringSubviewToFront:self.decodedLabel];
-  
+    
+    //hide the bottom tabbar controller
+    self.tabBarController.tabBar.hidden = YES ;
+    
+    
+    /*
+     * code below create a scan view and label
+     */
+    CGRect bounds = CGRectMake((self.view.frame.size.width - 300)/2.0, 100, 300, 300 );
+    self.scanRectView = [[UIView alloc] initWithFrame: bounds];
+    [self.scanRectView setBackgroundColor:  [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:0.4]];
+    [self.view addSubview: self.scanRectView];
+    
+    self.label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100)];
+    [self.label setText: @"Scan your card in the box"];
+    [self.label setTextColor: [UIColor colorWithRed:0.29 green:0.53 blue:0.91 alpha:1.0]];
+    [self.label setFont:[UIFont fontWithName:@"Chalkduster" size:16.0]];
+    self.label.center = CGPointMake((self.view.frame.size.width)/2.0 + 22, self.scanRectView.bounds.size.height/2.0);
+    //self.label.textAlignment = NSTextAlignmentCenter;
+    self.label.numberOfLines = 0;
+    [self.scanRectView addSubview: self.label];
     
 }
 
