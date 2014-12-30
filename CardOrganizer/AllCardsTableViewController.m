@@ -67,12 +67,13 @@
         /*
          * below snipped is the animation of hint bar
          */
+        /*
         [UIView beginAnimations: @"anim" context: nil];
         [UIView setAnimationBeginsFromCurrentState: YES];
-        [UIView setAnimationDuration: 0.5f];
-        //self.hintView.frame = CGRectOffset(self.hintView.frame, 0, -50);
-        //[UIView commitAnimations];
-        
+        [UIView setAnimationDuration: 0.4f];
+        self.hintView.frame = CGRectOffset(self.hintView.frame, 0, -50);
+        [UIView commitAnimations];
+        */
 
     }
     self.hintLabel.text = @"Welcome!\n          Tap + to create a new card      \u2191";
@@ -240,7 +241,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     [self.view addSubview: self.hintView];
     
     self.label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
-    [self.label setText: @"Welcome!\n Tap + to create a new card \u2191"];
+    [self.label setText: @"Welcome!\n Tap + to create a new card"];
     [self.label setTextColor: [UIColor colorWithRed:0.29 green:0.53 blue:0.91 alpha:1.0]];
     [self.label setFont:[UIFont fontWithName:@"Chalkduster" size:18.0]];
     self.label.center = CGPointMake(self.view.frame.size.width/2.0, self.hintView.bounds.size.height/2.0);
@@ -258,7 +259,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
      * The new change is that creating custem button, ctrl + drag from instaWallet of storyboard to create, and perform segue
      * I overide the old Add button that ctrl + drag, selet push
      */
-    /*
+    
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc]
                                   initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
                                   target:self action:@selector(createCard:)];
@@ -266,8 +267,8 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     
     [addButton setTintColor:[UIColor whiteColor]];
     self.navigationItem.rightBarButtonItem = addButton;
-     */
     
+
     /*
      *  Make the hint bar tappable when user first time open our app to create new card
      */
