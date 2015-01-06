@@ -314,6 +314,7 @@
     //resign or remove keyboard when user press scan barcode button
     //fix the bug of textfield move up/down
     [self.view endEditing:YES];
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -404,6 +405,10 @@
         /*
          *store image
          */
+        if (self.imageView.image == nil) {
+            self.imageView.image = [UIImage imageNamed:@"your_card.png"];
+        }
+        
         NSString *imageDataPathStr = [[self class] cardInfoFilePath:self.cardNameTextField.text
                                                          cardNumber:nsstr
                                                          imageOrNot:YES];

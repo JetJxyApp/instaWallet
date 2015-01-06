@@ -478,25 +478,58 @@
             </objects>
             <point key="canvasLocation" x="1137" y="787"/>
         </scene>
-        <!--Settings-->
-        <scene sceneID="hen-3T-Bsm">
+        <!--Settings Table View Controller-->
+        <scene sceneID="FnX-8c-qMH">
             <objects>
-                <viewController id="8OO-O6-fNo" customClass="SettingsViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="dW4-mK-zvn"/>
-                        <viewControllerLayoutGuide type="bottom" id="Wfp-wW-f5G"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="QHm-oj-hc4">
+                <tableViewController id="9bJ-j2-vZg" customClass="SettingsTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="bGM-Rc-2XX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Settings" id="wI9-ca-nqZ"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4wP-Vl-rW1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection id="iRb-Xn-i8a">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell settings" textLabel="S8y-eF-GrF" style="IBUITableViewCellStyleDefault" id="Lu4-sa-lok">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Lu4-sa-lok" id="Tio-C3-57a">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Rate InstaWallet" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="S8y-eF-GrF">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell settings" textLabel="jhh-H5-LXs" style="IBUITableViewCellStyleDefault" id="DA4-Pb-944">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DA4-Pb-944" id="RFo-vt-8U0">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Recommend InstaWallet" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jhh-H5-LXs">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="9bJ-j2-vZg" id="4cW-ch-u4O"/>
+                            <outlet property="delegate" destination="9bJ-j2-vZg" id="02Z-yR-soi"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="FsK-Jd-hoj"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yhQ-1r-wGP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1053.5" y="1657.5"/>
+            <point key="canvasLocation" x="1136.5" y="1655.5"/>
         </scene>
         <!--Custom Tab Bar Controller-->
         <scene sceneID="OiW-FX-8ct">
@@ -562,7 +595,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="8OO-O6-fNo" kind="relationship" relationship="rootViewController" id="DVX-sP-WOI"/>
+                        <segue destination="9bJ-j2-vZg" kind="relationship" relationship="rootViewController" id="v6i-Qx-9rJ"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1we-2j-cvI" userLabel="First Responder" sceneMemberID="firstResponder"/>

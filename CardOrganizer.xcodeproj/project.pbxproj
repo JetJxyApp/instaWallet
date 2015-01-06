@@ -29,8 +29,8 @@
 		F72CCA701A43690C00F9F2A4 /* GKImageCropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F72CCA681A43690C00F9F2A4 /* GKImageCropViewController.m */; };
 		F72CCA711A43690C00F9F2A4 /* GKImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = F72CCA6A1A43690C00F9F2A4 /* GKImagePicker.m */; };
 		F72CCA721A43690C00F9F2A4 /* GKResizeableCropOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = F72CCA6C1A43690C00F9F2A4 /* GKResizeableCropOverlayView.m */; };
-		F7C2C1B91A2544F300BFAE5C /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C2C1B81A2544F300BFAE5C /* SettingsViewController.m */; };
 		F7C787501A522D45001198DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7C7874E1A522D45001198DB /* Main.storyboard */; };
+		F7D332AD1A5B7C8500CC5990 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7D332AC1A5B7C8500CC5990 /* SettingsTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,9 +90,9 @@
 		F72CCA6A1A43690C00F9F2A4 /* GKImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKImagePicker.m; sourceTree = "<group>"; };
 		F72CCA6B1A43690C00F9F2A4 /* GKResizeableCropOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKResizeableCropOverlayView.h; sourceTree = "<group>"; };
 		F72CCA6C1A43690C00F9F2A4 /* GKResizeableCropOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKResizeableCropOverlayView.m; sourceTree = "<group>"; };
-		F7C2C1B71A2544F300BFAE5C /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
-		F7C2C1B81A2544F300BFAE5C /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		F7C7874F1A522D45001198DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F7D332AB1A5B7C8500CC5990 /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
+		F7D332AC1A5B7C8500CC5990 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,8 +148,6 @@
 				111A178D19D0E218000EE067 /* createNewCardViewController.m */,
 				F70D53DA1A47C5CA00784EC4 /* CardTableViewCell.h */,
 				F70D53DB1A47C5CA00784EC4 /* CardTableViewCell.m */,
-				F7C2C1B71A2544F300BFAE5C /* SettingsViewController.h */,
-				F7C2C1B81A2544F300BFAE5C /* SettingsViewController.m */,
 				11CEF40519EDD1BE00EF2D76 /* EditCardViewController.h */,
 				11CEF40619EDD1BE00EF2D76 /* EditCardViewController.m */,
 				11263BB419D26218000AF712 /* CardInfoViewController.h */,
@@ -159,6 +157,8 @@
 				11263BB219D24A4F000AF712 /* AllCardsTableViewController.m */,
 				80A9A84319F2F414000B93E5 /* BarcodeScannerViewController.h */,
 				80A9A84419F2F414000B93E5 /* BarcodeScannerViewController.m */,
+				F7D332AB1A5B7C8500CC5990 /* SettingsTableViewController.h */,
+				F7D332AC1A5B7C8500CC5990 /* SettingsTableViewController.m */,
 				808E648219F4449900D44D38 /* QuickScanViewController.h */,
 				808E648319F4449900D44D38 /* QuickScanViewController.m */,
 				111A177019D0DB88000EE067 /* Images.xcassets */,
@@ -379,13 +379,13 @@
 				1191459E19F5DC170094A4D3 /* UIImage_Thumbnail.m in Sources */,
 				11CEF40719EDD1BE00EF2D76 /* EditCardViewController.m in Sources */,
 				111A178E19D0E218000EE067 /* createNewCardViewController.m in Sources */,
+				F7D332AD1A5B7C8500CC5990 /* SettingsTableViewController.m in Sources */,
 				F72CCA721A43690C00F9F2A4 /* GKResizeableCropOverlayView.m in Sources */,
 				80F705AC19F5E56E00312279 /* GCPlaceholderTextView.m in Sources */,
 				111A176919D0DB88000EE067 /* AppDelegate.m in Sources */,
 				807B655319FC03BD00EFA770 /* LandscapeViewController.m in Sources */,
 				111A176619D0DB88000EE067 /* main.m in Sources */,
 				F72CCA701A43690C00F9F2A4 /* GKImageCropViewController.m in Sources */,
-				F7C2C1B91A2544F300BFAE5C /* SettingsViewController.m in Sources */,
 				F72CCA6E1A43690C00F9F2A4 /* GKImageCropOverlayView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
