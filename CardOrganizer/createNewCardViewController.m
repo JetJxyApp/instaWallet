@@ -27,7 +27,8 @@
 @property (nonatomic, strong) GKImagePicker *imagePicker;
 @property (nonatomic, strong) UIPopoverController *popoverController;
 
-
+@property UILabel *cardImageLabel1;
+@property UILabel *cardImageLabel2;
 
 @end
 
@@ -261,8 +262,13 @@
                                              selector:@selector(yourNotificationHandler:)
                                                  name:@"ScanBarcode Dismiss" object:nil];
     
-    //just temporary image for testing
-    self.image = [UIImage imageNamed:@"your_card.png"];
+    //set initial card imageView
+    //self.image = [UIImage imageNamed:@"your_card.png"];
+    self.image = nil;
+    [self.imageView.layer setBorderColor: [[UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0] CGColor]];
+    [self.imageView.layer setBorderWidth: 0.5];
+    self.imageView.layer.cornerRadius = 5;
+
     
     
     /*
@@ -273,8 +279,27 @@
                                             action:@selector(takePhoto:)];
     [self.imageView setUserInteractionEnabled:YES];
     [self.imageView addGestureRecognizer:singleFingerTap];
-    
 
+    /*
+     *  Add label to card initial image to hint user take photo
+     */
+    self.cardImageLabel1 = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
+    [self.cardImageLabel1 setText: @"Your Card"];
+    [self.cardImageLabel1 setTextColor: [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:0.5]];
+    [self.cardImageLabel1 setFont:[UIFont fontWithName:@"Helvetica-Light" size:40.0]];
+    self.cardImageLabel1.center = CGPointMake(self.imageView.frame.size.width/2.0, self.imageView.bounds.size.height/2.0 - 10.0);
+    self.cardImageLabel1.textAlignment = NSTextAlignmentCenter;
+    self.cardImageLabel1.numberOfLines = 0;
+    [self.imageView addSubview: self.cardImageLabel1];
+    
+    self.cardImageLabel2 = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
+    [self.cardImageLabel2 setText: @"Take photo"];
+    [self.cardImageLabel2 setTextColor: [UIColor colorWithRed:0.29 green:0.65 blue:0.96 alpha:1.0]];
+    [self.cardImageLabel2 setFont:[UIFont fontWithName:@"Helvetica-Light" size:20.0]];
+    self.cardImageLabel2.center = CGPointMake(self.imageView.frame.size.width/2.0, self.imageView.bounds.size.height/2.0 + 50.0);
+    self.cardImageLabel2.textAlignment = NSTextAlignmentCenter;
+    self.cardImageLabel2.numberOfLines = 0;
+    [self.imageView addSubview: self.cardImageLabel2];
     
     //self.cardNameTextField.layer.borderColor=[[UIColor clearColor] CGColor];
     //self.cardNameTextField.layer.backgroundColor = [[UIColor whiteColor] CGColor];
@@ -296,7 +321,7 @@
 
     self.cardNameTextField.placeholder = NSLocalizedString(@"Required",);
     self.cardNumberTextField.placeholder = NSLocalizedString(@"Optional",);
-    self.barcodeNumberTextField.placeholder = NSLocalizedString(@"Required - Please Scan ->",);
+    self.barcodeNumberTextField.placeholder = NSLocalizedString(@"Optional - Please Scan ->",);
     //self.barcodeTypeTextField.placeholder = NSLocalizedString(@"Required - Please Scan",);
     
     [self.barcodeTypeTextField setHidden:YES];
@@ -304,6 +329,17 @@
     //deal with the issue that statu bar disappear when user finish taking/editing image and pop back
     //to previous view controller
     [UIApplication sharedApplication].statusBarHidden = NO;
+    
+    //show the bottom tabbar controller
+    self.tabBarController.tabBar.hidden = NO ;
+    
+    if (self.imageView.image != nil) {
+        [self.cardImageLabel1 setHidden:YES];
+        [self.cardImageLabel2 setHidden:YES];
+        [self.imageView.layer setBorderColor: [[UIColor clearColor] CGColor]];
+        self.imageView.layer.cornerRadius = 5;
+        
+    }
     
 }
 

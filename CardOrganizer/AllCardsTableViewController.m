@@ -236,15 +236,15 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     /*
      *  code below deal with the welcom/hint uiview to user
      */
-    CGRect bounds = CGRectMake( 0, 0, self.view.frame.size.width, 115 );
+    CGRect bounds = CGRectMake( 0, 0, self.view.frame.size.width, 118 );
     self.hintView = [[UIView alloc] initWithFrame: bounds];
-    [self.hintView setBackgroundColor:  [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:0.2]];
+    [self.hintView setBackgroundColor:  [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:0.3]];
     [self.view addSubview: self.hintView];
     
     self.label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
     [self.label setText: @"Welcome!\n Tap + to create a new card"];
-    [self.label setTextColor: [UIColor colorWithRed:0.29 green:0.53 blue:0.91 alpha:1.0]];
-    [self.label setFont:[UIFont fontWithName:@"Chalkduster" size:16.0]];
+    [self.label setTextColor: [UIColor colorWithRed:0.29 green:0.65 blue:0.96 alpha:1.0]];
+    [self.label setFont:[UIFont fontWithName:@"MarkerFelt-Wide" size:20.0]];
     self.label.center = CGPointMake(self.view.frame.size.width/2.0, self.hintView.bounds.size.height/2.0);
     self.label.textAlignment = NSTextAlignmentCenter;
     self.label.numberOfLines = 0;
@@ -253,8 +253,8 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     
     self.arrow = [[UILabel alloc]initWithFrame:CGRectMake( self.view.frame.size.width - 50,0, self.view.frame.size.width, 100)];
     [self.arrow setText: @"\u2191"];
-    [self.arrow setTextColor: [UIColor colorWithRed:0.29 green:0.53 blue:0.91 alpha:1.0]];
-    [self.arrow setFont:[UIFont fontWithName:@"Chalkduster" size:50.0]];
+    [self.arrow setTextColor: [UIColor colorWithRed:0.29 green:0.65 blue:0.96 alpha:1.0]];
+    [self.arrow setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:50.0]];
     //self.label.numberOfLines = 0;
 
     [self.hintView addSubview: self.arrow];

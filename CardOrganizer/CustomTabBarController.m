@@ -34,13 +34,13 @@
                                              nil] forState:UIControlStateApplication];
      */
     
-    
+    /*
     UITabBarItem *scanner = [self.tabBar.items objectAtIndex:1];
     scanner.image = [UIImage imageNamed:@"barcode_scanner-50.png"];
     scanner.selectedImage = [UIImage imageNamed:@"idea_filled-50.png"];
+    */
     
-    
-    UITabBarItem *settings = [self.tabBar.items objectAtIndex:2];
+    UITabBarItem *settings = [self.tabBar.items objectAtIndex:1];
     settings.image = [UIImage imageNamed:@"settings-50.png"];
     settings.selectedImage = [UIImage imageNamed:@"settings_filled-50.png"];
     

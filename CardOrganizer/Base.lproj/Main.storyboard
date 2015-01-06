@@ -94,21 +94,14 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2qs-P2-55Z">
                                 <rect key="frame" x="67" y="97" width="240" height="151"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lOT-a7-iU5">
-                                <rect key="frame" x="67" y="259" width="240" height="151"/>
-                                <state key="normal" image="scan_barcode"/>
-                                <connections>
-                                    <segue destination="5fd-Fo-mOB" kind="push" id="XjA-sU-KWi"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Card name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w4K-Dr-Bcz">
-                                <rect key="frame" x="16" y="462" width="76" height="18"/>
+                                <rect key="frame" x="21" y="362" width="76" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p8O-3q-Y58">
-                                <rect key="frame" x="148" y="456" width="211" height="30"/>
+                                <rect key="frame" x="21" y="388" width="338" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -116,13 +109,13 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Card number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tu9-AR-rpa">
-                                <rect key="frame" x="16" y="498" width="101" height="21"/>
+                                <rect key="frame" x="21" y="426" width="101" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I0A-Pf-UeO">
-                                <rect key="frame" x="148" y="494" width="211" height="30"/>
+                                <rect key="frame" x="21" y="455" width="338" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -130,13 +123,13 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Barcode Number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FSd-Ea-MZP">
-                                <rect key="frame" x="16" y="422" width="132" height="21"/>
+                                <rect key="frame" x="21" y="295" width="132" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WcA-ev-zNa">
-                                <rect key="frame" x="148" y="418" width="211" height="30"/>
+                                <rect key="frame" x="21" y="324" width="300" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -151,6 +144,13 @@
                                     <outlet property="delegate" destination="ab4-7Y-mst" id="nci-FS-8sP"/>
                                 </connections>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lOT-a7-iU5">
+                                <rect key="frame" x="329" y="324" width="30" height="30"/>
+                                <state key="normal" image="scan_barcode"/>
+                                <connections>
+                                    <segue destination="5fd-Fo-mOB" kind="push" id="XjA-sU-KWi"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -511,7 +511,6 @@
                     </tabBar>
                     <connections>
                         <segue destination="2Lw-qQ-czV" kind="relationship" relationship="viewControllers" id="uLy-Hl-LsN"/>
-                        <segue destination="KrR-AM-j7S" kind="relationship" relationship="viewControllers" id="dpO-Ar-Jsc"/>
                         <segue destination="Yid-Tn-qyl" kind="relationship" relationship="viewControllers" id="fjF-oA-G8U"/>
                     </connections>
                 </tabBarController>
