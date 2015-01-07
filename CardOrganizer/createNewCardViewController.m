@@ -29,6 +29,7 @@
 
 @property UILabel *cardImageLabel1;
 @property UILabel *cardImageLabel2;
+@property UILabel *cardImageLabel3;
 
 @end
 
@@ -242,7 +243,7 @@
 
 - (void)setImage:(UIImage *)image
 {
-    self.imageView.layer.cornerRadius = 5;
+    self.imageView.layer.cornerRadius = 10;
     self.imageView.clipsToBounds = YES;
     self.imageView.image = image;
 }
@@ -267,7 +268,7 @@
     self.image = nil;
     [self.imageView.layer setBorderColor: [[UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0] CGColor]];
     [self.imageView.layer setBorderWidth: 0.5];
-    self.imageView.layer.cornerRadius = 5;
+    self.imageView.layer.cornerRadius = 10;
 
     
     
@@ -284,10 +285,10 @@
      *  Add label to card initial image to hint user take photo
      */
     self.cardImageLabel1 = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
-    [self.cardImageLabel1 setText: @"Your Card"];
+    [self.cardImageLabel1 setText: @"Card"];
     [self.cardImageLabel1 setTextColor: [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:0.5]];
     [self.cardImageLabel1 setFont:[UIFont fontWithName:@"Helvetica-Light" size:40.0]];
-    self.cardImageLabel1.center = CGPointMake(self.imageView.frame.size.width/2.0, self.imageView.bounds.size.height/2.0 - 10.0);
+    self.cardImageLabel1.center = CGPointMake(self.imageView.frame.size.width/2.0, self.imageView.bounds.size.height/2.0 - 30.0);
     self.cardImageLabel1.textAlignment = NSTextAlignmentCenter;
     self.cardImageLabel1.numberOfLines = 0;
     [self.imageView addSubview: self.cardImageLabel1];
@@ -300,6 +301,15 @@
     self.cardImageLabel2.textAlignment = NSTextAlignmentCenter;
     self.cardImageLabel2.numberOfLines = 0;
     [self.imageView addSubview: self.cardImageLabel2];
+    
+    self.cardImageLabel3 = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
+    [self.cardImageLabel3 setText: @"0123 456 789"];
+    [self.cardImageLabel3 setTextColor: [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0]];
+    [self.cardImageLabel3 setFont:[UIFont fontWithName:@"Helvetica-Light" size:20.0]];
+    self.cardImageLabel3.center = CGPointMake(self.imageView.frame.size.width/2.0, self.imageView.bounds.size.height/2.0 + 20.0);
+    self.cardImageLabel3.textAlignment = NSTextAlignmentCenter;
+    self.cardImageLabel3.numberOfLines = 0;
+    [self.imageView addSubview: self.cardImageLabel3];
     
     //self.cardNameTextField.layer.borderColor=[[UIColor clearColor] CGColor];
     //self.cardNameTextField.layer.backgroundColor = [[UIColor whiteColor] CGColor];
@@ -337,8 +347,9 @@
     if (self.imageView.image != nil) {
         [self.cardImageLabel1 setHidden:YES];
         [self.cardImageLabel2 setHidden:YES];
+        [self.cardImageLabel3 setHidden:YES];
         [self.imageView.layer setBorderColor: [[UIColor clearColor] CGColor]];
-        self.imageView.layer.cornerRadius = 5;
+        self.imageView.layer.cornerRadius = 10;
         
     }
     

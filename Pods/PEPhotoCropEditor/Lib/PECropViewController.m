@@ -53,8 +53,13 @@ static inline NSString *PELocalizedString(NSString *key, NSString *comment)
     [super viewDidLoad];
     
     //change the color of navigation bar
+    self.navigationItem.title = @"Adjust your card";
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
+
+
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.29 green:0.65 blue:0.96 alpha:1.0];
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+
 
 
     
