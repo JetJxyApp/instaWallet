@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Pods-CardOrganizer-PEPhotoCropEditor.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-CardOrganizer-ZXingObjC.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -17,12 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>364E7DF8222DFD3681F2467F</key>
+		<key>2CB287403EBA1088166CD6AB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DEC46ED8DA45BD68ECBA8B3D</key>
+		<key>59E66CAF17EED8FFE55E45B5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D415AEE17589A4E52D7F103D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

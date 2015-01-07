@@ -47,25 +47,25 @@
     /*
      This is apple build-in image picker
      
-    UIImagePickerController *uiipc = [[UIImagePickerController alloc] init];
-    uiipc.delegate = self;
-    uiipc.mediaTypes = @[(NSString *)kUTTypeImage];
-    uiipc.sourceType = UIImagePickerControllerSourceTypeCamera;
-    uiipc.allowsEditing = YES;
-    [self presentViewController:uiipc animated:YES completion:NULL];
-    */
+     UIImagePickerController *uiipc = [[UIImagePickerController alloc] init];
+     uiipc.delegate = self;
+     uiipc.mediaTypes = @[(NSString *)kUTTypeImage];
+     uiipc.sourceType = UIImagePickerControllerSourceTypeCamera;
+     uiipc.allowsEditing = YES;
+     [self presentViewController:uiipc animated:YES completion:NULL];
+     */
     
     /*
      This is old card image editor
      
-    self.imagePicker = [[GKImagePicker alloc] init];
-    self.imagePicker.cropSize = CGSizeMake(250, 150);
-    self.imagePicker.delegate = self;
-    self.imagePicker.resizeableCropArea = YES;
-    
-   // [self presentModalViewController:self.imagePicker.imagePickerController animated:YES];
-    [self presentViewController:self.imagePicker.imagePickerController animated:YES completion:NULL];
-    */
+     self.imagePicker = [[GKImagePicker alloc] init];
+     self.imagePicker.cropSize = CGSizeMake(250, 150);
+     self.imagePicker.delegate = self;
+     self.imagePicker.resizeableCropArea = YES;
+     
+     // [self presentModalViewController:self.imagePicker.imagePickerController animated:YES];
+     [self presentViewController:self.imagePicker.imagePickerController animated:YES completion:NULL];
+     */
     
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
                                                              delegate:self
@@ -79,9 +79,9 @@
     [actionSheet addButtonWithTitle:NSLocalizedString(@"Cancel", nil)];
     actionSheet.cancelButtonIndex = actionSheet.numberOfButtons - 1;
     
-
+    
     [actionSheet showFromToolbar:self.navigationController.toolbar];
-
+    
     
 }
 
@@ -96,7 +96,7 @@
 
 - (void)cropViewControllerDidCancel:(PECropViewController *)controller
 {
-
+    
     [controller dismissViewControllerAnimated:YES completion:NULL];
 }
 
@@ -112,8 +112,8 @@
         [self openPhotoAlbum];
     } else if ([buttonTitle isEqualToString:NSLocalizedString(@"Camera", nil)]) {
         [self showCamera];
-   
-    
+        
+        
     }
 }
 
@@ -125,7 +125,7 @@
     controller.delegate = self;
     controller.sourceType = UIImagePickerControllerSourceTypeCamera;
     
-
+    
     [self presentViewController:controller animated:YES completion:NULL];
     
 }
@@ -136,7 +136,7 @@
     controller.delegate = self;
     controller.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     
-
+    
     [self presentViewController:controller animated:YES completion:NULL];
     
 }
@@ -185,49 +185,49 @@
  * below is the old card image editor
  */
 /*
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
-{
-    [self dismissViewControllerAnimated:YES completion:NULL];
-}
-
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
-{
-    UIImage *image = info[UIImagePickerControllerEditedImage];
-    if (!image) image = info[UIImagePickerControllerOriginalImage];
-        
-    self.image = image;
-    [self dismissViewControllerAnimated:YES completion:NULL];
-}
-*/
+ - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+ {
+ [self dismissViewControllerAnimated:YES completion:NULL];
+ }
+ 
+ - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+ {
+ UIImage *image = info[UIImagePickerControllerEditedImage];
+ if (!image) image = info[UIImagePickerControllerOriginalImage];
+ 
+ self.image = image;
+ [self dismissViewControllerAnimated:YES completion:NULL];
+ }
+ */
 
 
 # pragma mark -
 # pragma mark GKImagePicker Delegate Methods
 
 /*
-- (void)imagePicker:(GKImagePicker *)imagePicker pickedImage:(UIImage *)image{
-    self.imageView.image = image;
-    [self hideImagePicker];
-}
-
-- (void)hideImagePicker
-{
-
-    [self.imagePicker.imagePickerController dismissViewControllerAnimated:YES completion:nil];
+ - (void)imagePicker:(GKImagePicker *)imagePicker pickedImage:(UIImage *)image{
+ self.imageView.image = image;
+ [self hideImagePicker];
+ }
  
-}
-*/
+ - (void)hideImagePicker
+ {
+ 
+ [self.imagePicker.imagePickerController dismissViewControllerAnimated:YES completion:nil];
+ 
+ }
+ */
 # pragma mark -
 # pragma mark UIImagePickerDelegate Methods
 /*
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo{
-    self.imageView.image = image;
+ - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo{
+ self.imageView.image = image;
  
-    [picker dismissViewControllerAnimated:YES completion:nil];
+ [picker dismissViewControllerAnimated:YES completion:nil];
  
-}
-
-*/
+ }
+ 
+ */
 
 
 
@@ -269,7 +269,7 @@
     [self.imageView.layer setBorderColor: [[UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0] CGColor]];
     [self.imageView.layer setBorderWidth: 0.5];
     self.imageView.layer.cornerRadius = 10;
-
+    
     
     
     /*
@@ -280,15 +280,15 @@
                                             action:@selector(takePhoto:)];
     [self.imageView setUserInteractionEnabled:YES];
     [self.imageView addGestureRecognizer:singleFingerTap];
-
+    
     /*
      *  Add label to card initial image to hint user take photo
      */
     self.cardImageLabel1 = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
-    [self.cardImageLabel1 setText: @"Card"];
-    [self.cardImageLabel1 setTextColor: [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:0.5]];
+    [self.cardImageLabel1 setText: @"CARD"];
+    [self.cardImageLabel1 setTextColor: [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0]];
     [self.cardImageLabel1 setFont:[UIFont fontWithName:@"Helvetica-Light" size:40.0]];
-    self.cardImageLabel1.center = CGPointMake(self.imageView.frame.size.width/2.0, self.imageView.bounds.size.height/2.0 - 30.0);
+    self.cardImageLabel1.center = CGPointMake(self.imageView.frame.size.width/2.0 - 40.0, self.imageView.bounds.size.height/2.0 - 30.0);
     self.cardImageLabel1.textAlignment = NSTextAlignmentCenter;
     self.cardImageLabel1.numberOfLines = 0;
     [self.imageView addSubview: self.cardImageLabel1];
@@ -296,17 +296,17 @@
     self.cardImageLabel2 = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
     [self.cardImageLabel2 setText: @"Take photo"];
     [self.cardImageLabel2 setTextColor: [UIColor colorWithRed:0.29 green:0.65 blue:0.96 alpha:1.0]];
-    [self.cardImageLabel2 setFont:[UIFont fontWithName:@"Helvetica-Light" size:20.0]];
+    [self.cardImageLabel2 setFont:[UIFont fontWithName:@"Helvetica" size:20.0]];
     self.cardImageLabel2.center = CGPointMake(self.imageView.frame.size.width/2.0, self.imageView.bounds.size.height/2.0 + 50.0);
     self.cardImageLabel2.textAlignment = NSTextAlignmentCenter;
     self.cardImageLabel2.numberOfLines = 0;
     [self.imageView addSubview: self.cardImageLabel2];
     
     self.cardImageLabel3 = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
-    [self.cardImageLabel3 setText: @"0123 456 789"];
+    [self.cardImageLabel3 setText: @"0123 4567 8910"];
     [self.cardImageLabel3 setTextColor: [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0]];
-    [self.cardImageLabel3 setFont:[UIFont fontWithName:@"Helvetica-Light" size:20.0]];
-    self.cardImageLabel3.center = CGPointMake(self.imageView.frame.size.width/2.0, self.imageView.bounds.size.height/2.0 + 20.0);
+    [self.cardImageLabel3 setFont:[UIFont fontWithName:@"Helvetica-Light" size:25.0]];
+    self.cardImageLabel3.center = CGPointMake(self.imageView.frame.size.width/2.0, self.imageView.bounds.size.height/2.0 + 10.0);
     self.cardImageLabel3.textAlignment = NSTextAlignmentCenter;
     self.cardImageLabel3.numberOfLines = 0;
     [self.imageView addSubview: self.cardImageLabel3];
@@ -316,7 +316,7 @@
     //[self.cardNameTextField setBorderStyle:UITextBorderStyleNone];
     //[self.cardNumberTextField setBorderStyle:UITextBorderStyleNone];
     
-
+    
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -329,7 +329,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-
+    
     self.cardNameTextField.placeholder = NSLocalizedString(@"Required",);
     self.cardNumberTextField.placeholder = NSLocalizedString(@"Optional",);
     self.barcodeNumberTextField.placeholder = NSLocalizedString(@"Optional - Please Scan ->",);
@@ -391,7 +391,7 @@
         [format setDateFormat:@"MM,dd,yyyy HH:mm:ss"];
         NSDate *now = [NSDate date];
         NSString *nsstr = [format stringFromDate:now];
-
+        
         NSString *textDataPathStr = [[self class] cardInfoFilePath:self.cardNameTextField.text
                                                         cardNumber:nsstr
                                                         imageOrNot:NO];
@@ -406,7 +406,7 @@
             [data addObject:self.cardNumberTextField.text];
             [data addObject:self.barcodeNumberTextField.text];
             [data addObject:self.barcodeTypeTextField.text];
-
+            
             [data writeToFile:textDataPathStr atomically:YES];
             [self addFilePath:textDataPathStr];
             NSLog(@"successful save card text info path = %@", textDataPathStr);
@@ -432,7 +432,7 @@
             [imageData writeToFile:imageDataPathStr atomically:YES];
             [self addFilePath:imageDataPathStr];
             NSLog(@"successful store image data path = %@", imageDataPathStr);
-
+            
         }
         
         //collect card all info and put in one array
@@ -444,7 +444,7 @@
                 NSLog(@"log for store path on disk = %@", str);
             }
         }
-       
+        
     }
 }
 
@@ -465,7 +465,7 @@
     }
     else{
         fileFullPath = [documentsPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.jpeg", cardInfo]];
-
+        
     }
     
     return fileFullPath;
@@ -531,23 +531,23 @@
 -(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
 {
     /*
-    if([identifier isEqualToString:UNWIND_SEGUE_IDENTIFIER]){
-        
-        if(!self.image){
-            [self alert:@"No photo taken!"];
-            return NO;
-        }else if(![self.cardNameTextField.text length]){
-            [self alert:@"No Card Name!"];
-            return NO;
-        }else if (![self.cardNumberTextField.text length]){
-            [self alert:@"NO Card Number!"];
-             return NO;
-        }else{
-            return YES;
-        }
-    }else{
-        return [super shouldPerformSegueWithIdentifier:identifier sender:sender];
-    }*/
+     if([identifier isEqualToString:UNWIND_SEGUE_IDENTIFIER]){
+     
+     if(!self.image){
+     [self alert:@"No photo taken!"];
+     return NO;
+     }else if(![self.cardNameTextField.text length]){
+     [self alert:@"No Card Name!"];
+     return NO;
+     }else if (![self.cardNumberTextField.text length]){
+     [self alert:@"NO Card Number!"];
+     return NO;
+     }else{
+     return YES;
+     }
+     }else{
+     return [super shouldPerformSegueWithIdentifier:identifier sender:sender];
+     }*/
     
     if([identifier isEqualToString:UNWIND_SEGUE_IDENTIFIER]){
         

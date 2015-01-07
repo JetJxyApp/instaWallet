@@ -48,12 +48,30 @@
 /*
  *  User choose one of the settings
  */
- -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
+    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSLog(@"selece %ld", indexPath.row);
- 
+    NSLog(@"select %ld", indexPath.row);
+    
+    if (indexPath.row == 1)
+    {
+        NSString *text = @"How to add Facebook and Twitter sharing to an iOS app";
+        NSURL *url = [NSURL URLWithString:@"http://roadfiresoftware.com/2014/02/how-to-add-facebook-and-twitter-sharing-to-an-ios-app/"];
+        UIImage *image = [UIImage imageNamed:@"your_card.png"];
+        
+        UIActivityViewController *controller =[[UIActivityViewController alloc]initWithActivityItems:@[text, url, image]applicationActivities:nil];
+        
+        controller.excludedActivityTypes = @[UIActivityTypePrint,
+                                             UIActivityTypeCopyToPasteboard,
+                                             UIActivityTypeAssignToContact,
+                                             UIActivityTypeSaveToCameraRoll,
+                                             UIActivityTypeAddToReadingList,
+                                             UIActivityTypeAirDrop];
+        
+        [self presentViewController:controller animated:YES completion:nil];
+    }
+    
 }
 
 
