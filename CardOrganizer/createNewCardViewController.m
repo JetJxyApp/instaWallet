@@ -265,7 +265,7 @@
     
     //set initial card imageView
     //self.image = [UIImage imageNamed:@"your_card.png"];
-    self.image = nil;
+    self.image = [UIImage imageNamed:@"CreateCard"];
     [self.imageView.layer setBorderColor: [[UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0] CGColor]];
     [self.imageView.layer setBorderWidth: 0.5];
     self.imageView.layer.cornerRadius = 10;
@@ -284,7 +284,8 @@
     /*
      *  Add label to card initial image to hint user take photo
      */
-    self.cardImageLabel1 = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
+    /*
+    self.cardImageLabel1 = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
     [self.cardImageLabel1 setText: @"CARD"];
     [self.cardImageLabel1 setTextColor: [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0]];
     [self.cardImageLabel1 setFont:[UIFont fontWithName:@"Helvetica-Light" size:40.0]];
@@ -293,7 +294,7 @@
     self.cardImageLabel1.numberOfLines = 0;
     [self.imageView addSubview: self.cardImageLabel1];
     
-    self.cardImageLabel2 = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
+    self.cardImageLabel2 = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
     [self.cardImageLabel2 setText: @"Take photo"];
     [self.cardImageLabel2 setTextColor: [UIColor colorWithRed:0.29 green:0.65 blue:0.96 alpha:1.0]];
     [self.cardImageLabel2 setFont:[UIFont fontWithName:@"Helvetica" size:20.0]];
@@ -302,7 +303,7 @@
     self.cardImageLabel2.numberOfLines = 0;
     [self.imageView addSubview: self.cardImageLabel2];
     
-    self.cardImageLabel3 = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
+    self.cardImageLabel3 = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
     [self.cardImageLabel3 setText: @"0123 4567 8910"];
     [self.cardImageLabel3 setTextColor: [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0]];
     [self.cardImageLabel3 setFont:[UIFont fontWithName:@"Helvetica-Light" size:25.0]];
@@ -310,7 +311,7 @@
     self.cardImageLabel3.textAlignment = NSTextAlignmentCenter;
     self.cardImageLabel3.numberOfLines = 0;
     [self.imageView addSubview: self.cardImageLabel3];
-    
+    */
     //self.cardNameTextField.layer.borderColor=[[UIColor clearColor] CGColor];
     //self.cardNameTextField.layer.backgroundColor = [[UIColor whiteColor] CGColor];
     //[self.cardNameTextField setBorderStyle:UITextBorderStyleNone];
@@ -344,6 +345,7 @@
     //show the bottom tabbar controller
     self.tabBarController.tabBar.hidden = NO ;
     
+    /*
     if (self.imageView.image != nil) {
         [self.cardImageLabel1 setHidden:YES];
         [self.cardImageLabel2 setHidden:YES];
@@ -352,6 +354,7 @@
         self.imageView.layer.cornerRadius = 10;
         
     }
+     */
     
 }
 
@@ -514,7 +517,7 @@
 
 - (void) animateTextField: (UITextField*) textField up: (BOOL) up
 {
-    const int movementDistance = 110; // tweak as needed
+    const int movementDistance = 130; // tweak as needed
     const float movementDuration = 0.3f; // tweak as needed
     
     int movement = (up ? -movementDistance : movementDistance);
