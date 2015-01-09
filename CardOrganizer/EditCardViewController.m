@@ -262,6 +262,8 @@
     //deal with the issue that statu bar disappear when user finish taking/editing image and pop back
     //to previous view controller
     [UIApplication sharedApplication].statusBarHidden = NO;
+    [self.barcodeTypeTextField setHidden:YES];
+
     
     
 }
