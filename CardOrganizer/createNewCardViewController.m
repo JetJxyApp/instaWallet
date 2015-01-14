@@ -265,7 +265,7 @@
     
     //set initial card imageView
     //self.image = [UIImage imageNamed:@"your_card.png"];
-    self.image = [UIImage imageNamed:@"CreateCard"];
+    self.image = [UIImage imageNamed:@"your_card"];
     [self.imageView.layer setBorderColor: [[UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0] CGColor]];
     [self.imageView.layer setBorderWidth: 0.5];
     self.imageView.layer.cornerRadius = 10;
