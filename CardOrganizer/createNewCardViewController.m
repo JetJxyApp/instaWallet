@@ -345,16 +345,16 @@
     //show the bottom tabbar controller
     self.tabBarController.tabBar.hidden = NO ;
     
-    /*
+    
     if (self.imageView.image != nil) {
-        [self.cardImageLabel1 setHidden:YES];
-        [self.cardImageLabel2 setHidden:YES];
-        [self.cardImageLabel3 setHidden:YES];
+        //[self.cardImageLabel1 setHidden:YES];
+        //[self.cardImageLabel2 setHidden:YES];
+        //[self.cardImageLabel3 setHidden:YES];
         [self.imageView.layer setBorderColor: [[UIColor clearColor] CGColor]];
         self.imageView.layer.cornerRadius = 10;
         
     }
-     */
+    
     
 }
 
@@ -517,7 +517,7 @@
 
 - (void) animateTextField: (UITextField*) textField up: (BOOL) up
 {
-    const int movementDistance = 130; // tweak as needed
+    const int movementDistance = 190; // tweak as needed
     const float movementDuration = 0.3f; // tweak as needed
     
     int movement = (up ? -movementDistance : movementDistance);
