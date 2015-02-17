@@ -236,6 +236,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     /*
      *  code below deal with the welcom/hint uiview to user
      */
+    
     CGRect bounds = CGRectMake( 0, 0, self.view.frame.size.width, 118 );
     self.hintView = [[UIView alloc] initWithFrame: bounds];
     [self.hintView setBackgroundColor:  [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:0.3]];
@@ -262,13 +263,19 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     
     //hidder the search bar when first load the app
     [self.searchDisplayController.searchBar setHidden:YES];
+
+    /*
+     *  Change the style and background color of search bar
+     */
+    UITextField *txfSearchField = [self.searchDisplayController.searchBar valueForKey:@"_searchField"];
+    txfSearchField.backgroundColor = [UIColor colorWithRed:0.97 green:0.97 blue:0.97 alpha:1.0];
+    [self.searchDisplayController.searchBar setBackgroundImage:[[UIImage alloc]init]];
     
     /*
      * code below deal with the button color of create new card
      * The new change is that creating custem button, ctrl + drag from instaWallet of storyboard to create, and perform segue
      * I overide the old Add button that ctrl + drag, selet push
      */
-    
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc]
                                   initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
                                   target:self action:@selector(createCard:)];
