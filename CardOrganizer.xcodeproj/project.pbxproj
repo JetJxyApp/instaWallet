@@ -439,8 +439,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: JetXiao ChaoJiang (FJG7MPRB6E)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: JetXiao ChaoJiang (FJG7MPRB6E)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -460,7 +460,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "4cf6c368-765f-4484-ad00-8cbff158bbc0";
+				PROVISIONING_PROFILE = "38eacde3-58d5-4972-8b3a-75f616c3d9c0";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -482,8 +482,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: JetXiao ChaoJiang (FJG7MPRB6E)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: JetXiao ChaoJiang (FJG7MPRB6E)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -496,7 +496,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "4cf6c368-765f-4484-ad00-8cbff158bbc0";
+				PROVISIONING_PROFILE = "38eacde3-58d5-4972-8b3a-75f616c3d9c0";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -508,13 +508,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: JetXiao ChaoJiang (FJG7MPRB6E)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: JetXiao ChaoJiang (FJG7MPRB6E)";
 				INFOPLIST_FILE = CardOrganizer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "38eacde3-58d5-4972-8b3a-75f616c3d9c0";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -525,13 +525,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: JetXiao ChaoJiang (FJG7MPRB6E)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: JetXiao ChaoJiang (FJG7MPRB6E)";
 				INFOPLIST_FILE = CardOrganizer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "38eacde3-58d5-4972-8b3a-75f616c3d9c0";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -576,7 +576,7 @@
 			};
 			name = Release;
 		};
-		80169EE41A5F7A6D00C81143 /* Distribution */ = {
+		F7458B041A8EA6B7000CBE91 /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -593,8 +593,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: JetXiao ChaoJiang (FJG7MPRB6E)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: JetXiao ChaoJiang (FJG7MPRB6E)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -607,30 +607,30 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "4cf6c368-765f-4484-ad00-8cbff158bbc0";
+				PROVISIONING_PROFILE = "38eacde3-58d5-4972-8b3a-75f616c3d9c0";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Distribution;
 		};
-		80169EE51A5F7A6D00C81143 /* Distribution */ = {
+		F7458B051A8EA6B7000CBE91 /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F44E380047A31F2A214076C9 /* Pods-CardOrganizer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: JetXiao ChaoJiang (FJG7MPRB6E)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: JetXiao ChaoJiang (FJG7MPRB6E)";
 				INFOPLIST_FILE = CardOrganizer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "38eacde3-58d5-4972-8b3a-75f616c3d9c0";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Distribution;
 		};
-		80169EE61A5F7A6D00C81143 /* Distribution */ = {
+		F7458B061A8EA6B7000CBE91 /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -656,7 +656,7 @@
 			buildConfigurations = (
 				111A178119D0DB88000EE067 /* Debug */,
 				111A178219D0DB88000EE067 /* Release */,
-				80169EE41A5F7A6D00C81143 /* Distribution */,
+				F7458B041A8EA6B7000CBE91 /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -666,7 +666,7 @@
 			buildConfigurations = (
 				111A178419D0DB88000EE067 /* Debug */,
 				111A178519D0DB88000EE067 /* Release */,
-				80169EE51A5F7A6D00C81143 /* Distribution */,
+				F7458B051A8EA6B7000CBE91 /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -676,7 +676,7 @@
 			buildConfigurations = (
 				111A178719D0DB88000EE067 /* Debug */,
 				111A178819D0DB88000EE067 /* Release */,
-				80169EE61A5F7A6D00C81143 /* Distribution */,
+				F7458B061A8EA6B7000CBE91 /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

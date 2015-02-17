@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BD310759CF23BFB1ED720BBE"
+               BlueprintIdentifier = "0A85ED64F994987754787DF4"
                BuildableName = "libPods-CardOrganizer-PEPhotoCropEditor.a"
                BlueprintName = "Pods-CardOrganizer-PEPhotoCropEditor"
                ReferencedContainer = "container:Pods.xcodeproj">

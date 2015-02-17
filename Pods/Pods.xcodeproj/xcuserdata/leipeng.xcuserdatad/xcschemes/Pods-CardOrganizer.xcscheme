@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F9E6A537CAB5BD84A9AC4240"
+               BlueprintIdentifier = "3DF7F17E9A9116409090D832"
                BuildableName = "libPods-CardOrganizer.a"
                BlueprintName = "Pods-CardOrganizer"
                ReferencedContainer = "container:Pods.xcodeproj">
