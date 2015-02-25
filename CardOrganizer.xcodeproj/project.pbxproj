@@ -460,7 +460,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "38eacde3-58d5-4972-8b3a-75f616c3d9c0";
+				PROVISIONING_PROFILE = "5825a292-ef89-4682-9326-9f645b72b207";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -496,7 +496,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "38eacde3-58d5-4972-8b3a-75f616c3d9c0";
+				PROVISIONING_PROFILE = "5825a292-ef89-4682-9326-9f645b72b207";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -511,10 +511,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: JetXiao ChaoJiang (FJG7MPRB6E)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: JetXiao ChaoJiang (FJG7MPRB6E)";
 				INFOPLIST_FILE = CardOrganizer/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "38eacde3-58d5-4972-8b3a-75f616c3d9c0";
+				PROVISIONING_PROFILE = "5825a292-ef89-4682-9326-9f645b72b207";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -528,10 +528,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: JetXiao ChaoJiang (FJG7MPRB6E)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: JetXiao ChaoJiang (FJG7MPRB6E)";
 				INFOPLIST_FILE = CardOrganizer/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "38eacde3-58d5-4972-8b3a-75f616c3d9c0";
+				PROVISIONING_PROFILE = "5825a292-ef89-4682-9326-9f645b72b207";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -607,7 +607,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "38eacde3-58d5-4972-8b3a-75f616c3d9c0";
+				PROVISIONING_PROFILE = "5825a292-ef89-4682-9326-9f645b72b207";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -622,10 +622,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: JetXiao ChaoJiang (FJG7MPRB6E)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: JetXiao ChaoJiang (FJG7MPRB6E)";
 				INFOPLIST_FILE = CardOrganizer/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "38eacde3-58d5-4972-8b3a-75f616c3d9c0";
+				PROVISIONING_PROFILE = "5825a292-ef89-4682-9326-9f645b72b207";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Distribution;
