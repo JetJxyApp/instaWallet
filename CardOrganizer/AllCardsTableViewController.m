@@ -583,6 +583,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     civc.rowNumer = rowIndex;
     civc.cards = cards;
     civc.searchResults = searchResults;
+    
+    //fix bug of resigning keyboard in search mode
+    [self.view endEditing:YES];
+
 
 }
 
