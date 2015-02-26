@@ -263,6 +263,9 @@
     //to previous view controller
     [UIApplication sharedApplication].statusBarHidden = NO;
     [self.barcodeTypeTextField setHidden:YES];
+    
+    //show the bottom tabbar controller
+    self.tabBarController.tabBar.hidden = NO ;
 
     
     

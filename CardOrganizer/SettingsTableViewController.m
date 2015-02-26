@@ -53,8 +53,11 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSLog(@"select %ld", indexPath.row);
-    
-    if (indexPath.row == 1)
+    if (indexPath.row == 0) {
+        NSString *iTunesLink = @"https://itunes.apple.com/ca/app/instawallet/id956331415?mt=8";
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:iTunesLink]];
+    }
+    else if (indexPath.row == 1)
     {
         NSString *text = @"How to add Facebook and Twitter sharing to an iOS app";
         NSURL *url = [NSURL URLWithString:@"http://roadfiresoftware.com/2014/02/how-to-add-facebook-and-twitter-sharing-to-an-ios-app/"];

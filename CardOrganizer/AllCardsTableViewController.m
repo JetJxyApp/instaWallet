@@ -268,7 +268,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
      *  Change the style and background color of search bar
      */
     UITextField *txfSearchField = [self.searchDisplayController.searchBar valueForKey:@"_searchField"];
-    txfSearchField.backgroundColor = [UIColor colorWithRed:0.97 green:0.97 blue:0.97 alpha:1.0];
+    txfSearchField.backgroundColor = [UIColor colorWithRed:0.94 green:0.94 blue:0.94 alpha:1.0];
     [self.searchDisplayController.searchBar setBackgroundImage:[[UIImage alloc]init]];
     
     /*
