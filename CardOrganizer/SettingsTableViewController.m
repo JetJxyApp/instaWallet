@@ -59,9 +59,9 @@
     }
     else if (indexPath.row == 1)
     {
-        NSString *text = @"How to add Facebook and Twitter sharing to an iOS app";
-        NSURL *url = [NSURL URLWithString:@"http://roadfiresoftware.com/2014/02/how-to-add-facebook-and-twitter-sharing-to-an-ios-app/"];
-        UIImage *image = [UIImage imageNamed:@"your_card.png"];
+        NSString *text = @"Store a wide range of physical cards that use barcode inside the phone.";
+        NSURL *url = [NSURL URLWithString:@"https://itunes.apple.com/ca/app/instawallet/id956331415?mt=8"];
+        UIImage *image = [UIImage imageNamed:@"shareIcon.png"];
         
         UIActivityViewController *controller =[[UIActivityViewController alloc]initWithActivityItems:@[text, url, image]applicationActivities:nil];
         
