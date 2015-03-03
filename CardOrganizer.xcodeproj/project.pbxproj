@@ -511,7 +511,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: JetXiao ChaoJiang (FJG7MPRB6E)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: JetXiao ChaoJiang (FJG7MPRB6E)";
 				INFOPLIST_FILE = CardOrganizer/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "5825a292-ef89-4682-9326-9f645b72b207";
@@ -528,7 +528,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: JetXiao ChaoJiang (FJG7MPRB6E)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: JetXiao ChaoJiang (FJG7MPRB6E)";
 				INFOPLIST_FILE = CardOrganizer/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "5825a292-ef89-4682-9326-9f645b72b207";
@@ -622,7 +622,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: JetXiao ChaoJiang (FJG7MPRB6E)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: JetXiao ChaoJiang (FJG7MPRB6E)";
 				INFOPLIST_FILE = CardOrganizer/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "5825a292-ef89-4682-9326-9f645b72b207";
